@@ -149,7 +149,7 @@ table 87090 WanaPort
 
     trigger OnDelete()
     var
-        WanaPortFieldValue: Record "WanaPort Field Constant";
+        WanaPortFieldValue: Record "WanaPort Constant";
     begin
         WanaPortFieldValue.SetRange("Object Type", "Object Type");
         WanaPortFieldValue.SetRange("Object ID", "Object ID");

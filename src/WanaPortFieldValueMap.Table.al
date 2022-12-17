@@ -1,7 +1,7 @@
-table 87096 "WanaPort Value Map"
+table 87096 "WanaPort Field Value Map"
 {
     DataClassification = ToBeClassified;
-    Caption = 'WanaPort Value Map';
+    Caption = 'WanaPort Field Value Map';
 
     fields
     {

@@ -38,7 +38,7 @@ codeunit 87091 "WanaPort Import"
 
     procedure FieldValue(var pMoniport: Record "WanaPort"; pTableID: Integer; pFieldID: Integer): Text
     var
-        MoniportFieldValue: Record "WanaPort Field Constant";
+        MoniportFieldValue: Record "WanaPort Constant";
     begin
         MoniportFieldValue.Get(pMoniport."Object Type", pMoniport."Object ID", pTableID, pFieldID);
         exit(MoniportFieldValue.Constant);
@@ -47,7 +47,7 @@ codeunit 87091 "WanaPort Import"
 
     procedure InitFieldValue(var pWanaPort: Record "WanaPort"; pTableID: Integer; var pRecordRef: RecordRef)
     var
-        WanaPortFieldValue: Record "WanaPort Field Constant";
+        WanaPortFieldValue: Record "WanaPort Constant";
         FldRef: FieldRef;
         TableField: Record "Field";
         lInteger: Integer;

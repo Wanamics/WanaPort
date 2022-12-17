@@ -1,7 +1,7 @@
-table 87091 "WanaPort Field Constant"
+table 87091 "WanaPort Constant"
 {
 
-    Caption = 'WanaPort Field Constant';
+    Caption = 'WanaPort Constant';
     LookupPageID = "wanaPorts";
 
     fields

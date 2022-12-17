@@ -1,9 +1,9 @@
-page 87096 "WanaPort Map"
+page 87096 "WanaPort Field Value Map"
 {
     ApplicationArea = All;
-    Caption = 'WanaPort Map';
+    Caption = 'WanaPort Field Value Map';
     PageType = List;
-    SourceTable = "WanaPort Value Map";
+    SourceTable = "WanaPort Field Value Map";
 
     layout
     {

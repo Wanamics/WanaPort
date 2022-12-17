@@ -1,9 +1,9 @@
-page 87094 "WanaPort Field Constant"
+page 87094 "WanaPort Constant"
 {
 
-    Caption = 'WanaPort Field Constant';
+    Caption = 'WanaPort Constants';
     PageType = List;
-    SourceTable = "WanaPort Field Constant";
+    SourceTable = "WanaPort Constant";
 
     layout
     {
