@@ -3,10 +3,10 @@ page 87090 "wanaPorts"
 
     ApplicationArea = All;
     Caption = 'WanaPorts';
-    CardPageID = "wanaPort Card";
+    CardPageID = "WanaPort Card";
     PageType = List;
     RefreshOnActivate = true;
-    SourceTable = "wanaPort";
+    SourceTable = "WanaPort";
     UsageCategory = Administration;
 
     layout
@@ -117,16 +117,24 @@ page 87090 "wanaPorts"
                 action(Valeurs)
                 {
                     ApplicationArea = All;
-                    Caption = 'Values';
-                    Image = ValueLedger;
+                    Caption = 'Constants';
+                    Image = VariableList;
                     Promoted = true;
                     PromotedCategory = Process;
-                    RunObject = Page "wanaPort Field Value";
-                    RunPageLink = "Object Type" = FIELD("Object Type"),
-                                  "Object ID" = FIELD("Object ID");
-                    ShortCutKey = 'Shift+Ctrl+N';
+                    RunObject = Page "WanaPort Field Constant";
+                    RunPageLink = "Object Type" = FIELD("Object Type"), "Object ID" = FIELD("Object ID");
                 }
-                action(Formulaire)
+                action(ValueMap)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Value Map';
+                    Image = Translate;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    RunObject = Page "WanaPort Map";
+                    RunPageLink = "Object Type" = Field("Object Type"), "Object ID" = Field("Object ID");
+                }
+                action(RunPage)
                 {
                     ApplicationArea = All;
                     Caption = 'Run Page';
@@ -137,7 +145,7 @@ page 87090 "wanaPorts"
                     trigger OnAction()
                     begin
                         Rec.TestField("Page ID");
-                        PAGE.Run(Rec."Page ID");
+                        Page.Run(Rec."Page ID");
                     end;
                 }
                 action(Planification)
@@ -158,7 +166,7 @@ page 87090 "wanaPorts"
                     ApplicationArea = All;
                     Caption = 'Log';
                     Image = Log;
-                    RunObject = Page "wanaPort Log";
+                    RunObject = Page "WanaPort Log";
                     RunPageLink = "Object Type" = FIELD("Object Type"),
                                   "Object ID" = FIELD("Object ID");
                     RunPageView = SORTING("Object Type", "Object ID");
@@ -208,7 +216,7 @@ page 87090 "wanaPorts"
     end;
 
     var
-        WanaPortMgt: Codeunit "wanaPort Management";
+        WanaPortMgt: Codeunit "WanaPort Management";
         ToImport: Integer;
         Archived: Integer;
         Exported: Integer;

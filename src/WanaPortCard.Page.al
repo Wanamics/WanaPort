@@ -1,9 +1,9 @@
-page 87092 "wanaPort Card"
+page 87092 "WanaPort Card"
 {
     Caption = 'WanaPort Card';
     DataCaptionFields = "Object Caption";
     PageType = Card;
-    SourceTable = "wanaPort";
+    SourceTable = "WanaPort";
 
     layout
     {
@@ -12,47 +12,47 @@ page 87092 "wanaPort Card"
             group("Général")
             {
                 Caption = 'General';
-                field("Object Type"; rec."Object Type")
+                field("Object Type"; Rec."Object Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Object ID"; rec."Object ID")
-                {
-                    ApplicationArea = All;
-                    LookupPageID = Objects;
-                }
-                field("Object Caption"; rec."Object Caption")
-                {
-                    ApplicationArea = All;
-                    DrillDown = false;
-                }
-                field("Page ID"; rec."Page ID")
+                field("Object ID"; Rec."Object ID")
                 {
                     ApplicationArea = All;
                     LookupPageID = Objects;
                 }
-                field("Page Caption"; rec."Page Caption")
+                field("Object Caption"; Rec."Object Caption")
                 {
                     ApplicationArea = All;
                     DrillDown = false;
                 }
-                field("Field Separator"; rec."Field Separator")
+                field("Page ID"; Rec."Page ID")
+                {
+                    ApplicationArea = All;
+                    LookupPageID = Objects;
+                }
+                field("Page Caption"; Rec."Page Caption")
+                {
+                    ApplicationArea = All;
+                    DrillDown = false;
+                }
+                field("Field Separator"; Rec."Field Separator")
                 {
                     ApplicationArea = All;
                 }
-                field("Text Delimiter"; rec."Text Delimiter")
+                field("Text Delimiter"; Rec."Text Delimiter")
                 {
                     ApplicationArea = All;
                 }
             }
-            group(Control800140091)
+            group(Import)
             {
                 Caption = 'Import';
-                field("Import Path"; rec."Import Path")
+                field("Import Path"; Rec."Import Path")
                 {
                     ApplicationArea = All;
                 }
-                field("File Name Filter"; rec."File Name Filter")
+                field("File Name Filter"; Rec."File Name Filter")
                 {
                     ApplicationArea = All;
                 }
@@ -61,15 +61,15 @@ page 87092 "wanaPort Card"
                     ApplicationArea = All;
                     BlankZero = true;
                     Caption = 'Files to Import';
-                    //??DrillDownPageID = "wan WanaPort File List";
+                    DrillDownPageID = "WanaPort File List";
                     Editable = false;
 
                     trigger OnDrillDown()
                     begin
-                        WanaPortMgt.ShowFileList(rec."Import Path", rec."File Name Filter");
+                        WanaPortMgt.ShowFileList(Rec."Import Path", Rec."File Name Filter");
                     end;
                 }
-                field("Archive Path"; rec."Archive Path")
+                field("Archive Path"; Rec."Archive Path")
                 {
                     ApplicationArea = All;
                 }
@@ -78,28 +78,28 @@ page 87092 "wanaPort Card"
                     ApplicationArea = All;
                     BlankZero = true;
                     Caption = 'Archived Files';
-                    //??DrillDownPageID = "wan WanaPort File List";
+                    DrillDownPageID = "WanaPort File List";
                     Editable = false;
 
                     trigger OnDrillDown()
                     begin
-                        WanaPortMgt.ShowFileList(rec."Archive Path", rec."File Name Filter");
+                        WanaPortMgt.ShowFileList(Rec."Archive Path", Rec."File Name Filter");
                     end;
                 }
-                field("Last Import Entry No."; rec."Last Import Entry No.")
+                field("Last Import Entry No."; Rec."Last Import Entry No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Last Import DateTime"; rec."Last Import DateTime")
+                field("Last Import DateTime"; Rec."Last Import DateTime")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
             }
-            group(Control1900383701)
+            group(Export)
             {
                 Caption = 'Export';
-                field("Export Path"; rec."Export Path")
+                field("Export Path"; Rec."Export Path")
                 {
                     ApplicationArea = All;
                 }
@@ -112,23 +112,23 @@ page 87092 "wanaPort Card"
 
                     trigger OnDrillDown()
                     begin
-                        WanaPortMgt.ShowFileList(rec."Export Path", StrSubstNo(rec."File Name Mask", '*', '*'));
+                        WanaPortMgt.ShowFileList(Rec."Export Path", StrSubstNo(Rec."File Name Mask", '*', '*'));
                     end;
                 }
-                field("File Name Mask"; rec."File Name Mask")
+                field("File Name Mask"; Rec."File Name Mask")
                 {
                     ApplicationArea = All;
                     ToolTip = '%1 Entry No., %2 : TimeStamp (yyyymmddhhmmss)';
                 }
-                field("Last File No. Used"; rec."Last File No. Used")
+                field("Last File No. Used"; Rec."Last File No. Used")
                 {
                     ApplicationArea = All;
                 }
-                field("Last Export Entry No."; rec."Last Export Entry No.")
+                field("Last Export Entry No."; Rec."Last Export Entry No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Last Export DateTime"; rec."Last Export DateTime")
+                field("Last Export DateTime"; Rec."Last Export DateTime")
                 {
                     ApplicationArea = All;
                     Editable = false;
@@ -144,33 +144,41 @@ page 87092 "wanaPort Card"
             group(WanaPort)
             {
                 Caption = 'WanaPort';
-                action(Valeurs)
+                action(Constants)
                 {
                     ApplicationArea = All;
-                    Caption = 'Values';
-                    Image = ValueLedger;
+                    Caption = 'Constants';
+                    Image = VariableList;
                     Promoted = true;
                     PromotedCategory = Process;
-                    RunObject = Page "wanaPort Field Value";
-                    RunPageLink = "Object Type" = FIELD("Object Type"),
-                                  "Object ID" = FIELD("Object ID");
-                    ShortCutKey = 'Shift+Ctrl+N';
+                    RunObject = Page "WanaPort Field Constant";
+                    RunPageLink = "Object Type" = Field("Object Type"), "Object ID" = Field("Object ID");
                 }
-                action(Formulaire)
+                action(ValueMap)
                 {
                     ApplicationArea = All;
-                    Caption = 'Run Form';
+                    Caption = 'Value Map';
+                    Image = Translate;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    RunObject = Page "WanaPort Map";
+                    RunPageLink = "Object Type" = Field("Object Type"), "Object ID" = Field("Object ID");
+                }
+                action(RunPage)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Run Page';
                     Image = Start;
                     Promoted = true;
                     PromotedCategory = Process;
 
                     trigger OnAction()
                     begin
-                        rec.TestField("Page ID");
-                        PAGE.Run(rec."Page ID");
+                        Rec.TestField("Page ID");
+                        Page.Run(Rec."Page ID");
                     end;
                 }
-                action(Planification)
+                action(Scheduler)
                 {
                     ApplicationArea = All;
                     Caption = 'Scheduler';
@@ -188,10 +196,9 @@ page 87092 "wanaPort Card"
                     ApplicationArea = All;
                     Caption = 'Log';
                     Image = Log;
-                    RunObject = Page "wanaPort Log";
-                    RunPageLink = "Object Type" = FIELD("Object Type"),
-                                  "Object ID" = FIELD("Object ID");
-                    RunPageView = SORTING("Object Type", "Object ID");
+                    RunObject = Page "WanaPort Log";
+                    RunPageLink = "Object Type" = Field("Object Type"), "Object ID" = Field("Object ID");
+                    RunPageView = Sorting("Object Type", "Object ID");
                 }
             }
         }
@@ -232,13 +239,13 @@ page 87092 "wanaPort Card"
 
     trigger OnAfterGetRecord()
     begin
-        ToImport := WanaPortMgt.FileCount(rec."Import Path", rec."File Name Filter");
-        Archived := WanaPortMgt.FileCount(rec."Archive Path", rec."File Name Filter");
-        Exported := WanaPortMgt.FileCount(rec."Export Path", StrSubstNo(rec."File Name Mask", '*', '*'));
+        ToImport := WanaPortMgt.FileCount(Rec."Import Path", Rec."File Name Filter");
+        Archived := WanaPortMgt.FileCount(Rec."Archive Path", Rec."File Name Filter");
+        Exported := WanaPortMgt.FileCount(Rec."Export Path", StrSubstNo(Rec."File Name Mask", '*', '*'));
     end;
 
     var
-        WanaPortMgt: Codeunit "wanaPort Management";
+        WanaPortMgt: Codeunit "WanaPort Management";
         ToImport: Integer;
         Archived: Integer;
         Exported: Integer;

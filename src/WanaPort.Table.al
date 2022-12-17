@@ -1,4 +1,4 @@
-table 87090 "wanaPort"
+table 87090 WanaPort
 {
     Caption = 'WanaPort';
     DataCaptionFields = "Object Caption";
@@ -11,15 +11,15 @@ table 87090 "wanaPort"
             BlankZero = true;
             Caption = 'Object Type';
             NotBlank = true;
-            OptionCaption = ',,,Report,Dataport,Codeunit,XMLport';
-            OptionMembers = TableData,"Table",Form,"Report",Dataport,"Codeunit","XMLport",MenuSuite;
+            OptionCaption = ',,,Report,,Codeunit,XMLport';
+            OptionMembers = ,,,"Report",,"Codeunit","XMLport",;
         }
         field(2; "Object ID"; Integer)
         {
             BlankZero = true;
             Caption = 'Object ID';
             NotBlank = true;
-            TableRelation = AllObjWithCaption."Object ID" WHERE("Object Type" = FIELD("Object Type"));
+            TableRelation = AllObjWithCaption."Object ID" where("Object Type" = field("Object Type"));
 
             trigger OnValidate()
             begin
@@ -32,11 +32,9 @@ table 87090 "wanaPort"
 
             trigger OnValidate()
             begin
-                /*??
-                if "Import Path" <> '' then
+                if Rec."Import Path" <> '' then
                     if not FileManagement.ServerDirectoryExists("Import Path") then
-                        FieldError("Import Path", tServerPathNotExists);
-                ??*/
+                        FieldError("Import Path", ServerPathNotExistsErr);
             end;
         }
         field(5; "File Name Filter"; Text[250])
@@ -49,11 +47,9 @@ table 87090 "wanaPort"
 
             trigger OnValidate()
             begin
-                /*??
                 if "Archive Path" <> '' then
                     if not FileManagement.ServerDirectoryExists("Archive Path") then
-                        FieldError("Archive Path", tServerPathNotExists);
-                ??*/
+                        FieldError("Archive Path", ServerPathNotExistsErr);
             end;
         }
         field(7; "Page ID"; Integer)
@@ -73,11 +69,9 @@ table 87090 "wanaPort"
 
             trigger OnLookup()
             begin
-                /*??
                 if "Export Path" <> '' then
                     if not FileManagement.ServerDirectoryExists("Export Path") then
-                        FieldError("Export Path", tServerPathNotExists);
-                ??*/
+                        FieldError("Export Path", ServerPathNotExistsErr);
             end;
         }
         field(9; "File Name Mask"; Text[250])
@@ -155,11 +149,11 @@ table 87090 "wanaPort"
 
     trigger OnDelete()
     var
-        lWanaPortFieldValue: Record "wanaPort Field Value";
+        WanaPortFieldValue: Record "WanaPort Field Constant";
     begin
-        lWanaPortFieldValue.SetRange("Object Type", "Object Type");
-        lWanaPortFieldValue.SetRange("Object ID", "Object ID");
-        lWanaPortFieldValue.DeleteAll;
+        WanaPortFieldValue.SetRange("Object Type", "Object Type");
+        WanaPortFieldValue.SetRange("Object ID", "Object ID");
+        WanaPortFieldValue.DeleteAll;
     end;
 
     trigger OnInsert()
@@ -173,18 +167,18 @@ table 87090 "wanaPort"
 
     var
         FileManagement: Codeunit "File Management";
-        tServerPathNotExists: Label 'does not exists on server';
+        ServerPathNotExistsErr: Label 'does not exists on server';
         StartDateTime: DateTime;
 
     procedure LogError(pMessage: Text; pTableID: Integer; pPosition: Text)
     begin
-        lLog(pMessage, 1, pTableID, pPosition);
+        Log(pMessage, 1, pTableID, pPosition);
     end;
 
 
     procedure LogProcess()
     begin
-        lLog("WanaPort File Name", 0, 0, '');
+        Log("WanaPort File Name", 0, 0, '');
     end;
 
 
@@ -192,7 +186,7 @@ table 87090 "wanaPort"
     var
         ltBegin: Label 'Begin...';
     begin
-        lLog(ltBegin, 0, 0, '');
+        Log(ltBegin, 0, 0, '');
         StartDateTime := CurrentDateTime;
     end;
 
@@ -201,23 +195,23 @@ table 87090 "wanaPort"
     var
         ltDone: Label 'Done in %1';
     begin
-        lLog(StrSubstNo(ltDone, CurrentDateTime - StartDateTime), 0, 0, '');
+        Log(StrSubstNo(ltDone, CurrentDateTime - StartDateTime), 0, 0, '');
     end;
 
-    local procedure lLog(pMessage: Text; pEntryType: Integer; pTableID: Integer; pPosition: Text)
+    local procedure Log(pMessage: Text; pEntryType: Integer; pTableID: Integer; pPosition: Text)
     var
-        lWanaPortLog: Record "wanaPort Log";
+        WanaPortLog: Record "WanaPort Log";
     begin
-        lWanaPortLog."Entry No." := 0; // AutoIncrement
-        lWanaPortLog."Object Type" := "Object Type";
-        lWanaPortLog."Object ID" := "Object ID";
-        lWanaPortLog.DateTime := CurrentDateTime;
-        lWanaPortLog.Message := CopyStr(pMessage, 1, MaxStrLen(lWanaPortLog.Message));
-        lWanaPortLog."Entry Type" := pEntryType;
-        lWanaPortLog.Position := pPosition;
-        lWanaPortLog."Table ID" := pTableID;
-        lWanaPortLog."WanaPort File Name" := "WanaPort File Name";
-        lWanaPortLog.Insert;
+        WanaPortLog."Entry No." := 0; // AutoIncrement
+        WanaPortLog."Object Type" := "Object Type";
+        WanaPortLog."Object ID" := "Object ID";
+        WanaPortLog.DateTime := CurrentDateTime;
+        WanaPortLog.Message := CopyStr(pMessage, 1, MaxStrLen(WanaPortLog.Message));
+        WanaPortLog."Entry Type" := pEntryType;
+        WanaPortLog.Position := pPosition;
+        WanaPortLog."Table ID" := pTableID;
+        WanaPortLog."WanaPort File Name" := "WanaPort File Name";
+        WanaPortLog.Insert;
     end;
 
     procedure GetSeparator(): Text[1];

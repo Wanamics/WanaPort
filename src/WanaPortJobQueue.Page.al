@@ -1,4 +1,4 @@
-page 87091 "wanaPort Job Queue"
+page 87091 "WanaPort Job Queue"
 {
 
     Caption = 'WanaPort Job Queue';
@@ -14,28 +14,28 @@ page 87091 "wanaPort Job Queue"
             {
                 Editable = false;
                 ShowCaption = false;
-                field(Status; rec.Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = All;
                 }
-                field("User ID"; rec."User ID")
+                field("User ID"; Rec."User ID")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Object Type to Run"; rec."Object Type to Run")
+                field("Object Type to Run"; Rec."Object Type to Run")
                 {
                     ApplicationArea = All;
                 }
-                field("Object ID to Run"; rec."Object ID to Run")
+                field("Object ID to Run"; Rec."Object ID to Run")
                 {
                     ApplicationArea = All;
                 }
-                field("Object Caption to Run"; rec."Object Caption to Run")
+                field("Object Caption to Run"; Rec."Object Caption to Run")
                 {
                     ApplicationArea = All;
                 }
-                field("Parameter String"; rec."Parameter String")
+                field("Parameter String"; Rec."Parameter String")
                 {
                     ApplicationArea = All;
                     Visible = false;
@@ -45,7 +45,7 @@ page 87091 "wanaPort Job Queue"
                     ApplicationArea = All;
                     Caption = 'Last Job';
                 }
-                field("Earliest Start Date/Time"; rec."Earliest Start Date/Time")
+                field("Earliest Start Date/Time"; Rec."Earliest Start Date/Time")
                 {
                     ApplicationArea = All;
                     Caption = 'Next Job';
@@ -57,52 +57,52 @@ page 87091 "wanaPort Job Queue"
                     OptionCaption = 'Success,In Process,Error';
                 }
                 /*??
-                field(Priority; rec.Priority)
+                field(Priority; Rec.Priority)
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
                 ??*/
-                field("Recurring Job"; rec."Recurring Job")
+                field("Recurring Job"; Rec."Recurring Job")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("No. of Minutes between Runs"; rec."No. of Minutes between Runs")
+                field("No. of Minutes between Runs"; Rec."No. of Minutes between Runs")
                 {
                     ApplicationArea = All;
                 }
-                field("Run on Mondays"; rec."Run on Mondays")
-                {
-                    ApplicationArea = All;
-                    Visible = false;
-                }
-                field("Run on Tuesdays"; rec."Run on Tuesdays")
+                field("Run on Mondays"; Rec."Run on Mondays")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Run on Wednesdays"; rec."Run on Wednesdays")
+                field("Run on Tuesdays"; Rec."Run on Tuesdays")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Run on Thursdays"; rec."Run on Thursdays")
+                field("Run on Wednesdays"; Rec."Run on Wednesdays")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Run on Fridays"; rec."Run on Fridays")
+                field("Run on Thursdays"; Rec."Run on Thursdays")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Run on Saturdays"; rec."Run on Saturdays")
+                field("Run on Fridays"; Rec."Run on Fridays")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Run on Sundays"; rec."Run on Sundays")
+                field("Run on Saturdays"; Rec."Run on Saturdays")
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field("Run on Sundays"; Rec."Run on Sundays")
                 {
                     ApplicationArea = All;
                     Visible = false;
@@ -112,12 +112,12 @@ page 87091 "wanaPort Job Queue"
                     ApplicationArea = All;
                     Caption = 'Schedule';
                 }
-                field("Starting Time"; rec."Starting Time")
+                field("Starting Time"; Rec."Starting Time")
                 {
                     ApplicationArea = All;
                     Visible = true;
                 }
-                field("Ending Time"; rec."Ending Time")
+                field("Ending Time"; Rec."Ending Time")
                 {
                     ApplicationArea = All;
                     Visible = true;
@@ -152,9 +152,9 @@ page 87091 "wanaPort Job Queue"
 
                     trigger OnAction()
                     begin
-                        rec.LockTable;
-                        rec.Get(rec.ID);
-                        rec.Status := rec.Status::Ready;
+                        Rec.LockTable;
+                        Rec.Get(Rec.ID);
+                        Rec.Status := Rec.Status::Ready;
                         CurrPage.Update;
                     end;
                 }
@@ -165,9 +165,9 @@ page 87091 "wanaPort Job Queue"
 
                     trigger OnAction()
                     begin
-                        rec.LockTable;
-                        rec.Get(rec.ID);
-                        rec.Status := rec.Status::"On Hold";
+                        Rec.LockTable;
+                        Rec.Get(Rec.ID);
+                        Rec.Status := Rec.Status::"On Hold";
                         CurrPage.Update;
                     end;
                 }
@@ -188,23 +188,23 @@ page 87091 "wanaPort Job Queue"
         ltSchedule: Label 'MTWTFSS';
         ltNone: Label '-';
     begin
-        gJobQueueLogEntry.SetRange(ID, rec.ID);
+        gJobQueueLogEntry.SetRange(ID, Rec.ID);
         if not gJobQueueLogEntry.FindLast then
             gJobQueueLogEntry.Init;
         gSchedule := ltSchedule;
-        if not rec."Run on Mondays" then
+        if not Rec."Run on Mondays" then
             gSchedule[1] := '-';
-        if not rec."Run on Tuesdays" then
+        if not Rec."Run on Tuesdays" then
             gSchedule[2] := '-';
-        if not rec."Run on Wednesdays" then
+        if not Rec."Run on Wednesdays" then
             gSchedule[3] := '-';
-        if not rec."Run on Thursdays" then
+        if not Rec."Run on Thursdays" then
             gSchedule[4] := '-';
-        if not rec."Run on Fridays" then
+        if not Rec."Run on Fridays" then
             gSchedule[5] := '-';
-        if not rec."Run on Saturdays" then
+        if not Rec."Run on Saturdays" then
             gSchedule[6] := '-';
-        if not rec."Run on Sundays" then
+        if not Rec."Run on Sundays" then
             gSchedule[7] := '-';
         gJobQueueLogEntryStatusOnForma;
     end;

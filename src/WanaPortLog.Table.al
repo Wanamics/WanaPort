@@ -1,4 +1,4 @@
-table 87092 "wanaPort Log"
+table 87092 "WanaPort Log"
 {
     Caption = 'WanaPort Log';
 
@@ -15,8 +15,8 @@ table 87092 "wanaPort Log"
             BlankZero = true;
             Caption = 'Object Type';
             NotBlank = true;
-            OptionCaption = ',,,Report,Dataport,Codeunit,XMLport';
-            OptionMembers = TableData,"Table",Form,"Report",Dataport,"Codeunit","XMLport",MenuSuite;
+            OptionCaption = ',,,Report,,Codeunit,XMLport';
+            OptionMembers = ,,,Report,,Codeunit,XMLport,;
         }
         field(3; "Object ID"; Integer)
         {
@@ -52,15 +52,13 @@ table 87092 "wanaPort Log"
         }
         field(103; "Object Caption"; Text[250])
         {
-            CalcFormula = Lookup(AllObjWithCaption."Object Caption" WHERE("Object Type" = FIELD("Object Type"),
-                                                                           "Object ID" = FIELD("Object ID")));
+            CalcFormula = Lookup(AllObjWithCaption."Object Caption" where("Object Type" = field("Object Type"), "Object ID" = field("Object ID")));
             Editable = false;
             FieldClass = FlowField;
         }
         field(108; "Table Caption"; Text[250])
         {
-            CalcFormula = Lookup(AllObjWithCaption."Object Caption" WHERE("Object Type" = CONST(Table),
-                                                                           "Object ID" = FIELD("Table ID")));
+            CalcFormula = Lookup(AllObjWithCaption."Object Caption" where("Object Type" = const(Table), "Object ID" = field("Table ID")));
             Editable = true;
             FieldClass = FlowField;
         }
@@ -83,34 +81,34 @@ table 87092 "wanaPort Log"
 
     procedure Show()
     var
-        lWanaPort: Record "wanaPort";
-        lPurchaseHeader: Record "Purchase Header";
+        WanaPort: Record "WanaPort";
+        PurchaseHeader: Record "Purchase Header";
     begin
         TestField("Entry Type", "Entry Type"::Error);
         TestField(Position);
-        lWanaPort.Get("Object Type", "Object ID");
+        WanaPort.Get("Object Type", "Object ID");
         case "Table ID" of
             DATABASE::"Purchase Header":
                 begin
-                    lPurchaseHeader.SetPosition(Position);
-                    lPurchaseHeader.SetRecFilter;
-                    PAGE.Run(lWanaPort."Page ID", lPurchaseHeader);
+                    PurchaseHeader.SetPosition(Position);
+                    PurchaseHeader.SetRecFilter;
+                    PAGE.Run(WanaPort."Page ID", PurchaseHeader);
                 end;
             else
-                lWanaPort.TestField("Page ID");
-                PAGE.Run(lWanaPort."Page ID");
+                WanaPort.TestField("Page ID");
+                PAGE.Run(WanaPort."Page ID");
         end;
     end;
 
     procedure PositionCaption(): Text
     var
-        lRecordRef: RecordRef;
+        RecordRef: RecordRef;
     begin
         if ("Table ID" = 0) or (Position = '') then
             exit('');
-        lRecordRef.Open("Table ID");
-        lRecordRef.SetPosition(Position);
-        exit(lRecordRef.GetPosition(true));
+        RecordRef.Open("Table ID");
+        RecordRef.SetPosition(Position);
+        exit(RecordRef.GetPosition(true));
     end;
 }
 

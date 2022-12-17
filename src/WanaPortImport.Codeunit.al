@@ -1,22 +1,22 @@
-codeunit 87091 "wanaPort Import"
+codeunit 87091 "WanaPort Import"
 {
 
     TableNo = "Job Queue Entry";
 
     trigger OnRun()
     var
-        WanaPort: Record "wanaPort";
-        AllObj: Record "AllObj";
+        WanaPort: Record WanaPort;
+        AllObj: Record AllObj;
         Pos: Integer;
     begin
-        rec.TestField("Parameter String");
-        Pos := StrPos(rec."Parameter String", '::');
+        Rec.TestField("Parameter String");
+        Pos := StrPos(Rec."Parameter String", '::');
         if Pos = 0 then begin
             AllObj."Object Type" := AllObj."Object Type"::Codeunit;
-            Evaluate(AllObj."Object ID", rec."Parameter String");
+            Evaluate(AllObj."Object ID", Rec."Parameter String");
         end else begin
-            Evaluate(AllObj."Object Type", CopyStr(rec."Parameter String", 1, Pos - 1));
-            AllObj."Object Name" := DelChr(CopyStr(rec."Parameter String", Pos + 2), '<>', '"');
+            Evaluate(AllObj."Object Type", CopyStr(Rec."Parameter String", 1, Pos - 1));
+            AllObj."Object Name" := DelChr(CopyStr(Rec."Parameter String", Pos + 2), '<>', '"');
             AllObj.SetCurrentKey("Object Type", "Object Name");
             AllObj.SetRange("Object Type", AllObj."Object Type");
             AllObj.SetRange("Object Name", AllObj."Object Name");
@@ -32,22 +32,22 @@ codeunit 87091 "wanaPort Import"
         CR: Char;
         LF: Char;
         TAB: Char;
-        WanaPortMgt: Codeunit "wanaPort Management";
+        WanaPortMgt: Codeunit "WanaPort Management";
         gDecimalPoint: Text[1];
 
 
-    procedure FieldValue(var pMoniport: Record "wanaPort"; pTableID: Integer; pFieldID: Integer): Text
+    procedure FieldValue(var pMoniport: Record "WanaPort"; pTableID: Integer; pFieldID: Integer): Text
     var
-        MoniportFieldValue: Record "wanaPort Field Value";
+        MoniportFieldValue: Record "WanaPort Field Constant";
     begin
         MoniportFieldValue.Get(pMoniport."Object Type", pMoniport."Object ID", pTableID, pFieldID);
         exit(MoniportFieldValue.Constant);
     end;
 
 
-    procedure InitFieldValue(var pWanaPort: Record "wanaPort"; pTableID: Integer; var pRecordRef: RecordRef)
+    procedure InitFieldValue(var pWanaPort: Record "WanaPort"; pTableID: Integer; var pRecordRef: RecordRef)
     var
-        WanaPortFieldValue: Record "wanaPort Field Value";
+        WanaPortFieldValue: Record "WanaPort Field Constant";
         FldRef: FieldRef;
         TableField: Record "Field";
         lInteger: Integer;
@@ -99,7 +99,7 @@ codeunit 87091 "wanaPort Import"
     end;
 
 
-    procedure Open(var pWanaPort: Record "wanaPort")
+    procedure Open(var pWanaPort: Record "WanaPort")
     begin
         TAB := 9;
         CR := 13;
@@ -107,8 +107,8 @@ codeunit 87091 "wanaPort Import"
         GetDecimalPoint;
 
         pWanaPort.TestField("WanaPort File Name");
-        //??gFile.Open(pWanaPort."WanaPort File Name");
-        //??gFile.CreateInStream(gInStream);
+        gFile.Open(pWanaPort."WanaPort File Name");
+        gFile.CreateInStream(gInStream);
     end;
 
 
@@ -174,7 +174,6 @@ codeunit 87091 "wanaPort Import"
             Evaluate(pInteger, lText);
     end;
 
-
     procedure GetDecimal(var pDecimal: Decimal)
     var
         lText: Text;
@@ -201,4 +200,3 @@ codeunit 87091 "wanaPort Import"
             gDecimalPoint := '.';
     end;
 }
-

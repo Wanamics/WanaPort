@@ -1,54 +1,50 @@
-page 87094 "wanaPort Field Value"
+page 87094 "WanaPort Field Constant"
 {
 
-    Caption = 'WanaPort Field Value';
+    Caption = 'WanaPort Field Constant';
     PageType = List;
-    SourceTable = "wanaPort Field Value";
+    SourceTable = "WanaPort Field Constant";
 
     layout
     {
         area(content)
         {
-            repeater(Control8149000)
+            repeater(Lines)
             {
                 ShowCaption = false;
-                field("Object Type"; rec."Object Type")
+                field("Object Type"; Rec."Object Type")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Object ID"; rec."Object ID")
+                field("Object ID"; Rec."Object ID")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field(TableNo; rec.TableNo)
+                field(TableNo; Rec.TableNo)
                 {
                     ApplicationArea = All;
                     LookupPageID = Objects;
                 }
-                field(FieldNo; rec.FieldNo)
+                field(FieldNo; Rec.FieldNo)
                 {
                     ApplicationArea = All;
                 }
-                field("Field Caption"; rec."Field Caption")
+                field("Field Caption"; Rec."Field Caption")
                 {
                     ApplicationArea = All;
                 }
-                field("Field Type Name"; rec."Field Type Name")
+                field("Field Type Name"; Rec."Field Type Name")
                 {
                     ApplicationArea = All;
                 }
-                field(Constant; rec.Constant)
+                field(Constant; Rec.Constant)
                 {
                     ApplicationArea = All;
                 }
             }
         }
-    }
-
-    actions
-    {
     }
 }
 

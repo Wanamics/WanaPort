@@ -1,33 +1,33 @@
-codeunit 87092 "wanaPort Export"
+codeunit 87092 "WanaPort Export"
 {
 
     TableNo = "Job Queue Entry";
 
     trigger OnRun()
     var
-        lWanaPort: Record "wanaPort";
-        lPos: Integer;
-        lObject: Record "AllObj";
+        WanaPort: Record "WanaPort";
+        Pos: Integer;
+        Object: Record AllObjWithCaption;
     begin
-        rec.TestField("Parameter String");
-        lPos := StrPos(rec."Parameter String", '::');
-        if lPos = 0 then begin
-            lObject."Object Type" := lObject."Object Type"::Codeunit;
-            Evaluate(lObject."Object ID", rec."Parameter String");
+        Rec.TestField("Parameter String");
+        Pos := StrPos(Rec."Parameter String", '::');
+        if Pos = 0 then begin
+            Object."Object Type" := Object."Object Type"::Codeunit;
+            Evaluate(Object."Object ID", Rec."Parameter String");
         end else begin
-            Evaluate(lObject."Object Type", CopyStr(rec."Parameter String", 1, lPos - 1));
-            lObject."Object Name" := DelChr(CopyStr(rec."Parameter String", lPos + 2), '<>', '"');
-            lObject.SetCurrentKey("Object Type", "Object Name");
-            lObject.SetRange("Object Type", lObject."Object Type");
-            lObject.SetRange("Object Name", lObject."Object Name");
-            lObject.FindFirst;
+            Evaluate(Object."Object Type", CopyStr(Rec."Parameter String", 1, Pos - 1));
+            Object."Object Name" := DelChr(CopyStr(Rec."Parameter String", Pos + 2), '<>', '"');
+            Object.SetCurrentKey("Object Type", "Object Name");
+            Object.SetRange("Object Type", Object."Object Type");
+            Object.SetRange("Object Name", Object."Object Name");
+            Object.FindFirst;
         end;
-        lWanaPort.Get(lObject."Object Type", lObject."Object ID");
-        WanaPortMgt.Export(lWanaPort);
+        WanaPort.Get(Object."Object Type", Object."Object ID");
+        WanaPortMgt.Export(WanaPort);
     end;
 
     var
-        WanaPortMgt: Codeunit "wanaPort Management";
+        WanaPortMgt: Codeunit "WanaPort Management";
         ExportFile: File;
         ProgressDialog: Codeunit "Progress Dialog";
         NewLine: Boolean;
@@ -37,16 +37,16 @@ codeunit 87092 "wanaPort Export"
         LF: Char;
 
 
-    procedure IsEmpty(var pWanaPort: Record "wanaPort")
+    procedure IsEmpty(var pWanaPort: Record "WanaPort")
     var
-        ltNothingToExport: Label 'There is nothing to export for "%1".';
+        NothingToExportMsg: Label 'There is nothing to export for "%1".';
     begin
         if GuiAllowed then
-            Message(ltNothingToExport, pWanaPort."Object Caption");
+            Message(NothingToExportMsg, pWanaPort."Object Caption");
     end;
 
 
-    procedure Create(var pWanaPort: Record "wanaPort"; pCount: Integer)
+    procedure Create(var pWanaPort: Record "WanaPort"; pCount: Integer)
     begin
         CR := 13;
         LF := 10;
@@ -67,27 +67,27 @@ codeunit 87092 "wanaPort Export"
         end;
 
         pWanaPort.TestField(pWanaPort."WanaPort File Name");
-        //??    ExportFile.Create("Export Path" + '\' + "WanaPort File Name");
+        ExportFile.Create(pWanaPort."Export Path" + '\' + pWanaPort."WanaPort File Name");
 
         ProgressDialog.OpenCopyCountMax(pWanaPort."Object Caption", pCount);
     end;
 
 
-    procedure Update(var pWanaPort: Record "wanaPort")
+    procedure Update(var pWanaPort: Record "WanaPort")
     begin
         ProgressDialog.UpdateCopyCount();
     end;
 
 
-    procedure Close(var pWanaPort: Record "wanaPort")
+    procedure Close(var pWanaPort: Record "WanaPort")
     var
         ltDone: Label 'File %1 available in folder %2.';
     begin
         pWanaPort."Last Export DateTime" := CurrentDateTime;
         pWanaPort.Modify;
-        //??ExportFile.Close;
+        ExportFile.Close;
 
-        //??ProgressDialog.Close;
+        //ProgressDialog.Close;
         if GuiAllowed then
             Message(ltDone, pWanaPort."WanaPort File Name", pWanaPort."Export Path");
     end;
@@ -98,11 +98,10 @@ codeunit 87092 "wanaPort Export"
         i: Integer;
         c: Char;
     begin
-        /*??
         ExportSeparator;
         if TextDelimiter <> 0 then
             ExportFile.Write(TextDelimiter);
-        //??pText := Tools.Ascii2Ansi(pText);
+        //pText := Tools.Ascii2Ansi(pText);
         for i := 1 to StrLen(pText) do begin
             c := pText[i];
             ExportFile.Write(c);
@@ -111,7 +110,6 @@ codeunit 87092 "wanaPort Export"
         end;
         if TextDelimiter <> 0 then
             ExportFile.Write(TextDelimiter);
-        ??*/
     end;
 
 
@@ -148,12 +146,10 @@ codeunit 87092 "wanaPort Export"
     var
         c: Char;
     begin
-        /*??
         if NewLine then
             NewLine := false
         else
             ExportFile.Write(FieldSeparator);
-        ??*/
     end;
 
 
@@ -161,36 +157,33 @@ codeunit 87092 "wanaPort Export"
     var
         c: Char;
     begin
-        /*??
         c := 13;
         ExportFile.Write(c); // Hexa=0D CarriageReturn
         c := 10;
         ExportFile.Write(c); // Hexa=0A LineFeed
         NewLine := true;
-        ??*/
     end;
 
 
     procedure ExportNote(var pRecordRef: RecordRef; pNote: Text)
     var
-        lRecordLink: Record "Record Link";
+        RecordLink: Record "Record Link";
         lInStream: InStream;
         c: Char;
         t: Text[1];
     begin
-        /*??
         ExportSeparator;
         if TextDelimiter <> 0 then
             ExportFile.Write(TextDelimiter);
 
-        lRecordLink.SetRange(Type, lRecordLink.Type::Note);
-        lRecordLink.SetFilter("Record ID", Format(pRecordRef.RecordId));
-        lRecordLink.SetRange(Description, pNote);
-        lRecordLink.SetRange(Company, CompanyName);
-        if lRecordLink.FindFirst then begin
-            lRecordLink.CalcFields(Note);
-            if lRecordLink.Note.HasValue then begin
-                lRecordLink.Note.CreateInStream(lInStream);
+        RecordLink.SetRange(Type, RecordLink.Type::Note);
+        RecordLink.SetFilter("Record ID", Format(pRecordRef.RecordId));
+        RecordLink.SetRange(Description, pNote);
+        RecordLink.SetRange(Company, CompanyName);
+        if RecordLink.FindFirst then begin
+            RecordLink.CalcFields(Note);
+            if RecordLink.Note.HasValue then begin
+                RecordLink.Note.CreateInStream(lInStream);
                 while not lInStream.EOS do begin
                     lInStream.Read(c);
                     t := ' ';
@@ -205,7 +198,6 @@ codeunit 87092 "wanaPort Export"
 
         if TextDelimiter <> 0 then
             ExportFile.Write(TextDelimiter);
-        ??*/
     end;
 }
 

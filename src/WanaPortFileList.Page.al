@@ -1,41 +1,39 @@
-page 87093 "wanaPort File List"
+page 87093 "WanaPort File List"
 {
     Caption = 'Files';
     Editable = false;
     PageType = List;
     RefreshOnActivate = true;
-    //SourceTable = File;
+    SourceTable = File;
 
     layout
     {
         area(content)
         {
-            /*??
-            repeater(Control8149000)
+            repeater(Lines)
             {
                 ShowCaption = false;
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = All;
                     Caption = 'Name';
                 }
-                field(Size; Size)
+                field(Size; Rec.Size)
                 {
                     ApplicationArea = All;
                     Caption = 'Size';
                 }
-                field(Date; Date)
+                field(Date; Rec.Date)
                 {
                     ApplicationArea = All;
                     Caption = 'Date';
                 }
-                field(Time; Time)
+                field(Time; Rec.Time)
                 {
                     ApplicationArea = All;
                     Caption = 'Time';
                 }
             }
-            ??*/
         }
     }
 
@@ -43,7 +41,6 @@ page 87093 "wanaPort File List"
     {
         area(processing)
         {
-            /*
             action(Afficher)
             {
                 ApplicationArea = All;
@@ -54,16 +51,13 @@ page 87093 "wanaPort File List"
 
                 trigger OnAction()
                 var
-                    lServerFile: Text;
-                    lLocalFile: Text;
+                    LocalFile: Text;
                     lFileMgt: Codeunit "File Management";
                 begin
-                    //??lServerFile := Path + '/' + Name;
-                    lLocalFile := lFileMgt.DownloadTempFile(lServerFile);
-                    HyperLink(lLocalFile);
+                    LocalFile := lFileMgt.DownloadTempFile(Rec.Path + '/' + Rec.Name);
+                    HyperLink(LocalFile);
                 end;
             }
-            */
         }
     }
 }

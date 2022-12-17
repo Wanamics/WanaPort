@@ -1,10 +1,10 @@
-page 87095 "wanaPort Log"
+page 87095 "WanaPort Log"
 {
 
     Caption = 'WanaPort Log';
     Editable = false;
     PageType = List;
-    SourceTable = "wanaPort Log";
+    SourceTable = "WanaPort Log";
 
     layout
     {
@@ -12,44 +12,44 @@ page 87095 "wanaPort Log"
         {
             repeater(Group)
             {
-                field("Entry No."; rec."Entry No.")
+                field("Entry No."; Rec."Entry No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Object Type"; rec."Object Type")
+                field("Object Type"; Rec."Object Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Object ID"; rec."Object ID")
+                field("Object ID"; Rec."Object ID")
                 {
                     ApplicationArea = All;
                 }
-                field("Object Caption"; rec."Object Caption")
+                field("Object Caption"; Rec."Object Caption")
                 {
                     ApplicationArea = All;
                 }
-                field(DateTime; rec.DateTime)
+                field(DateTime; Rec.DateTime)
                 {
                     ApplicationArea = All;
                 }
-                field("Entry Type"; rec."Entry Type")
+                field("Entry Type"; Rec."Entry Type")
                 {
                     ApplicationArea = All;
                 }
-                field(Position; rec.PositionCaption)
+                field(Position; Rec.PositionCaption)
                 {
                     ApplicationArea = All;
                     Caption = 'Identifier';
                 }
-                field(Message; rec.Message)
+                field(Message; Rec.Message)
                 {
                     ApplicationArea = All;
                 }
-                field("Table ID"; rec."Table ID")
+                field("Table ID"; Rec."Table ID")
                 {
                     ApplicationArea = All;
                 }
-                field("Table Caption"; rec."Table Caption")
+                field("Table Caption"; Rec."Table Caption")
                 {
                     ApplicationArea = All;
                 }
@@ -72,7 +72,7 @@ page 87095 "wanaPort Log"
 
                 trigger OnAction()
                 begin
-                    rec.Show;
+                    Rec.Show;
                 end;
             }
         }
