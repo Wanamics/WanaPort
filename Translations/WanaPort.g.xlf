@@ -143,15 +143,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort Field Constant - Field Field Caption - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 797023448 - Field 3531868071 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Field No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort Field Constant - Field Field No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 797023448 - Field 579703223 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort Field Constant - Field Field Type Name - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 797023448 - Field 2547700717 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>FieldNo</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort Field Constant - Field FieldNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 797023448 - Field 3711240756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Object ID</source>
@@ -168,10 +168,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort Field Constant - Field Object Type - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 797023448 - Field 103915345 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>TableNo</source>
+        <trans-unit id="Table 797023448 - Field 3017471043 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort Field Constant - Field TableNo - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort Field Constant - Field Table No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2397554719 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>WanaPort Field Value Map</source>

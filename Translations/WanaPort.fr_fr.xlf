@@ -172,17 +172,17 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort Field Constant - Field Field Caption - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 797023448 - Field 3531868071 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Field No.</source>
+          <target>N° champ</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort Field Constant - Field Field No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 797023448 - Field 579703223 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type</source>
           <target>Type</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort Field Constant - Field Field Type Name - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 797023448 - Field 2547700717 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>FieldNo</source>
-          <target>N° champ</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort Field Constant - Field FieldNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 797023448 - Field 3711240756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Object ID</source>
@@ -202,11 +202,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort Field Constant - Field Object Type - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Table 797023448 - Field 103915345 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>TableNo</source>
+        <trans-unit id="Table 797023448 - Field 3017471043 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table No.</source>
           <target>N° table</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort Field Constant - Field TableNo - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort Field Constant - Field Table No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2397554719 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>WanaPort Field Value Map</source>
@@ -238,6 +238,14 @@
           <target>N° origine</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort Field Value Map - Field Source No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2397554719 - Field 1393533604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table Name</source>
+          <target>Nom de table</target>
+          <target>[NAB: SUGGESTION]Nom table</target>
+          <target>[NAB: SUGGESTION]Nom de table</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort Field Value Map - Field Table Caption - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2397554719 - Field 3017471043 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Table No.</source>
@@ -336,12 +344,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort Log - Field WanaPort File Name - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Codeunit 2162756020 - Method 432895585 - NamedType 1200518256" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Lokkup can't be use on table %1 because primary key is not an unique field.</source>
-          <target>La recherche ne peut être utilisée sur cette table car la clé primaire n'est pas un unique champ.</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TableRelation - Method lPrimaryKey - NamedType ltKeyCount</note>
-        </trans-unit>
         <trans-unit id="Codeunit 2407311096 - Method 2674503554 - NamedType 4224828588" size-unit="char" translate="yes" xml:space="preserve">
           <source>File %1 available in folder %2.</source>
           <target>Fichier %1 disponible dans le dossier %2.</target>
@@ -392,7 +394,7 @@
         </trans-unit>
         <trans-unit id="Codeunit 1754574053 - Method 3201496503 - NamedType 86168999" size-unit="char" translate="yes" xml:space="preserve">
           <source>Import "@1@@@@@@@@@@@@@@@@@@@@@@@@@@@@" in progress :\  @2@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</source>
-          <target></target>
+          <target>Import "@1@@@@@@@@@@@@@@@@@@@@@@@@@@@@" en cours :\ @2@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Management - Method Import - NamedType ltProgress</note>
         </trans-unit>
@@ -413,6 +415,18 @@
           <target>-</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Management - Method Schedule - NamedType ltNone</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1152630074 - Method 2333076789 - NamedType 3720241846" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Table "%1" must have an unique field as primary key.</source>
+          <target>La table "%1" ne doit avoir qu'un unique champ pour clé primaire.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Relation - Method PrimaryKey - NamedType KeyErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1152630074 - Method 3657829122 - NamedType 744715447" size-unit="char" translate="yes" xml:space="preserve">
+          <source>This value doesn't exists in "%"</source>
+          <target>Cette valeur n'existe pas dans "%"</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Relation - Method Validate - NamedType ErrorErr</note>
         </trans-unit>
         <trans-unit id="Page 2322991096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>WanaPort Card</source>
@@ -656,9 +670,8 @@
         </trans-unit>
         <trans-unit id="Page 136670738 - Action 1368504227 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Log</source>
-          <target>[NAB: SUGGESTION]Journal</target>
+          <target>Journal</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="NAB AL Tool Refresh Xlf" annotates="general" priority="3">Suggested translation inserted.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Action Journal - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 136670738 - Action 3709709849 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -747,7 +760,7 @@
         </trans-unit>
         <trans-unit id="Page 3464902093 - Action 595251606 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Constants</source>
-          <target>Valeurs</target>
+          <target>Constantes</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Action Valeurs - Property Caption</note>
         </trans-unit>
