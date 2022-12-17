@@ -18,13 +18,15 @@ table 87096 "WanaPort Field Value Map"
             BlankZero = true;
             Caption = 'Object ID';
             NotBlank = true;
-            TableRelation = AllObjWithCaption."Object ID" WHERE("Object Type" = FIELD("Object Type"));
+            TableRelation = AllObjWithCaption."Object ID" where("Object Type" = field("Object Type"));
         }
         field(3; "Table No."; Integer)
         {
             DataClassification = ToBeClassified;
             Caption = 'Table No.';
             BlankZero = true;
+            NotBlank = true;
+            TableRelation = AllObjWithCaption."Object ID" where("Object Type" = const(Table));
         }
         field(4; "Source No."; code[50])
         {
@@ -35,23 +37,31 @@ table 87096 "WanaPort Field Value Map"
         {
             DataClassification = ToBeClassified;
             Caption = 'Target No.';
-            /*
-            TableRelation = //TODO 
-                if ("Table No." = Const(Database::Vendor)) Vendor
-            else
-            if ("Table No." = Const(Database::Customer)) customer;
-            */
             trigger OnLookup()
             var
-                TableRelation: Codeunit TableRelation;
+                Relation: Codeunit "WanaPort Relation";
+                Code20: Code[20];
             begin
-                if TableRelation.LookupRelation(Rec."Table No.", 1, "Target Code") then;
+                Code20 := Rec."Target Code";
+                if Relation.Lookup(Rec."Table No.", 0, Code20) then
+                    Rec."Target Code" := Code20;
             end;
 
             trigger OnValidate()
+            var
+                Relation: Codeunit "WanaPort Relation";
+                Code20: Code[20];
             begin
-                //TODO
+                Code20 := CopyStr("Target Code", 1, MaxStrLen(Code20));
+                Relation.Validate("Table No.", 0, Code20);
             end;
+        }
+        field(103; "Table Caption"; Text[250])
+        {
+            CalcFormula = lookup(AllObjWithCaption."Object Caption" where("Object Type" = const(Table), "Object ID" = field("Table No.")));
+            Caption = 'Table Name';
+            Editable = false;
+            FieldClass = FlowField;
         }
     }
 

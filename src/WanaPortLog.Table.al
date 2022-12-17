@@ -23,7 +23,7 @@ table 87092 "WanaPort Log"
             BlankZero = true;
             Caption = 'Object ID';
             NotBlank = true;
-            TableRelation = AllObj."Object ID" WHERE("Object Type" = FIELD("Object Type"));
+            TableRelation = AllObjWithCaption."Object ID" WHERE("Object Type" = FIELD("Object Type"));
         }
         field(4; "Entry Type"; Option)
         {
@@ -52,7 +52,7 @@ table 87092 "WanaPort Log"
         }
         field(103; "Object Caption"; Text[250])
         {
-            CalcFormula = Lookup(AllObjWithCaption."Object Caption" where("Object Type" = field("Object Type"), "Object ID" = field("Object ID")));
+            CalcFormula = lookup(AllObjWithCaption."Object Caption" where("Object Type" = field("Object Type")));
             Editable = false;
             FieldClass = FlowField;
         }

@@ -151,7 +151,7 @@ page 87092 "WanaPort Card"
                     Image = VariableList;
                     Promoted = true;
                     PromotedCategory = Process;
-                    RunObject = Page "WanaPort Constant";
+                    RunObject = Page "WanaPort Field Constant";
                     RunPageLink = "Object Type" = Field("Object Type"), "Object ID" = Field("Object ID");
                 }
                 action(ValueMap)

@@ -1,9 +1,8 @@
-page 87094 "WanaPort Constant"
+page 87094 "WanaPort Field Constant"
 {
-
-    Caption = 'WanaPort Constants';
+    Caption = 'Field Constants';
     PageType = List;
-    SourceTable = "WanaPort Constant";
+    SourceTable = "WanaPort Field Constant";
 
     layout
     {
@@ -22,12 +21,12 @@ page 87094 "WanaPort Constant"
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field(TableNo; Rec.TableNo)
+                field(TableNo; Rec."Table No.")
                 {
                     ApplicationArea = All;
                     LookupPageID = Objects;
                 }
-                field(FieldNo; Rec.FieldNo)
+                field(FieldNo; Rec."Field No.")
                 {
                     ApplicationArea = All;
                 }

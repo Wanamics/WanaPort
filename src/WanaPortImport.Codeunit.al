@@ -38,7 +38,7 @@ codeunit 87091 "WanaPort Import"
 
     procedure FieldValue(var pMoniport: Record "WanaPort"; pTableID: Integer; pFieldID: Integer): Text
     var
-        MoniportFieldValue: Record "WanaPort Constant";
+        MoniportFieldValue: Record "WanaPort Field Constant";
     begin
         MoniportFieldValue.Get(pMoniport."Object Type", pMoniport."Object ID", pTableID, pFieldID);
         exit(MoniportFieldValue.Constant);
@@ -47,7 +47,7 @@ codeunit 87091 "WanaPort Import"
 
     procedure InitFieldValue(var pWanaPort: Record "WanaPort"; pTableID: Integer; var pRecordRef: RecordRef)
     var
-        WanaPortFieldValue: Record "WanaPort Constant";
+        WanaPortFieldValue: Record "WanaPort Field Constant";
         FldRef: FieldRef;
         TableField: Record "Field";
         lInteger: Integer;
@@ -62,10 +62,10 @@ codeunit 87091 "WanaPort Import"
     begin
         WanaPortFieldValue.SetRange("Object Type", pWanaPort."Object Type");
         WanaPortFieldValue.SetRange("Object ID", pWanaPort."Object ID");
-        WanaPortFieldValue.SetRange(TableNo, pRecordRef.Number);
+        WanaPortFieldValue.SetRange("Table No.", pRecordRef.Number);
         if WanaPortFieldValue.FindSet then
             repeat
-                FldRef := pRecordRef.Field(WanaPortFieldValue.FieldNo);
+                FldRef := pRecordRef.Field(WanaPortFieldValue."Field No.");
                 case Format(FldRef.Type) of
                     'Integer':
                         if Evaluate(lInteger, WanaPortFieldValue.Constant) then

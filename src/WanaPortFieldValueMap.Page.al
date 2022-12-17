@@ -1,7 +1,7 @@
 page 87096 "WanaPort Field Value Map"
 {
     ApplicationArea = All;
-    Caption = 'WanaPort Field Value Map';
+    Caption = 'Field Value Map';
     PageType = List;
     SourceTable = "WanaPort Field Value Map";
 
@@ -15,7 +15,6 @@ page 87096 "WanaPort Field Value Map"
                 {
                     ToolTip = 'Specifies the value of the Object Type field.';
                     Visible = false;
-
                 }
                 field("Object ID"; Rec."Object ID")
                 {
@@ -26,6 +25,10 @@ page 87096 "WanaPort Field Value Map"
                 {
                     ToolTip = 'Specifies the value of the Table No. field.';
                     LookupPageId = Objects;
+                }
+                field("Table Caption"; Rec."Table Caption")
+                {
+
                 }
                 field("Source No."; Rec."Source No.")
                 {

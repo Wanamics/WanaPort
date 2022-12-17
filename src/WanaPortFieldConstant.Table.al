@@ -1,7 +1,7 @@
-table 87091 "WanaPort Constant"
+table 87091 "WanaPort Field Constant"
 {
 
-    Caption = 'WanaPort Constant';
+    Caption = 'WanaPort Field Constant';
     LookupPageID = "wanaPorts";
 
     fields
@@ -21,25 +21,27 @@ table 87091 "WanaPort Constant"
             NotBlank = true;
             TableRelation = AllObjWithCaption."Object ID" where("Object Type" = field("Object Type"));
         }
-        field(3; TableNo; Integer)
+        field(3; "Table No."; Integer)
         {
             BlankZero = true;
-            Caption = 'TableNo';
+            NotBlank = true;
+            Caption = 'Table No.';
             TableRelation = AllObjWithCaption."Object ID" where("Object Type" = const(Table));
         }
-        field(4; FieldNo; Integer)
+        field(4; "Field No."; Integer)
         {
             BlankZero = true;
-            Caption = 'FieldNo';
-            TableRelation = Field."No." where(TableNo = field(TableNo));
+            NotBlank = true;
+            Caption = 'Field No.';
+            TableRelation = Field."No." where(TableNo = field("Table No."));
 
             trigger OnLookup()
             var
                 lField: Record "Field";
             begin
-                lField.SetRange(TableNo, TableNo);
+                lField.SetRange(TableNo, "Table No.");
                 if Action::LookupOK = Page.RunModal(Page::"Fields Lookup", lField) then
-                    FieldNo := lField."No.";
+                    "Field No." := lField."No.";
                 CalcFields("Field Caption", "Field Type Name");
             end;
 
@@ -48,35 +50,39 @@ table 87091 "WanaPort Constant"
                 CalcFields("Field Caption", "Field Type Name");
             end;
         }
-        field(12; Constant; Text[30])
+        field(12; Constant; Text[100])
         {
             Caption = 'Constant';
 
             trigger OnLookup()
             var
-                TableRelation: Codeunit TableRelation;
-                lCode: Code[20];
+                Relation: Codeunit "WanaPort Relation";
+                Code20: Code[20];
             begin
-                lCode := Constant;
-                if TableRelation.LookupRelation(TableNo, FieldNo, lCode) then
-                    Constant := lCode;
+                Code20 := CopyStr(Constant, 1, MaxStrLen(Code20));
+                if Relation.Lookup("Table No.", "Field No.", Code20) then
+                    Constant := Code20;
             end;
 
             trigger OnValidate()
+            var
+                Relation: Codeunit "WanaPort Relation";
+                Code20: Code[20];
             begin
-                //TODO
+                Code20 := CopyStr(Constant, 1, MaxStrLen(Code20));
+                Relation.Validate("Table No.", "Field No.", Code20);
             end;
         }
         field(100; "Field Caption"; Text[80])
         {
-            CalcFormula = Lookup(Field."Field Caption" where(TableNo = field(TableNo), "No." = field(FieldNo)));
+            CalcFormula = Lookup(Field."Field Caption" where(TableNo = field("Table No."), "No." = field("Field No.")));
             Caption = 'Field Name';
             Editable = false;
             FieldClass = FlowField;
         }
         field(101; "Field Type Name"; Text[30])
         {
-            CalcFormula = Lookup(Field."Type Name" where(TableNo = field(TableNo), "No." = field(FieldNo)));
+            CalcFormula = Lookup(Field."Type Name" where(TableNo = field("Table No."), "No." = field("Field No.")));
             Caption = 'Type';
             Editable = false;
             FieldClass = FlowField;
@@ -85,7 +91,7 @@ table 87091 "WanaPort Constant"
 
     keys
     {
-        key(Key1; "Object Type", "Object ID", TableNo, FieldNo)
+        key(Key1; "Object Type", "Object ID", "Table No.", "Field No.")
         {
             Clustered = true;
         }

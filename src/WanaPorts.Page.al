@@ -121,7 +121,7 @@ page 87090 "wanaPorts"
                     Image = VariableList;
                     Promoted = true;
                     PromotedCategory = Process;
-                    RunObject = Page "WanaPort Constant";
+                    RunObject = Page "WanaPort Field Constant";
                     RunPageLink = "Object Type" = FIELD("Object Type"), "Object ID" = FIELD("Object ID");
                 }
                 action(ValueMap)

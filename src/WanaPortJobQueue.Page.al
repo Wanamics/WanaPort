@@ -4,13 +4,13 @@ page 87091 "WanaPort Job Queue"
     Caption = 'WanaPort Job Queue';
     PageType = List;
     SourceTable = "Job Queue Entry";
-    SourceTableView = WHERE("Recurring Job" = CONST(true));
+    SourceTableView = where("Recurring Job" = const(true));
 
     layout
     {
         area(content)
         {
-            repeater(Control1)
+            repeater(Lines)
             {
                 Editable = false;
                 ShowCaption = false;

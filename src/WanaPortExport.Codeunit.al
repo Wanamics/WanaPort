@@ -7,7 +7,7 @@ codeunit 87092 "WanaPort Export"
     var
         WanaPort: Record "WanaPort";
         Pos: Integer;
-        Object: Record AllObjWithCaption;
+        Object: Record AllObj;
     begin
         Rec.TestField("Parameter String");
         Pos := StrPos(Rec."Parameter String", '::');

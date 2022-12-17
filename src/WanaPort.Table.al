@@ -56,7 +56,7 @@ table 87090 WanaPort
         {
             BlankZero = true;
             Caption = 'Page ID';
-            TableRelation = AllObjWithCaption."Object ID" WHERE("Object Type" = CONST(Page));
+            TableRelation = AllObjWithCaption."Object ID" where("Object Type" = const(Page));
 
             trigger OnValidate()
             begin
@@ -119,16 +119,18 @@ table 87090 WanaPort
         }
         field(102; "Object Caption"; Text[250])
         {
-            CalcFormula = Lookup(AllObjWithCaption."Object Caption" WHERE("Object Type" = FIELD("Object Type"),
-                                                                           "Object ID" = FIELD("Object ID")));
+            CalcFormula =
+                lookup(AllObjWithCaption."Object Caption"
+                where("Object Type" = field("Object Type"), "Object ID" = field("Object ID")));
             Caption = 'Object Caption';
             Editable = false;
             FieldClass = FlowField;
         }
         field(107; "Page Caption"; Text[250])
         {
-            CalcFormula = Lookup(AllObjWithCaption."Object Caption" WHERE("Object Type" = CONST(Page),
-                                                                           "Object ID" = FIELD("Page ID")));
+            CalcFormula =
+                lookup(AllObjWithCaption."Object Caption"
+                where("Object Type" = const(Page), "Object ID" = field("Page ID")));
             Caption = 'Page Caption';
             Editable = false;
             FieldClass = FlowField;
@@ -143,13 +145,9 @@ table 87090 WanaPort
         }
     }
 
-    fieldgroups
-    {
-    }
-
     trigger OnDelete()
     var
-        WanaPortFieldValue: Record "WanaPort Constant";
+        WanaPortFieldValue: Record "WanaPort Field Constant";
     begin
         WanaPortFieldValue.SetRange("Object Type", "Object Type");
         WanaPortFieldValue.SetRange("Object ID", "Object ID");
@@ -229,4 +227,3 @@ table 87090 WanaPort
         end
     end;
 }
-
