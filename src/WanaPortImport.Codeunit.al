@@ -113,12 +113,10 @@ codeunit 87091 "WanaPort Import"
     end;
 #endif
 
-
     procedure EOS(): Boolean
     begin
         exit(gInStream.EOS);
     end;
-
 
     procedure Skip()
     var
@@ -146,24 +144,20 @@ codeunit 87091 "WanaPort Import"
             gInStream.Read(c); // LF
     end;
 
-
     procedure GetText(var pText: Text)
     begin
         pText := CopyStr(GetNext, 1, MaxStrLen(pText));
     end;
-
 
     procedure GetCode(var pCode: Code[10])
     begin
         pCode := CopyStr(GetNext, 1, MaxStrLen(pCode));
     end;
 
-
     procedure GetDate(var pDate: Date)
     begin
         Evaluate(pDate, GetNext);
     end;
-
 
     procedure GetInteger(var pInteger: Integer)
     var

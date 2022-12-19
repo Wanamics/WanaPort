@@ -174,12 +174,10 @@ table 87090 WanaPort
         Log(pMessage, 1, pTableID, pPosition);
     end;
 
-
     procedure LogProcess()
     begin
         Log("WanaPort File Name", 0, 0, '');
     end;
-
 
     procedure LogBegin()
     var
@@ -188,7 +186,6 @@ table 87090 WanaPort
         Log(ltBegin, 0, 0, '');
         StartDateTime := CurrentDateTime;
     end;
-
 
     procedure LogEnd()
     var
@@ -226,5 +223,15 @@ table 87090 WanaPort
             Rec."Field Separator"::SemiColon:
                 Exit(';');
         end
+    end;
+
+    procedure Import()
+    begin
+        WanaPortManagement.Import(Rec);
+    end;
+
+    procedure Export()
+    begin
+        WanaPortManagement.Export(Rec);
     end;
 }
