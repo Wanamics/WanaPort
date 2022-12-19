@@ -98,9 +98,7 @@ codeunit 87090 "WanaPort Management"
                     pRec."Object Type"::Report:
                         Report.RunModal(pRec."Object ID", false);
                     pRec."Object Type"::Codeunit:
-                        begin
-                            Codeunit.Run(pRec."Object ID", pRec);
-                        end;
+                        Codeunit.Run(pRec."Object ID", pRec);
                     pRec."Object Type"::XMLport:
                         begin
                             lImportFile.Open(pRec."WanaPort File Name");
