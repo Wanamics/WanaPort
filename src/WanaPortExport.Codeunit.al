@@ -45,8 +45,9 @@ codeunit 87092 "WanaPort Export"
             Message(NothingToExportMsg, pWanaPort."Object Caption");
     end;
 
-
-    procedure Create(var pWanaPort: Record "WanaPort"; pCount: Integer)
+#if ONPREM
+    [Scope('OnPrem')]
+    local procedure Create(var pWanaPort: Record "WanaPort"; pCount: Integer)
     begin
         CR := 13;
         LF := 10;
@@ -71,14 +72,15 @@ codeunit 87092 "WanaPort Export"
 
         ProgressDialog.OpenCopyCountMax(pWanaPort."Object Caption", pCount);
     end;
-
+#endif
 
     procedure Update(var pWanaPort: Record "WanaPort")
     begin
         ProgressDialog.UpdateCopyCount();
     end;
 
-
+#if ONPREM
+    [Scope('OnPrem')]
     procedure Close(var pWanaPort: Record "WanaPort")
     var
         ltDone: Label 'File %1 available in folder %2.';
@@ -91,8 +93,10 @@ codeunit 87092 "WanaPort Export"
         if GuiAllowed then
             Message(ltDone, pWanaPort."WanaPort File Name", pWanaPort."Export Path");
     end;
+#endif
 
-
+#if ONPREM
+    [Scope('OnPrem')]
     procedure ExportText(pText: Text)
     var
         i: Integer;
@@ -111,7 +115,11 @@ codeunit 87092 "WanaPort Export"
         if TextDelimiter <> 0 then
             ExportFile.Write(TextDelimiter);
     end;
-
+#else
+    procedure ExportText(pText: Text)
+    begin
+    end;
+#endif
 
     procedure ExportDecimal(pDecimal: Decimal; pFormat: Text)
     begin
@@ -142,6 +150,8 @@ codeunit 87092 "WanaPort Export"
     end;
 
 
+#if ONPREM
+    [Scope('OnPrem')]
     procedure ExportSeparator()
     var
         c: Char;
@@ -151,8 +161,10 @@ codeunit 87092 "WanaPort Export"
         else
             ExportFile.Write(FieldSeparator);
     end;
+#endif
 
-
+#if ONPREM
+    [Scope('OnPrem')]
     procedure ExportEndOfLine()
     var
         c: Char;
@@ -163,8 +175,10 @@ codeunit 87092 "WanaPort Export"
         ExportFile.Write(c); // Hexa=0A LineFeed
         NewLine := true;
     end;
+#endif
 
-
+#if ONPREM
+    [Scope('OnPrem')]
     procedure ExportNote(var pRecordRef: RecordRef; pNote: Text)
     var
         RecordLink: Record "Record Link";
@@ -199,5 +213,6 @@ codeunit 87092 "WanaPort Export"
         if TextDelimiter <> 0 then
             ExportFile.Write(TextDelimiter);
     end;
+#endif
 }
 

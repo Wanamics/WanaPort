@@ -13,7 +13,7 @@ page 87090 "wanaPorts"
     {
         area(content)
         {
-            repeater(Control8149000)
+            repeater(Lines)
             {
                 Editable = false;
                 ShowCaption = false;
@@ -53,6 +53,7 @@ page 87090 "wanaPorts"
                     ApplicationArea = All;
                     BlankZero = true;
                     Caption = 'Files to Import';
+                    Visible = IsOnPrem;
                     //??DrillDownPageID = "wan WanaPort File List";
 
                     trigger OnDrillDown()
@@ -71,6 +72,7 @@ page 87090 "wanaPorts"
                     BlankZero = true;
                     Caption = 'Archived Files';
                     //??DrillDownPageID = "WanaPort File List";
+                    Visible = IsOnPrem;
 
                     trigger OnDrillDown()
                     begin
@@ -97,6 +99,7 @@ page 87090 "wanaPorts"
                     ApplicationArea = All;
                     BlankZero = true;
                     Caption = 'Exported files';
+                    Visible = IsOnPrem;
 
                     trigger OnDrillDown()
                     begin
@@ -208,6 +211,15 @@ page 87090 "wanaPorts"
         }
     }
 
+    trigger OnOpenPage()
+    begin
+#if ONPREM
+        IsOnPrem := true;
+#else
+        IsOnPrem := false;
+#endif
+    end;
+
     trigger OnAfterGetRecord()
     begin
         ToImport := WanaPortMgt.FileCount(Rec."Import Path", Rec."File Name Filter");
@@ -220,5 +232,5 @@ page 87090 "wanaPorts"
         ToImport: Integer;
         Archived: Integer;
         Exported: Integer;
+        IsOnPrem: Boolean;
 }
-

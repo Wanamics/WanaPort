@@ -1,54 +1,53 @@
 Codeunit 87099 "WanaPort Relation"
 {
-
     procedure Validate(pTableID: Integer; pFieldID: Integer; var pCode: Code[20]): Boolean
     var
         RecRef: RecordRef;
         FldRef: FieldRef;
         RelationRecordRef: RecordRef;
-        ErrorErr: Label 'This value doesn''t exists in "%"';
+        NotExistsErr: Label 'This value doesn''t exists in "%1"';
     begin
         if pTableID = 0 then
             exit(false);
         RecRef.Open(pTableID);
-        if pFieldID = 0 then
-            FldRef := PrimaryKey(RecRef)
+        if pFieldID <> 0 then
+            FldRef := RecRef.Field(pFieldID)
         else
-            FldRef := RecRef.Field(pFieldID);
+            if not GetPrimaryKeyUniqueField(RecRef, FldRef) then
+                exit(true);
         if FldRef.Relation = 0 then
             RelationRecordRef.Open(pTableID)
         else
             RelationRecordRef.Open(FldRef.Relation);
-        SetPrimaryKey(RelationRecordRef, pCode);
-        if not RelationRecordRef.Find() then
-            Error(ErrorErr, RelationRecordRef.Caption);
+        if SetPrimaryKey(RelationRecordRef, pCode) then
+            if not RelationRecordRef.Find() then
+                Error(StrSubstNo(NotExistsErr, RelationRecordRef.Caption));
     end;
 
     local procedure GetPrimaryKey(var pRecordRef: RecordRef): Code[20]
     var
         FldRef: FieldRef;
     begin
-        FldRef := PrimaryKey(pRecordRef);
-        exit(Format(FldRef.Value));
+        if GetPrimaryKeyUniqueField(pRecordRef, FldRef) then
+            exit(Format(FldRef.Value));
     end;
 
-    local procedure SetPrimaryKey(var pRecordRef: RecordRef; pCode: Code[20])
+    local procedure SetPrimaryKey(var pRecordRef: RecordRef; pCode: Code[20]) ReturnValue: Boolean
     var
         FldRef: FieldRef;
     begin
-        FldRef := PrimaryKey(pRecordRef);
-        FldRef.Value := pCode;
+        ReturnValue := GetPrimaryKeyUniqueField(pRecordRef, FldRef);
+        if ReturnValue then
+            FldRef.Value := pCode;
     end;
 
-    local procedure PrimaryKey(var pRecordRef: RecordRef) ReturnValue: FieldRef
+    local procedure GetPrimaryKeyUniqueField(var pRecordRef: RecordRef; var pFieldRef: FieldRef) ReturnValue: Boolean
     var
         KRef: KeyRef;
-        KeyErr: label 'Table "%1" must have an unique field as primary key.';
     begin
         KRef := pRecordRef.KeyIndex(1);
-        if KRef.FieldCount <> 1 then
-            Error(KeyErr, pRecordRef.Caption);
-        exit(KRef.FieldIndex(1));
+        ReturnValue := KRef.FieldCount = 1;
+        pFieldRef := KRef.FieldIndex(1);
     end;
 
 
@@ -60,12 +59,13 @@ Codeunit 87099 "WanaPort Relation"
         Select: Integer;
         CommaString: Text;
         RelationRecordRef: RecordRef;
+        LookupNotAvailableErr: label 'Lookup not available (table primary key field is not unique).';
     begin
         if pTableID = 0 then
             exit(false);
         RecRef.Open(pTableID);
         if pFieldID = 0 then
-            FldRef := PrimaryKey(RecRef)
+            GetPrimaryKeyUniqueField(RecRef, FldRef)
         else
             FldRef := RecRef.Field(pFieldID);
         Evaluate(Fld.Type, Format(FldRef.Type));
@@ -85,7 +85,8 @@ Codeunit 87099 "WanaPort Relation"
                         RelationRecordRef.Open(pTableID)
                     else
                         RelationRecordRef.Open(FldRef.Relation);
-                    SetPrimaryKey(RelationRecordRef, pCode);
+                    if not SetPrimaryKey(RelationRecordRef, pCode) then
+                        Error(StrSubstNo(LookupNotAvailableErr, RelationRecordRef.Caption));
                     if RelationRecordRef.Find() then;
                     if LookupRecordRef(RelationRecordRef) then
                         pCode := GetPrimaryKey(RelationRecordRef);
@@ -111,6 +112,8 @@ Codeunit 87099 "WanaPort Relation"
         Rec18: Record Customer;
         Rec23: Record Vendor;
         Rec27: Record Item;
+        Rec80: Record "Gen. Journal Template";
+        Rec82: Record "Item Journal Template";
         Rec92: Record "Customer Posting Group";
         Rec93: Record "Vendor Posting Group";
         Rec94: Record "Inventory Posting Group";
@@ -119,7 +122,9 @@ Codeunit 87099 "WanaPort Relation"
         Rec167: Record Job;
         Rec200: Record "Work Type";
         Rec204: Record "Unit of Measure";
+        Rec206: Record "Res. Journal Template";
         Rec208: Record "Job Posting Group";
+        Rec209: Record "Job Journal Template";
         Rec230: Record "Source Code";
         Rec231: Record "Reason Code";
         Rec250: Record "Gen. Business Posting Group";
@@ -241,6 +246,18 @@ Codeunit 87099 "WanaPort Relation"
                     if Page.RunModal(0, Rec27) = Action::LookupOK then
                         pRecordRef.GetTable(Rec27);
                 end;
+            Database::"Gen. Journal Template":
+                begin
+                    pRecordRef.SetTable(Rec80);
+                    if Page.RunModal(0, Rec80) = Action::LookupOK then
+                        pRecordRef.GetTable(Rec80);
+                end;
+            Database::"Item Journal Template":
+                begin
+                    pRecordRef.SetTable(Rec82);
+                    if Page.RunModal(0, Rec82) = Action::LookupOK then
+                        pRecordRef.GetTable(Rec82);
+                end;
             Database::"Customer Posting Group":
                 begin
                     pRecordRef.SetTable(Rec92);
@@ -289,11 +306,23 @@ Codeunit 87099 "WanaPort Relation"
                     if Page.RunModal(0, Rec204) = Action::LookupOK then
                         pRecordRef.GetTable(Rec204);
                 end;
+            Database::"Res. Journal Template":
+                begin
+                    pRecordRef.SetTable(Rec206);
+                    if Page.RunModal(0, Rec206) = Action::LookupOK then
+                        pRecordRef.GetTable(Rec206);
+                end;
             Database::"Job Posting Group":
                 begin
                     pRecordRef.SetTable(Rec208);
                     if Page.RunModal(0, Rec208) = Action::LookupOK then
                         pRecordRef.GetTable(Rec208);
+                end;
+            Database::"Job Journal Template":
+                begin
+                    pRecordRef.SetTable(Rec209);
+                    if Page.RunModal(0, Rec209) = Action::LookupOK then
+                        pRecordRef.GetTable(Rec209);
                 end;
             Database::"Source Code":
                 begin

@@ -33,7 +33,7 @@ table 87090 WanaPort
             trigger OnValidate()
             begin
                 if Rec."Import Path" <> '' then
-                    if not FileManagement.ServerDirectoryExists("Import Path") then
+                    if not WanaPortManagement.ServerDirectoryExists("Import Path") then
                         FieldError("Import Path", ServerPathNotExistsErr);
             end;
         }
@@ -48,7 +48,7 @@ table 87090 WanaPort
             trigger OnValidate()
             begin
                 if "Archive Path" <> '' then
-                    if not FileManagement.ServerDirectoryExists("Archive Path") then
+                    if not WanaPortManagement.ServerDirectoryExists("Archive Path") then
                         FieldError("Archive Path", ServerPathNotExistsErr);
             end;
         }
@@ -70,7 +70,7 @@ table 87090 WanaPort
             trigger OnLookup()
             begin
                 if "Export Path" <> '' then
-                    if not FileManagement.ServerDirectoryExists("Export Path") then
+                    if not WanaPortManagement.ServerDirectoryExists("Export Path") then
                         FieldError("Export Path", ServerPathNotExistsErr);
             end;
         }
@@ -164,7 +164,8 @@ table 87090 WanaPort
     end;
 
     var
-        FileManagement: Codeunit "File Management";
+        //FileManagement: Codeunit "File Management";
+        WanaPortManagement: Codeunit "WanaPort Management";
         ServerPathNotExistsErr: Label 'does not exists on server';
         StartDateTime: DateTime;
 

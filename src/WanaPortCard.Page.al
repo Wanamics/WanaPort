@@ -51,18 +51,21 @@ page 87092 "WanaPort Card"
                 field("Import Path"; Rec."Import Path")
                 {
                     ApplicationArea = All;
+                    Visible = IsOnPrem;
                 }
                 field("File Name Filter"; Rec."File Name Filter")
                 {
                     ApplicationArea = All;
+                    Visible = IsOnPrem;
                 }
                 field(ToImport; ToImport)
                 {
                     ApplicationArea = All;
                     BlankZero = true;
                     Caption = 'Files to Import';
-                    DrillDownPageID = "WanaPort File List";
+                    //DrillDownPageID = "WanaPort File List";
                     Editable = false;
+                    Visible = IsOnPrem;
 
                     trigger OnDrillDown()
                     begin
@@ -72,14 +75,16 @@ page 87092 "WanaPort Card"
                 field("Archive Path"; Rec."Archive Path")
                 {
                     ApplicationArea = All;
+                    Visible = IsOnPrem;
                 }
                 field(Archived; Archived)
                 {
                     ApplicationArea = All;
                     BlankZero = true;
                     Caption = 'Archived Files';
-                    DrillDownPageID = "WanaPort File List";
+                    //DrillDownPageID = "WanaPort File List";
                     Editable = false;
+                    Visible = IsOnPrem;
 
                     trigger OnDrillDown()
                     begin
@@ -102,6 +107,7 @@ page 87092 "WanaPort Card"
                 field("Export Path"; Rec."Export Path")
                 {
                     ApplicationArea = All;
+                    Visible = IsOnPrem;
                 }
                 field(Exported; Exported)
                 {
@@ -109,6 +115,7 @@ page 87092 "WanaPort Card"
                     BlankZero = true;
                     Caption = 'Exported Files';
                     Editable = false;
+                    Visible = IsOnPrem;
 
                     trigger OnDrillDown()
                     begin
@@ -119,6 +126,7 @@ page 87092 "WanaPort Card"
                 {
                     ApplicationArea = All;
                     ToolTip = '%1 Entry No., %2 : TimeStamp (yyyymmddhhmmss)';
+                    Visible = IsOnPrem;
                 }
                 field("Last File No. Used"; Rec."Last File No. Used")
                 {
@@ -236,6 +244,14 @@ page 87092 "WanaPort Card"
             }
         }
     }
+    trigger OnOpenPage()
+    begin
+#if ONPREM
+        IsOnPrem := true;
+#else
+        IsOnPrem := false;
+#endif
+    end;
 
     trigger OnAfterGetRecord()
     begin
@@ -249,5 +265,5 @@ page 87092 "WanaPort Card"
         ToImport: Integer;
         Archived: Integer;
         Exported: Integer;
+        IsOnPrem: Boolean;
 }
-

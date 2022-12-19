@@ -4,6 +4,7 @@ page 87093 "WanaPort File List"
     Editable = false;
     PageType = List;
     RefreshOnActivate = true;
+#if ONPREM
     SourceTable = File;
 
     layout
@@ -60,5 +61,15 @@ page 87093 "WanaPort File List"
             }
         }
     }
+#else
+    layout
+    {
+    }
+    actions
+    {
+
+    }
+
+#endif
 }
 

@@ -44,7 +44,6 @@ codeunit 87091 "WanaPort Import"
         exit(MoniportFieldValue.Constant);
     end;
 
-
     procedure InitFieldValue(var pWanaPort: Record "WanaPort"; pTableID: Integer; var pRecordRef: RecordRef)
     var
         WanaPortFieldValue: Record "WanaPort Field Constant";
@@ -99,6 +98,8 @@ codeunit 87091 "WanaPort Import"
     end;
 
 
+#if ONPREM
+    [Scope('OnPrem')]
     procedure Open(var pWanaPort: Record "WanaPort")
     begin
         TAB := 9;
@@ -110,6 +111,7 @@ codeunit 87091 "WanaPort Import"
         gFile.Open(pWanaPort."WanaPort File Name");
         gFile.CreateInStream(gInStream);
     end;
+#endif
 
 
     procedure EOS(): Boolean

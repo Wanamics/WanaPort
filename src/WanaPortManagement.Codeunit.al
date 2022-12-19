@@ -1,11 +1,7 @@
 codeunit 87090 "WanaPort Management"
 {
-
-    trigger OnRun()
-    begin
-    end;
-
-
+#if ONPREM
+    [Scope('OnPrem')]
     procedure FileCount(pPath: Text; pFileNameFilter: Text): Integer
     var
         lFile: Record File;
@@ -19,12 +15,17 @@ codeunit 87090 "WanaPort Management"
         lFile.SetFilter(Name, pFileNameFilter);
         exit(lFile.Count)
     end;
+#else
+    procedure FileCount(pPath: Text; pFileNameFilter: Text): Integer
+    begin
+    end;
+#endif
 
-
+#if ONPREM
+    [Scope('OnPrem')]
     procedure ShowFileList(pPath: Text; pFileNameFilter: Text)
     var
         lFile: Record File;
-
     begin
         Clear(lFile);
         lFile.SetRange(Path, '');
@@ -34,7 +35,11 @@ codeunit 87090 "WanaPort Management"
         lFile.SetRange("Is a file", true);
         Page.RunModal(Page::"WanaPort File List", lFile);
     end;
-
+#else
+    procedure ShowFileList(pPath: Text; pFileNameFilter: Text)
+    begin
+    end;
+#endif
 
     procedure GetExportFileName(var pRec: Record "WanaPort"): Text
     begin
@@ -49,7 +54,8 @@ codeunit 87090 "WanaPort Management"
             Format(CurrentDateTime, 0, '<Year4><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>')));
     end;
 
-
+#if ONPREM
+    [Scope('OnPrem')]
     procedure Import(var pRec: Record "WanaPort")
     var
         lFile: Record File;
@@ -112,15 +118,18 @@ codeunit 87090 "WanaPort Management"
 
             if GuiAllowed then
                 lWindow.Close;
-
         end;
 
         pRec."Last Import DateTime" := CurrentDateTime;
         pRec.Modify;
-
     end;
-
-
+#else
+    procedure Import(var pRec: Record "WanaPort")
+    begin
+    end;
+#endif
+#if ONPREM
+    [Scope('OnPrem')]
     procedure Export(var pRec: Record "WanaPort")
     var
         lWindow: Dialog;
@@ -156,6 +165,11 @@ codeunit 87090 "WanaPort Management"
         end;
         pRec.LogEnd;
     end;
+#else
+    procedure Export(var pRec: Record "WanaPort")
+    begin
+    end;
+#endif
 
     procedure Schedule(var pJobQueueEntry: Record "Job Queue Entry") Return: Text
     var
@@ -212,16 +226,16 @@ codeunit 87090 "WanaPort Management"
     begin
         lJobQueueEntry.SetRange("Object Type to Run", lJobQueueEntry."Object Type to Run"::Codeunit);
         lJobQueueEntry.SetRange("Object ID to Run", CODEUNIT::"WanaPort Import", CODEUNIT::"WanaPort Export");
-        lJobQueueEntry.SetRange("Parameter String", lParameterString(pWanaPort));
+        lJobQueueEntry.SetRange("Parameter String", ParameterString(pWanaPort));
         if lJobQueueEntry.IsEmpty then begin
             lJobQueueEntry.Validate("Object Type to Run", lJobQueueEntry."Object Type to Run"::Codeunit);
             if pWanaPort."Import Path" <> '' then begin
                 lJobQueueEntry.Validate("Object ID to Run", CODEUNIT::"WanaPort Import");
-                lJobQueueEntry.Validate("Parameter String", lParameterString(pWanaPort));
+                lJobQueueEntry.Validate("Parameter String", ParameterString(pWanaPort));
                 lJobQueueEntry.Insert(true);
             end else begin
                 lJobQueueEntry.Validate("Object ID to Run", CODEUNIT::"WanaPort Export");
-                lJobQueueEntry.Validate("Parameter String", lParameterString(pWanaPort));
+                lJobQueueEntry.Validate("Parameter String", ParameterString(pWanaPort));
                 lJobQueueEntry.Insert(true);
             end;
             Commit;
@@ -238,7 +252,7 @@ codeunit 87090 "WanaPort Management"
     begin
         lJobQueueEntry.SetRange("Object Type to Run", lJobQueueEntry."Object Type to Run"::Codeunit);
         lJobQueueEntry.SetRange("Object ID to Run", CODEUNIT::"WanaPort Import", CODEUNIT::"WanaPort Export");
-        lJobQueueEntry.SetRange("Parameter String", lParameterString(pWanaPort));
+        lJobQueueEntry.SetRange("Parameter String", ParameterString(pWanaPort));
         if not lJobQueueEntry.FindFirst then
             exit('')
         else
@@ -248,7 +262,7 @@ codeunit 87090 "WanaPort Management"
                 exit('(' + Format(lJobQueueEntry.Count) + ')');
     end;
 
-    procedure lParameterString(var pWanaPort: Record "WanaPort"): Text
+    local procedure ParameterString(var pWanaPort: Record "WanaPort"): Text
     var
         ltParameterString: Label '%1::"%2"';
         lObject: Record "AllObj";
@@ -256,5 +270,19 @@ codeunit 87090 "WanaPort Management"
         if lObject.Get(pWanaPort."Object Type", pWanaPort."Object ID") then
             exit(StrSubstNo(ltParameterString, lObject."Object Type", lObject."Object Name"));
     end;
+
+#if ONPREM
+    [Scope('OnPrem')]
+    procedure ServerDirectoryExists(pPath: Text): Boolean
+    var
+        FileManagement: Codeunit "File Management";
+    begin
+        exit(FileManagement.ServerDirectoryExists(pPath))
+    end;
+#else
+    procedure ServerDirectoryExists(pPath: Text): Boolean
+    begin
+    end;
+#endif
 }
 
