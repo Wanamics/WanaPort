@@ -42,7 +42,7 @@ page 87093 "WanaPort File List"
     {
         area(processing)
         {
-            action(Afficher)
+            action(Show)
             {
                 ApplicationArea = All;
                 Caption = 'Show';
@@ -53,23 +53,14 @@ page 87093 "WanaPort File List"
                 trigger OnAction()
                 var
                     LocalFile: Text;
-                    lFileMgt: Codeunit "File Management";
+                    FileManagement: Codeunit "File Management";
                 begin
-                    LocalFile := lFileMgt.DownloadTempFile(Rec.Path + '/' + Rec.Name);
+                    LocalFile := FileManagement.DownloadTempFile(Rec.Path + '/' + Rec.Name);
                     HyperLink(LocalFile);
                 end;
             }
         }
     }
-#else
-    layout
-    {
-    }
-    actions
-    {
-
-    }
-
 #endif
 }
 
