@@ -27,6 +27,12 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort - Method LogEnd - NamedType ltDone</note>
         </trans-unit>
+        <trans-unit id="Table 2912593996 - Field 1052272489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Archive File Name Mask</source>
+          <target>Masque nom fichier archive</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table WanaPort - Field Archive File Name Mask - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2912593996 - Field 3456238385 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Archive Path</source>
           <target>Dossier archive</target>
@@ -348,11 +354,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Export - Method IsEmpty - NamedType NothingToExportMsg</note>
         </trans-unit>
-        <trans-unit id="Codeunit 1754574053 - Method 3584695359 - NamedType 4057784469" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 1754574053 - Method 3584695359 - NamedType 1479948027" size-unit="char" translate="yes" xml:space="preserve">
           <source>h</source>
           <target>h</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Management - Method FormatDuration - NamedType ltHours</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Management - Method FormatDuration - NamedType HoursLbl</note>
         </trans-unit>
         <trans-unit id="Codeunit 1754574053 - Method 3584695359 - NamedType 2751543063" size-unit="char" translate="yes" xml:space="preserve">
           <source>'</source>
@@ -366,23 +372,17 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Management - Method FormatDuration - NamedType ltSeconds</note>
         </trans-unit>
-        <trans-unit id="Codeunit 1754574053 - Method 3135845640 - NamedType 2001841728" size-unit="char" translate="yes" xml:space="preserve">
-          <source>%1::"%2"</source>
-          <target></target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Management - Method ParameterString - NamedType ltParameterString</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1754574053 - Method 2019212495 - NamedType 607759287" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 1754574053 - Method 2019212495 - NamedType 3546006897" size-unit="char" translate="yes" xml:space="preserve">
           <source>MTWTFSS</source>
           <target>LMMJVSD</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Management - Method Schedule - NamedType ltSchedule</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Management - Method Schedule - NamedType ScheduleLbl</note>
         </trans-unit>
-        <trans-unit id="Codeunit 1754574053 - Method 2019212495 - NamedType 1687425158" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 1754574053 - Method 2019212495 - NamedType 2945922260" size-unit="char" translate="yes" xml:space="preserve">
           <source>-</source>
           <target>-</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Management - Method Schedule - NamedType ltNone</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Management - Method Schedule - NamedType NoneLbl</note>
         </trans-unit>
         <trans-unit id="Codeunit 1152630074 - Method 2410829382 - NamedType 2119388173" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lookup not available (table primary key field is not unique).</source>
@@ -431,6 +431,13 @@
           <target>Importer</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Card - Control Import - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2322991096 - Control 1052272489 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 : Source file name, %2 : TimeStamp (yyyymmddhhmmss)</source>
+          <target>[NAB: REVIEW]%1 : Nom fichier origine, %2 : horodatage (aaaammddhhmmss)</target>
+          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Card - Control Archive File Name Mask - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2322991096 - Control 57370450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Archived Files</source>

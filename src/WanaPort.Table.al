@@ -112,6 +112,10 @@ table 87090 WanaPort
             OptionCaption = 'None,"';
             OptionMembers = "None",Quote;
         }
+        field(17; "Archive File Name Mask"; Text[250])
+        {
+            Caption = 'Archive File Name Mask';
+        }
         field(18; "WanaPort File Name"; Text[250])
         {
             Caption = 'WanaPort File Name';

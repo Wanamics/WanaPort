@@ -63,7 +63,6 @@ page 87092 "WanaPort Card"
                     ApplicationArea = All;
                     BlankZero = true;
                     Caption = 'Files to Import';
-                    //DrillDownPageID = "WanaPort File List";
                     Editable = false;
                     Visible = IsOnPrem;
 
@@ -77,12 +76,17 @@ page 87092 "WanaPort Card"
                     ApplicationArea = All;
                     Visible = IsOnPrem;
                 }
+                field("Archive File Name Mask"; Rec."Archive File Name Mask")
+                {
+                    ApplicationArea = All;
+                    ToolTip = '%1 : Source file name, %2 : TimeStamp (yyyymmddhhmmss)';
+                    Visible = IsOnPrem;
+                }
                 field(Archived; Archived)
                 {
                     ApplicationArea = All;
                     BlankZero = true;
                     Caption = 'Archived Files';
-                    //DrillDownPageID = "WanaPort File List";
                     Editable = false;
                     Visible = IsOnPrem;
 
