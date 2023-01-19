@@ -1,4 +1,4 @@
-/.alpackages
-/.snapshots
-/.vscode
-/*.app
+.alpackages/
+.vscode/.alcache/
+.vscode/launch.json
+*.app

@@ -1,6 +1,6 @@
 page 87092 "WanaPort Card"
 {
-    Caption = 'WanaPort Card';
+    Caption = 'WanaPort';
     DataCaptionFields = "Object Caption";
     PageType = Card;
     SourceTable = "WanaPort";
