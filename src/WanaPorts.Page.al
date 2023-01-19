@@ -84,7 +84,7 @@ page 87090 "wanaPorts"
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("File Name Mask"; Rec."File Name Mask")
+                field("File Name Mask"; Rec."Export File Name Pattern")
                 {
                     ApplicationArea = All;
                     Visible = false;
@@ -103,7 +103,7 @@ page 87090 "wanaPorts"
 
                     trigger OnDrillDown()
                     begin
-                        WanaPortMgt.ShowFileList(Rec."Export Path", StrSubstNo(Rec."File Name Mask", '*', '*'));
+                        WanaPortMgt.ShowFileList(Rec."Export Path", StrSubstNo(Rec."Export File Name Pattern", '*', '*'));
                     end;
                 }
             }
@@ -224,7 +224,7 @@ page 87090 "wanaPorts"
     begin
         ToImport := WanaPortMgt.FileCount(Rec."Import Path", Rec."File Name Filter");
         Archived := WanaPortMgt.FileCount(Rec."Archive Path", Rec."File Name Filter");
-        Exported := WanaPortMgt.FileCount(Rec."Export Path", StrSubstNo(Rec."File Name Mask", '*', '*'));
+        Exported := WanaPortMgt.FileCount(Rec."Export Path", StrSubstNo(Rec."Export File Name Pattern", '*', '*'));
     end;
 
     var

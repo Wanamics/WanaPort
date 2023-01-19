@@ -25,10 +25,14 @@ page 87096 "WanaPort Field Value Map"
                 {
                     ToolTip = 'Specifies the value of the Table No. field.';
                     LookupPageId = Objects;
+                    Width = 6;
+                    trigger OnValidate()
+                    begin
+                        Rec.CalcFields("Table Caption");
+                    end;
                 }
                 field("Table Caption"; Rec."Table Caption")
                 {
-
                 }
                 field("Source No."; Rec."Source No.")
                 {

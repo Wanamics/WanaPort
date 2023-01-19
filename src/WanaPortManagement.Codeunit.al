@@ -44,30 +44,36 @@ codeunit 87090 "WanaPort Management"
     procedure GetExportFileName(var pRec: Record "WanaPort"): Text
     begin
         // %1 "Last File No. Used"
-        // %2 TimeStamp yyyymmddhhmmss
-        if StrPos(pRec."File Name Mask", '%1') <> 0 then
+        // %2 Timestamp (yyyymmddhhmmss)
+        if StrPos(pRec."Export File Name Pattern", '%1') <> 0 then
             pRec."Last File No. Used" := IncStr(pRec."Last File No. Used");
         exit(
             StrSubstNo(
-            pRec."File Name Mask",
+            pRec."Export File Name Pattern",
             pRec."Last File No. Used",
             Format(CurrentDateTime, 0, '<Year4><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>')));
     end;
 
-    procedure GetArchiveFileName(var pRec: Record "WanaPort"; pFileName: Text): Text
+    procedure GetArchiveFileName(var pRec: Record "WanaPort") ReturnValue: Text
+    var
+        FileManagement: Codeunit "File Management";
     begin
-        // %1 SourceFileName
-        // %2 TimeStamp yyyymmddhhmmss
-        if pRec."Archive File Name Mask" = '' then
-            exit(pRec."WanaPort File Name")
+        // %1 SourceFile NameWithoutExtension
+        // %2 SourceFile Extension
+        // %3 Timestamp (yyyymmddhhmmss)
+        // %4 Date (yyyymmdd)
+        if pRec."Archive File Name Pattern" = '' then
+            exit(pRec."Archive Path" + '\' +
+                FileManagement.GetFileName(pRec."WanaPort File Name"))
         else
-            exit(
+            exit(pRec."Archive Path" + '\' +
                 StrSubstNo(
-                pRec."Archive File Name Mask",
-                pRec."WanaPort File Name",
-                Format(CurrentDateTime, 0, '<Year4><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>')));
+                    pRec."Archive File Name Pattern",
+                    FileManagement.GetFileNameWithoutExtension(pRec."WanaPort File Name"),
+                    FileManagement.GetExtension(pRec."WanaPort File Name"),
+                    Format(CurrentDateTime, 0, '<Year4><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>'),
+                    Format(Today, 0, '<Year4><Month,2><Day,2>')));
     end;
-
 
 #if ONPREM
     [Scope('OnPrem')]
@@ -122,7 +128,7 @@ codeunit 87090 "WanaPort Management"
                             lImportFile.Close;
                         end;
                 end;
-                File.Rename(pRec."WanaPort File Name", pRec."Archive Path" + '\' + GetArchiveFileName(pRec, lFile.Name));
+                File.Rename(pRec."WanaPort File Name", GetArchiveFileName(pRec));
                 Commit;
                 pRec.Find('='); // pRec can be modified (ex : "Last Export Entry No.")
                 pRec.LogProcess;
@@ -168,7 +174,7 @@ codeunit 87090 "WanaPort Management"
                 Report.RunModal(pRec."Object ID", false);
             pRec."Object Type"::Codeunit:
                 Codeunit.Run(pRec."Object ID", pRec);
-            pRec."Object Type":: :
+            pRec."Object Type"::XmlPort:
                 begin
                     lExportFile.Create(pRec."Export Path" + '\' + pRec."WanaPort File Name");
                     lExportFile.CreateOutStream(lOutStream);

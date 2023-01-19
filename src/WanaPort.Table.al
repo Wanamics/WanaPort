@@ -52,16 +52,9 @@ table 87090 WanaPort
                         FieldError("Archive Path", ServerPathNotExistsErr);
             end;
         }
-        field(7; "Page ID"; Integer)
+        field(7; "Archive File Name Pattern"; Text[250])
         {
-            BlankZero = true;
-            Caption = 'Page ID';
-            TableRelation = AllObjWithCaption."Object ID" where("Object Type" = const(Page));
-
-            trigger OnValidate()
-            begin
-                CalcFields("Page Caption");
-            end;
+            Caption = 'Archive File Name Pattern';
         }
         field(8; "Export Path"; Text[250])
         {
@@ -74,9 +67,9 @@ table 87090 WanaPort
                         FieldError("Export Path", ServerPathNotExistsErr);
             end;
         }
-        field(9; "File Name Mask"; Text[250])
+        field(9; "Export File Name Pattern"; Text[250])
         {
-            Caption = 'File Name Mask';
+            Caption = 'Export File Name Pattern';
         }
         field(10; "Last File No. Used"; Code[20])
         {
@@ -112,14 +105,21 @@ table 87090 WanaPort
             OptionCaption = 'None,"';
             OptionMembers = "None",Quote;
         }
-        field(17; "Archive File Name Mask"; Text[250])
-        {
-            Caption = 'Archive File Name Mask';
-        }
         field(18; "WanaPort File Name"; Text[250])
         {
             Caption = 'WanaPort File Name';
             FieldClass = FlowFilter;
+        }
+        field(20; "Page ID"; Integer)
+        {
+            BlankZero = true;
+            Caption = 'Page ID';
+            TableRelation = AllObjWithCaption."Object ID" where("Object Type" = const(Page));
+
+            trigger OnValidate()
+            begin
+                CalcFields("Page Caption");
+            end;
         }
         field(102; "Object Caption"; Text[250])
         {

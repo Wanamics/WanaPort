@@ -73,17 +73,24 @@ table 87091 "WanaPort Field Constant"
                 Relation.Validate("Table No.", "Field No.", Code20);
             end;
         }
-        field(100; "Field Caption"; Text[80])
+        field(100; "Table Caption"; Text[250])
         {
-            CalcFormula = Lookup(Field."Field Caption" where(TableNo = field("Table No."), "No." = field("Field No.")));
-            Caption = 'Field Name';
+            CalcFormula = Lookup(AllObjWithCaption."Object Caption" where("Object Type" = const("Object Type"::Table), "Object ID" = field("Table No.")));
+            Caption = 'Table Caption';
             Editable = false;
             FieldClass = FlowField;
         }
-        field(101; "Field Type Name"; Text[30])
+        field(101; "Field Caption"; Text[80])
+        {
+            CalcFormula = Lookup(Field."Field Caption" where(TableNo = field("Table No."), "No." = field("Field No.")));
+            Caption = 'Field Caption';
+            Editable = false;
+            FieldClass = FlowField;
+        }
+        field(102; "Field Type Name"; Text[30])
         {
             CalcFormula = Lookup(Field."Type Name" where(TableNo = field("Table No."), "No." = field("Field No.")));
-            Caption = 'Type';
+            Caption = 'Field Type';
             Editable = false;
             FieldClass = FlowField;
         }

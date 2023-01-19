@@ -76,10 +76,10 @@ page 87092 "WanaPort Card"
                     ApplicationArea = All;
                     Visible = IsOnPrem;
                 }
-                field("Archive File Name Mask"; Rec."Archive File Name Mask")
+                field("Archive File Name Mask"; Rec."Archive File Name Pattern")
                 {
                     ApplicationArea = All;
-                    ToolTip = '%1 : Source file name, %2 : TimeStamp (yyyymmddhhmmss)';
+                    ToolTip = '%1 SourceFile NameWithoutExtension, %2 SourceFile Extension, %3 Timestamp(yyyymmddhhmmss), %4 Date(yyyymmdd)';
                     Visible = IsOnPrem;
                 }
                 field(Archived; Archived)
@@ -123,13 +123,13 @@ page 87092 "WanaPort Card"
 
                     trigger OnDrillDown()
                     begin
-                        WanaPortMgt.ShowFileList(Rec."Export Path", StrSubstNo(Rec."File Name Mask", '*', '*'));
+                        WanaPortMgt.ShowFileList(Rec."Export Path", StrSubstNo(Rec."Export File Name Pattern", '*', '*'));
                     end;
                 }
-                field("File Name Mask"; Rec."File Name Mask")
+                field("File Name Mask"; Rec."Export File Name Pattern")
                 {
                     ApplicationArea = All;
-                    ToolTip = '%1 Entry No., %2 : TimeStamp (yyyymmddhhmmss)';
+                    ToolTip = '%1 Entry No., %2 : Timestamp (yyyymmddhhmmss)';
                     Visible = IsOnPrem;
                 }
                 field("Last File No. Used"; Rec."Last File No. Used")
@@ -261,7 +261,7 @@ page 87092 "WanaPort Card"
     begin
         ToImport := WanaPortMgt.FileCount(Rec."Import Path", Rec."File Name Filter");
         Archived := WanaPortMgt.FileCount(Rec."Archive Path", Rec."File Name Filter");
-        Exported := WanaPortMgt.FileCount(Rec."Export Path", StrSubstNo(Rec."File Name Mask", '*', '*'));
+        Exported := WanaPortMgt.FileCount(Rec."Export Path", StrSubstNo(Rec."Export File Name Pattern", '*', '*'));
     end;
 
     var
