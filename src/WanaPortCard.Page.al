@@ -76,7 +76,7 @@ page 87092 "WanaPort Card"
                     ApplicationArea = All;
                     Visible = IsOnPrem;
                 }
-                field("Archive File Name Mask"; Rec."Archive File Name Pattern")
+                field("Archive File Name Pattern"; Rec."Archive File Name Pattern")
                 {
                     ApplicationArea = All;
                     ToolTip = '%1 SourceFile NameWithoutExtension, %2 SourceFile Extension, %3 Timestamp(yyyymmddhhmmss), %4 Date(yyyymmdd)';
@@ -126,7 +126,7 @@ page 87092 "WanaPort Card"
                         WanaPortMgt.ShowFileList(Rec."Export Path", StrSubstNo(Rec."Export File Name Pattern", '*', '*'));
                     end;
                 }
-                field("File Name Mask"; Rec."Export File Name Pattern")
+                field("Export File Name Pattern"; Rec."Export File Name Pattern")
                 {
                     ApplicationArea = All;
                     ToolTip = '%1 Entry No., %2 : Timestamp (yyyymmddhhmmss)';
