@@ -2,7 +2,7 @@
   "id": "83f58241-6e78-4fcc-affe-129005d75564",
   "name": "WanaPort",
   "publisher": "Wanamics",
-  "version": "1.0.0.14",
+  "version": "1.0.0.15",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -31,6 +31,6 @@
     "GenerateCaptions",
     "NoImplicitWith"
   ],
-  "target": "Cloud",
-  "preprocessorSymbols": []
+  "target": "OnPrem",
+  "preprocessorSymbols": ["ONPREM"]
 }

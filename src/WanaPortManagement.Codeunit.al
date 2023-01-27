@@ -45,8 +45,10 @@ codeunit 87090 "WanaPort Management"
     begin
         // %1 "Last File No. Used"
         // %2 Timestamp (yyyymmddhhmmss)
-        if StrPos(pRec."Export File Name Pattern", '%1') <> 0 then
+        if StrPos(pRec."Export File Name Pattern", '%1') <> 0 then begin
             pRec."Last File No. Used" := IncStr(pRec."Last File No. Used");
+            pRec.Modify();
+        end;
         exit(
             StrSubstNo(
             pRec."Export File Name Pattern",
@@ -186,6 +188,36 @@ codeunit 87090 "WanaPort Management"
     end;
 #else
     procedure Export(var pRec: Record "WanaPort")
+    begin
+    end;
+#endif
+
+#if ONPREM
+    procedure ExportFrom(pRec: Record "WanaPort"; pTempBlob: Codeunit "Temp Blob"): Boolean
+    var
+        lExportFile: File;
+        lInStream: InStream;
+        lOutStream: OutStream;
+        FileAvailableMsg: Label 'File %1 available in folder %2.';
+    begin
+        pRec.TestField("Object ID");
+        pRec.TestField("Export Path");
+        pRec.CalcFields("Object Caption");
+        pRec."WanaPort File Name" := GetExportFileName(pRec);
+
+        pRec.LogBegin;
+        lExportFile.Create(pRec."Export Path" + '\' + pRec."WanaPort File Name");
+        lExportFile.CreateOutStream(lOutStream);
+        lInStream := pTempBlob.CreateInStream();
+        CopyStream(lOutStream, lInStream);
+        lExportFile.Close;
+        pRec.LogEnd;
+        if GuiAllowed then
+            Message(FileAvailableMsg, pRec."WanaPort File Name", pRec."Export Path");
+        exit(true);
+    end;
+#else
+    procedure ExportFrom(pRec: Record "WanaPort"; pTempBlob : Codeunit "Temp Blob") : Boolean
     begin
     end;
 #endif

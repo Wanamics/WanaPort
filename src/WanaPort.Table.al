@@ -238,4 +238,9 @@ table 87090 WanaPort
     begin
         WanaPortManagement.Export(Rec);
     end;
+
+    procedure Export(var pTempBlob: Codeunit "Temp Blob"): Boolean
+    begin
+        exit(WanaPortManagement.ExportFrom(Rec, pTempBlob));
+    end;
 }
