@@ -476,7 +476,7 @@
         </trans-unit>
         <trans-unit id="Page 2322991096 - Control 490116285 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>%1 SourceFile NameWithoutExtension, %2 SourceFile Extension, %3 Timestamp(yyyymmddhhmmss), %4 Date(yyyymmdd)</source>
-          <target>%1 : Nom fichier origine, %2 Extension fichier origine, %3 Timestamp(aaammjjhhùùss), %4 Date(aammjj)</target>
+          <target>%1 : Nom fichier origine, %2 Extension fichier origine, %3 Horodatage (aaammjjhhmmss), %4 Date(aaaammjj)</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Card - Control Archive File Name Pattern - Property ToolTip</note>
         </trans-unit>
