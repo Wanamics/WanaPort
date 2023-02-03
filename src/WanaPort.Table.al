@@ -56,7 +56,7 @@ table 87090 WanaPort
         {
             Caption = 'Export Path';
 
-            trigger OnLookup()
+            trigger OnValidate()
             begin
                 CheckPath(FieldCaption("Export Path"), "Export Path");
             end;
