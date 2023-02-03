@@ -123,7 +123,6 @@ codeunit 87090 "WanaPort Management"
                     pRec."Object Type"::Codeunit:
                         Codeunit.Run(pRec."Object ID", pRec);
                     pRec."Object Type"::XMLport:
-                        XmlImport(pRec);
                         begin
                             lImportFile.Open(pRec."WanaPort File Name");
                             lImportFile.CreateInStream(lInStream);
