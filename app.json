@@ -2,7 +2,7 @@
   "id": "83f58241-6e78-4fcc-affe-129005d75564",
   "name": "WanaPort",
   "publisher": "Wanamics",
-  "version": "1.0.0.15",
+  "version": "1.0.0.17",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -12,7 +12,7 @@
   "logo": "",
   "dependencies": [],
   "screenshots": [],
-  "platform": "1.0.0.1",
+  "platform": "1.0.0.2",
   "application": "21.0.0.0",
   "contextSensitiveHelpUrl": "https://www.wanamics.fr/WanaPort/",
   "idRanges": [
@@ -31,6 +31,6 @@
     "GenerateCaptions",
     "NoImplicitWith"
   ],
-  "target": "OnPrem",
-  "preprocessorSymbols": ["ONPREM"]
+  "target": "Cloud",
+  "preprocessorSymbols": []
 }

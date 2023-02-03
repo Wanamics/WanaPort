@@ -32,9 +32,7 @@ table 87090 WanaPort
 
             trigger OnValidate()
             begin
-                if Rec."Import Path" <> '' then
-                    if not WanaPortManagement.ServerDirectoryExists("Import Path") then
-                        FieldError("Import Path", ServerPathNotExistsErr);
+                CheckPath(FieldCaption("Import Path"), "Import Path");
             end;
         }
         field(5; "File Name Filter"; Text[250])
@@ -47,9 +45,7 @@ table 87090 WanaPort
 
             trigger OnValidate()
             begin
-                if "Archive Path" <> '' then
-                    if not WanaPortManagement.ServerDirectoryExists("Archive Path") then
-                        FieldError("Archive Path", ServerPathNotExistsErr);
+                CheckPath(FieldCaption("Archive Path"), "Archive Path");
             end;
         }
         field(7; "Archive File Name Pattern"; Text[250])
@@ -62,9 +58,7 @@ table 87090 WanaPort
 
             trigger OnLookup()
             begin
-                if "Export Path" <> '' then
-                    if not WanaPortManagement.ServerDirectoryExists("Export Path") then
-                        FieldError("Export Path", ServerPathNotExistsErr);
+                CheckPath(FieldCaption("Export Path"), "Export Path");
             end;
         }
         field(9; "Export File Name Pattern"; Text[250])
@@ -168,9 +162,6 @@ table 87090 WanaPort
     end;
 
     var
-        //FileManagement: Codeunit "File Management";
-        WanaPortManagement: Codeunit "WanaPort Management";
-        ServerPathNotExistsErr: Label 'does not exists on server';
         StartDateTime: DateTime;
 
     procedure LogError(pMessage: Text; pTableID: Integer; pPosition: Text)
@@ -230,17 +221,37 @@ table 87090 WanaPort
     end;
 
     procedure Import()
+    var
+        WanaPortManagement: Codeunit "WanaPort Management";
     begin
         WanaPortManagement.Import(Rec);
     end;
 
     procedure Export()
+    var
+        WanaPortManagement: Codeunit "WanaPort Management";
     begin
         WanaPortManagement.Export(Rec);
     end;
 
     procedure Export(var pTempBlob: Codeunit "Temp Blob"): Boolean
+    var
+        WanaPortManagement: Codeunit "WanaPort Management";
     begin
         exit(WanaPortManagement.ExportFrom(Rec, pTempBlob));
+    end;
+
+    local procedure CheckPath(pFieldCaotion: Text; pFieldValue: Text)
+    var
+        WanaPortManagement: Codeunit "WanaPort Management";
+        ServerPathCantBeCheckedMsg: Label '%1 network path can''t be checked.';
+        ConfirmMsg: Label 'Do you want to continue?';
+    begin
+        if pFieldValue = '' then
+            exit;
+        if WanaPortManagement.ServerDirectoryExists(pFieldValue) then
+            exit;
+        if not Confirm(ServerPathCantBeCheckedMsg + '\' + ConfirmMsg, false, pFieldValue) then
+            Error('');
     end;
 }

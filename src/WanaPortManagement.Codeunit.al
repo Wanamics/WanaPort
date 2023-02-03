@@ -123,6 +123,7 @@ codeunit 87090 "WanaPort Management"
                     pRec."Object Type"::Codeunit:
                         Codeunit.Run(pRec."Object ID", pRec);
                     pRec."Object Type"::XMLport:
+                        XmlImport(pRec);
                         begin
                             lImportFile.Open(pRec."WanaPort File Name");
                             lImportFile.CreateInStream(lInStream);
@@ -147,28 +148,30 @@ codeunit 87090 "WanaPort Management"
 #else
     procedure Import(var pRec: Record "WanaPort")
     begin
+        pRec.LogBegin;
+        case pRec."Object Type" of
+            pRec."Object Type"::Report:
+                Report.RunModal(pRec."Object ID", false);
+            pRec."Object Type"::Codeunit:
+                Codeunit.Run(pRec."Object ID", pRec);
+            pRec."Object Type"::XMLport:
+                Xmlport.Run(pRec."Object ID");
+        end;
+        pRec.LogEnd;
     end;
 #endif
-#if ONPREM
-    [Scope('OnPrem')]
+
     procedure Export(var pRec: Record "WanaPort")
     var
-        lWindow: Dialog;
-        lExportFile: File;
-        lInStream: InStream;
-        lOutStream: OutStream;
         ConfirmLbl: Label 'Do-you want to process "%1"?';
     begin
         pRec.TestField("Object Type");
         pRec.TestField("Object ID");
-        pRec.TestField("Export Path");
         pRec.CalcFields("Object Caption");
 
         if GuiAllowed then
             if not Confirm(ConfirmLbl, true, pRec."Object Caption") then
                 exit;
-
-        pRec."WanaPort File Name" := GetExportFileName(pRec);
 
         pRec.LogBegin;
         case pRec."Object Type" of
@@ -177,20 +180,30 @@ codeunit 87090 "WanaPort Management"
             pRec."Object Type"::Codeunit:
                 Codeunit.Run(pRec."Object ID", pRec);
             pRec."Object Type"::XmlPort:
-                begin
-                    lExportFile.Create(pRec."Export Path" + '\' + pRec."WanaPort File Name");
-                    lExportFile.CreateOutStream(lOutStream);
-                    Xmlport.Export(pRec."Object ID", lOutStream);
-                    lExportFile.Close;
-                end;
+                XmlExport(pRec);
         end;
         pRec.LogEnd;
     end;
-#else
-    procedure Export(var pRec: Record "WanaPort")
+#if ONPREM
+    [Scope('OnPrem')]
+    local procedure XmlExport(var pRec: Record "WanaPort")
+    var
+        lExportFile: File;
+        lOutStream: OutStream;
     begin
+        pRec.TestField("Export Path");
+        lExportFile.Create(pRec."Export Path" + '\' + GetExportFileName(pRec));
+        lExportFile.CreateOutStream(lOutStream);
+        Xmlport.Export(pRec."Object ID", lOutStream);
+        lExportFile.Close;
+    end;
+#else
+    local procedure XmlExport(var pRec: Record "WanaPort")
+    begin
+        Xmlport.Run(pRec."Object ID");
     end;
 #endif
+
 
 #if ONPREM
     procedure ExportFrom(pRec: Record "WanaPort"; pTempBlob: Codeunit "Temp Blob"): Boolean
@@ -217,7 +230,7 @@ codeunit 87090 "WanaPort Management"
         exit(true);
     end;
 #else
-    procedure ExportFrom(pRec: Record "WanaPort"; pTempBlob : Codeunit "Temp Blob") : Boolean
+    procedure ExportFrom(pRec: Record "WanaPort"; pTempBlob: Codeunit "Temp Blob"): Boolean
     begin
     end;
 #endif
