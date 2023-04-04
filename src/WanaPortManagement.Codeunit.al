@@ -8,10 +8,13 @@ codeunit 87090 "WanaPort Management"
     begin
         if pPath = '' then
             exit(0);
+        if not ServerDirectoryExists(pPath) then
+            exit(0);
         lFile.SetRange(Path, '');
         if lFile.FindFirst then; // Required to refresh
 
         lFile.SetRange(Path, pPath);
+        lFile.SetRange("Is a file", true);
         lFile.SetFilter(Name, pFileNameFilter);
         exit(lFile.Count)
     end;
