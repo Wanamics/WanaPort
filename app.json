@@ -2,7 +2,7 @@
   "id": "83f58241-6e78-4fcc-affe-129005d75564",
   "name": "WanaPort",
   "publisher": "Wanamics",
-  "version": "1.0.0.17",
+  "version": "1.0.0.18",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -25,12 +25,12 @@
     "allowDownloadingSource": true,
     "includeSourceInSymbolFile": true
   },
-  "runtime": "10.2",
+  "runtime": "10.1",
   "features": [
     "TranslationFile", 
     "GenerateCaptions",
     "NoImplicitWith"
   ],
-  "target": "Cloud",
-  "preprocessorSymbols": [""]
+  "target": "OnPrem",
+  "preprocessorSymbols": ["ONPREM"]
 }

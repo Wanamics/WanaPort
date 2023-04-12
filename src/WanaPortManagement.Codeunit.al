@@ -350,5 +350,23 @@ codeunit 87090 "WanaPort Management"
     begin
     end;
 #endif
+    procedure ArchivedFileNameFilter(var pRec: Record "WanaPort") ReturnValue: Text
+    var
+        FileManagement: Codeunit "File Management";
+    begin
+        // %1 SourceFile NameWithoutExtension
+        // %2 SourceFile Extension
+        // %3 Timestamp (yyyymmddhhmmss)
+        // %4 Date (yyyymmdd)
+        if pRec."Archive File Name Pattern" = '' then
+            exit(FileManagement.GetFileName(pRec."File Name Filter"))
+        else
+            exit(StrSubstNo(
+                    pRec."Archive File Name Pattern",
+                    FileManagement.GetFileNameWithoutExtension(pRec."File Name Filter"),
+                    FileManagement.GetExtension(pRec."File Name Filter"),
+                    '*',
+                    '*'));
+    end;
 }
 

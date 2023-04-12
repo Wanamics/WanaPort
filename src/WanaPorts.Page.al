@@ -48,13 +48,12 @@ page 87090 "wanaPorts"
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field(ToImport; ToImport)
+                field(ToImport; WanaPortMgt.FileCount(Rec."Import Path", Rec."File Name Filter"))
                 {
                     ApplicationArea = All;
                     BlankZero = true;
                     Caption = 'Files to Import';
                     Visible = IsOnPrem;
-                    //??DrillDownPageID = "wan WanaPort File List";
 
                     trigger OnDrillDown()
                     begin
@@ -66,17 +65,16 @@ page 87090 "wanaPorts"
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field(Archived; Archived)
+                field(Archived; WanaPortMgt.FileCount(Rec."Archive Path", WanaPortMgt.ArchivedFileNameFilter(Rec)))
                 {
                     ApplicationArea = All;
                     BlankZero = true;
                     Caption = 'Archived Files';
-                    //??DrillDownPageID = "WanaPort File List";
                     Visible = IsOnPrem;
 
                     trigger OnDrillDown()
                     begin
-                        WanaPortMgt.ShowFileList(Rec."Archive Path", Rec."File Name Filter");
+                        WanaPortMgt.ShowFileList(Rec."Archive Path", WanaPortMgt.ArchivedFileNameFilter(Rec));
                     end;
                 }
                 field("Export Path"; Rec."Export Path")
@@ -94,7 +92,7 @@ page 87090 "wanaPorts"
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field(Exported; Exported)
+                field(Exported; WanaPortMgt.FileCount(Rec."Export Path", StrSubstNo(Rec."Export File Name Pattern", '*', '*')))
                 {
                     ApplicationArea = All;
                     BlankZero = true;
@@ -220,17 +218,7 @@ page 87090 "wanaPorts"
 #endif
     end;
 
-    trigger OnAfterGetRecord()
-    begin
-        ToImport := WanaPortMgt.FileCount(Rec."Import Path", Rec."File Name Filter");
-        Archived := WanaPortMgt.FileCount(Rec."Archive Path", Rec."File Name Filter");
-        Exported := WanaPortMgt.FileCount(Rec."Export Path", StrSubstNo(Rec."Export File Name Pattern", '*', '*'));
-    end;
-
     var
         WanaPortMgt: Codeunit "WanaPort Management";
-        ToImport: Integer;
-        Archived: Integer;
-        Exported: Integer;
         IsOnPrem: Boolean;
 }
