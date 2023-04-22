@@ -623,6 +623,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Action Importer - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PermissionSet 3590162124 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>WanaPort</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet WANAPORT - Property Caption</note>
+        </trans-unit>
       </group>
     </body>
   </file>

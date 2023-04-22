@@ -1,5 +1,6 @@
 permissionset 87090 WANAPORT
 {
+    Caption = 'WanaPort';
     Assignable = true;
     Permissions = tabledata WanaPort = RIMD,
         tabledata "WanaPort Field Constant" = RIMD,
