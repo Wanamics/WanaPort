@@ -20,5 +20,13 @@ permissionset 87090 WANAPORT
         page "WanaPort File List" = X,
         page "WanaPort Job Queue" = X,
         page "WanaPort Log" = X,
-        page wanaPorts = X;
+        page wanaPorts = X,
+        tabledata "WanaPort Field Value Map-to" = RIMD,
+        table "WanaPort Field Value Map-to" = X,
+        codeunit "WanaPort Events" = X,
+        codeunit "wanaPort Gen. Journal Excel" = X,
+        codeunit "WanaPort GenJournalLine" = X,
+        xmlport "wanaPort Import Cegid" = X,
+        page "WanaPort Field Value Map-to" = X,
+        query "wan applyToCustLedgEntries" = X;
 }
