@@ -1,7 +1,7 @@
-table 87096 "WanaPort Field Value Map"
+table 87097 "WanaPort Field Value Map-to"
 {
     DataClassification = ToBeClassified;
-    Caption = 'Field Value Map';
+    Caption = 'Field Value Map-to';
 
     fields
     {
@@ -28,23 +28,18 @@ table 87096 "WanaPort Field Value Map"
             NotBlank = true;
             TableRelation = AllObjWithCaption."Object ID" where("Object Type" = const(Table));
         }
-        field(4; "Source No."; code[50])
+        field(4; "From Code"; Code[20])
         {
             DataClassification = ToBeClassified;
-            Caption = 'Source No.';
-        }
-        field(5; "Target Code"; Code[20])
-        {
-            DataClassification = ToBeClassified;
-            Caption = 'Target No.';
+            Caption = 'From Code';
             trigger OnLookup()
             var
                 Relation: Codeunit "WanaPort Relation";
                 Code20: Code[20];
             begin
-                Code20 := Rec."Target Code";
+                Code20 := Rec."From Code";
                 if Relation.Lookup(Rec."Table No.", 0, Code20) then
-                    Rec."Target Code" := Code20;
+                    Rec."From Code" := Code20;
             end;
 
             trigger OnValidate()
@@ -52,9 +47,14 @@ table 87096 "WanaPort Field Value Map"
                 Relation: Codeunit "WanaPort Relation";
                 Code20: Code[20];
             begin
-                Code20 := CopyStr("Target Code", 1, MaxStrLen(Code20));
+                Code20 := CopyStr("From Code", 1, MaxStrLen(Code20));
                 Relation.Validate("Table No.", 0, Code20);
             end;
+        }
+        field(5; "To Code"; code[50])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'To Code';
         }
         field(103; "Table Caption"; Text[250])
         {
@@ -67,7 +67,7 @@ table 87096 "WanaPort Field Value Map"
 
     keys
     {
-        key(PK; "Object Type", "Object ID", "Table No.", "Source No.")
+        key(PK; "Object Type", "Object ID", "Table No.", "From Code")
         {
             Clustered = true;
         }

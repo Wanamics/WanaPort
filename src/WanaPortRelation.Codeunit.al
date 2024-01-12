@@ -132,6 +132,7 @@ Codeunit 87099 "WanaPort Relation"
         Rec252: Record "General Posting Setup";
         Rec258: Record "Transaction Type";
         Rec259: Record "Transport Method";
+        Rec270: Record "Bank Account";
         Rec286: Record Territory;
         Rec289: Record "Payment Method";
         Rec291: Record "Shipping Agent";
@@ -365,6 +366,12 @@ Codeunit 87099 "WanaPort Relation"
                     pRecordRef.SetTable(Rec259);
                     if Page.RunModal(0, Rec259) = Action::LookupOK then
                         pRecordRef.GetTable(Rec259);
+                end;
+            Database::"Bank Account":
+                begin
+                    pRecordRef.SetTable(Rec270);
+                    if Page.RunModal(0, Rec270) = Action::LookupOK then
+                        pRecordRef.GetTable(Rec270);
                 end;
             Database::Territory:
                 begin

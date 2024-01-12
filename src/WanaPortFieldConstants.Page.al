@@ -1,4 +1,4 @@
-page 87094 "WanaPort Field Constant"
+page 87094 "WanaPort Field Constants"
 {
     Caption = 'Field Constants';
     PageType = List;

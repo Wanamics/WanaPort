@@ -163,6 +163,7 @@ table 87090 WanaPort
 
     var
         StartDateTime: DateTime;
+        TypeHelper: Codeunit "Type Helper";
 
     procedure LogError(pMessage: Text; pTableID: Integer; pPosition: Text)
     begin
@@ -253,5 +254,54 @@ table 87090 WanaPort
             exit;
         if not Confirm(ServerPathCantBeCheckedMsg + '\' + ConfirmMsg, false, pFieldValue) then
             Error('');
+    end;
+
+    procedure Map(pTableID: Integer; pFrom: Text): Text
+    var
+        WanaPortFieldValueMap: Record "WanaPort Field Value Map";
+    begin
+        if WanaPortFieldValueMap.Get(Rec."Object Type", Rec."Object ID", pTableID, pFrom) then
+            exit(WanaPortFieldValueMap."Target Code")
+        else
+            exit(pFrom);
+    end;
+
+    procedure MapTo(pTableID: Integer; pFrom: Text): Text
+    var
+        FieldValueMapTo: Record "WanaPort Field Value Map-to";
+    begin
+        if FieldValueMapTo.Get(Rec."Object Type", Rec."Object ID", pTableID, pFrom) then
+            exit(FieldValueMapTo."To Code")
+        else
+            exit(pFrom);
+    end;
+
+    procedure ToDate(pText: Text): Date
+    begin
+        exit(ToDate(pText, 'dd/MM/yyyy'));
+    end;
+
+    procedure ToDate(pText: Text; pDateFormat: Text) ReturnValue: Date
+    var
+        v: Variant;
+    begin
+        v := ReturnValue;
+        if TypeHelper.Evaluate(v, pText, pDateFormat, '') then
+            exit(v);
+    end;
+
+    procedure ToDecimal(pText: Text): Decimal
+    begin
+        exit(ToDecimal(pText, 'en-US'));
+    end;
+
+
+    procedure ToDecimal(pText: Text; pCulture: Text) ReturnValue: Decimal
+    var
+        v: Variant;
+    begin
+        v := ReturnValue;
+        if TypeHelper.Evaluate(v, pText, 'G', pCulture) then
+            exit(v);
     end;
 }

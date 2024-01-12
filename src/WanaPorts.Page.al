@@ -33,6 +33,10 @@ page 87090 "wanaPorts"
                     ApplicationArea = All;
                     DrillDown = false;
                 }
+                field("Page Caption"; Rec."Page Caption")
+                {
+                    ToolTip = 'Specifies the value of the Page Caption field.';
+                }
                 field("WanaPortMgt.JobQueueSchedule(Rec)"; WanaPortMgt.JobQueueSchedule(Rec))
                 {
                     ApplicationArea = All;
@@ -115,14 +119,12 @@ page 87090 "wanaPorts"
             group(WanaPort)
             {
                 Caption = 'WanaPort';
-                action(Valeurs)
+                action(Constants)
                 {
                     ApplicationArea = All;
                     Caption = 'Constants';
                     Image = VariableList;
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    RunObject = Page "WanaPort Field Constant";
+                    RunObject = Page "WanaPort Field Constants";
                     RunPageLink = "Object Type" = FIELD("Object Type"), "Object ID" = FIELD("Object ID");
                 }
                 action(ValueMap)
@@ -130,9 +132,15 @@ page 87090 "wanaPorts"
                     ApplicationArea = All;
                     Caption = 'Value Map';
                     Image = Translate;
-                    Promoted = true;
-                    PromotedCategory = Process;
                     RunObject = Page "WanaPort Field Value Map";
+                    RunPageLink = "Object Type" = Field("Object Type"), "Object ID" = Field("Object ID");
+                }
+                action(ValueMapTo)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Value Map-to';
+                    Image = Translate;
+                    RunObject = Page "WanaPort Field Value Map-to";
                     RunPageLink = "Object Type" = Field("Object Type"), "Object ID" = Field("Object ID");
                 }
                 action(RunPage)
@@ -140,8 +148,6 @@ page 87090 "wanaPorts"
                     ApplicationArea = All;
                     Caption = 'Run Page';
                     Image = Start;
-                    Promoted = true;
-                    PromotedCategory = Process;
 
                     trigger OnAction()
                     begin
@@ -154,8 +160,6 @@ page 87090 "wanaPorts"
                     ApplicationArea = All;
                     Caption = 'Scheduler';
                     Image = MachineCenterLoad;
-                    Promoted = true;
-                    PromotedCategory = Process;
 
                     trigger OnAction()
                     begin
@@ -179,26 +183,22 @@ page 87090 "wanaPorts"
             group("Fonction&s")
             {
                 Caption = 'F&unctions';
-                action(Importer)
+                action(Import)
                 {
                     ApplicationArea = All;
                     Caption = 'Import';
                     Image = Import;
-                    Promoted = true;
-                    PromotedCategory = Process;
 
                     trigger OnAction()
                     begin
                         WanaPortMgt.Import(Rec);
                     end;
                 }
-                action(Exporter)
+                action(Export)
                 {
                     ApplicationArea = All;
                     Caption = 'Export';
                     Image = Export;
-                    Promoted = true;
-                    PromotedCategory = Process;
 
                     trigger OnAction()
                     begin
@@ -206,6 +206,16 @@ page 87090 "wanaPorts"
                     end;
                 }
             }
+        }
+        area(Promoted)
+        {
+            actionref(ConstantsRef; Constants) { }
+            actionref(ValueMapRef; ValueMap) { }
+            actionref(ValueMapToRef; ValueMapTo) { }
+            actionref(RunPageRef; RunPage) { }
+            actionref(PlanificationRef; Planification) { }
+            actionref(ExportRef; Export) { }
+            actionref(ImportRef; Import) { }
         }
     }
 

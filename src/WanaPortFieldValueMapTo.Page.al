@@ -1,9 +1,9 @@
-page 87096 "WanaPort Field Value Map"
+page 87097 "WanaPort Field Value Map-to"
 {
     ApplicationArea = All;
     Caption = 'Field Value Map';
     PageType = List;
-    SourceTable = "WanaPort Field Value Map";
+    SourceTable = "WanaPort Field Value Map-to";
 
     layout
     {
@@ -34,13 +34,13 @@ page 87096 "WanaPort Field Value Map"
                 field("Table Caption"; Rec."Table Caption")
                 {
                 }
-                field("Source No."; Rec."Source No.")
+                field("From Code"; Rec."From Code")
                 {
-                    ToolTip = 'Specifies the value of the Source No. field.';
+                    ToolTip = 'Specifies the value of the From Code field.';
                 }
-                field("Target Code"; Rec."Target Code")
+                field("To Code"; Rec."To Code")
                 {
-                    ToolTip = 'Specifies the value of the Target Code field.';
+                    ToolTip = 'Specifies the value of the To Code field.';
                 }
             }
         }

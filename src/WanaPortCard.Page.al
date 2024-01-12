@@ -45,7 +45,7 @@ page 87092 "WanaPort Card"
                     ApplicationArea = All;
                 }
             }
-            group(Import)
+            group(ImportGroup)
             {
                 Caption = 'Import';
                 field("Import Path"; Rec."Import Path")
@@ -105,7 +105,7 @@ page 87092 "WanaPort Card"
                     Editable = false;
                 }
             }
-            group(Export)
+            group(ExportGroup)
             {
                 Caption = 'Export';
                 field("Export Path"; Rec."Export Path")
@@ -130,7 +130,7 @@ page 87092 "WanaPort Card"
                 {
                     ApplicationArea = All;
                     ToolTip = '%1 Entry No., %2 : Timestamp (yyyymmddhhmmss)';
-                    Visible = IsOnPrem;
+                    // Visible = IsOnPrem;
                 }
                 field("Last File No. Used"; Rec."Last File No. Used")
                 {
@@ -161,9 +161,7 @@ page 87092 "WanaPort Card"
                     ApplicationArea = All;
                     Caption = 'Constants';
                     Image = VariableList;
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    RunObject = Page "WanaPort Field Constant";
+                    RunObject = Page "WanaPort Field Constants";
                     RunPageLink = "Object Type" = Field("Object Type"), "Object ID" = Field("Object ID");
                 }
                 action(ValueMap)
@@ -171,9 +169,15 @@ page 87092 "WanaPort Card"
                     ApplicationArea = All;
                     Caption = 'Value Map';
                     Image = Translate;
-                    Promoted = true;
-                    PromotedCategory = Process;
                     RunObject = Page "WanaPort Field Value Map";
+                    RunPageLink = "Object Type" = Field("Object Type"), "Object ID" = Field("Object ID");
+                }
+                action(ValueMapTo)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Value Map-to';
+                    Image = Translate;
+                    RunObject = Page "WanaPort Field Value Map-to";
                     RunPageLink = "Object Type" = Field("Object Type"), "Object ID" = Field("Object ID");
                 }
                 action(RunPage)
@@ -181,8 +185,6 @@ page 87092 "WanaPort Card"
                     ApplicationArea = All;
                     Caption = 'Run Page';
                     Image = Start;
-                    Promoted = true;
-                    PromotedCategory = Process;
 
                     trigger OnAction()
                     begin
@@ -195,8 +197,6 @@ page 87092 "WanaPort Card"
                     ApplicationArea = All;
                     Caption = 'Scheduler';
                     Image = MachineCenterLoad;
-                    Promoted = true;
-                    PromotedCategory = Process;
 
                     trigger OnAction()
                     begin
@@ -219,26 +219,22 @@ page 87092 "WanaPort Card"
             group("Fonction&s")
             {
                 Caption = 'Functions';
-                action(Importer)
+                action(Import)
                 {
                     ApplicationArea = All;
                     Caption = 'Import';
                     Image = Import;
-                    Promoted = true;
-                    PromotedCategory = Process;
 
                     trigger OnAction()
                     begin
                         WanaPortMgt.Import(Rec);
                     end;
                 }
-                action(Exporter)
+                action(Export)
                 {
                     ApplicationArea = All;
                     Caption = 'Export';
                     Image = Export;
-                    Promoted = true;
-                    PromotedCategory = Process;
 
                     trigger OnAction()
                     begin
@@ -246,6 +242,16 @@ page 87092 "WanaPort Card"
                     end;
                 }
             }
+        }
+        area(Promoted)
+        {
+            actionref(ConstantsRef; Constants) { }
+            actionref(ValueMapRef; ValueMap) { }
+            actionref(ValueMapToRef; ValueMapTo) { }
+            actionref(RunPageRef; RunPage) { }
+            actionref(PlanificationRef; Scheduler) { }
+            actionref(ExportRef; Export) { }
+            actionref(ImportRef; Import) { }
         }
     }
     trigger OnOpenPage()

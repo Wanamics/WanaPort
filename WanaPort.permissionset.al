@@ -15,7 +15,7 @@ permissionset 87090 WANAPORT
         codeunit "WanaPort Management" = X,
         codeunit "WanaPort Relation" = X,
         page "WanaPort Card" = X,
-        page "WanaPort Field Constant" = X,
+        page "WanaPort Field Constants" = X,
         page "WanaPort Field Value Map" = X,
         page "WanaPort File List" = X,
         page "WanaPort Job Queue" = X,
