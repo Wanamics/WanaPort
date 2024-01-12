@@ -585,17 +585,17 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Card - Action Scheduler - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2322991096 - Action 1078271801 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Value Map</source>
-          <target>Mappage champ</target>
+        <trans-unit id="Page 2322991096 - Action 3356908741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value Map Export</source>
+          <target>Mappage Export</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Card - Action ValueMap - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Card - Action ValueMapExport - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2322991096 - Action 1627969624 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Value Map-to</source>
-          <target>Mappage export</target>
+        <trans-unit id="Page 2322991096 - Action 2671655286 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value Map Import</source>
+          <target>Mappage Import</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Card - Action ValueMapTo - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Card - Action ValueMapImport - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2322991096 - Action 2322805527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Functions</source>
@@ -863,17 +863,17 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Action RunPage - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3464902093 - Action 1078271801 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Value Map</source>
-          <target>Mappage champ</target>
+        <trans-unit id="Page 3464902093 - Action 3356908741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value Map Export</source>
+          <target>Mappage Export</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Action ValueMap - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Action ValueMapExport - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3464902093 - Action 1627969624 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Value Map-to</source>
-          <target>Mappage export</target>
+        <trans-unit id="Page 3464902093 - Action 2671655286 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value Map Import</source>
+          <target>Mappage Import</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Action ValueMapTo - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Action ValueMapImport - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3464902093 - Action 2322805527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>F&amp;unctions</source>

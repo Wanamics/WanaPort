@@ -127,18 +127,18 @@ page 87090 "wanaPorts"
                     RunObject = Page "WanaPort Field Constants";
                     RunPageLink = "Object Type" = FIELD("Object Type"), "Object ID" = FIELD("Object ID");
                 }
-                action(ValueMap)
+                action(ValueMapImport)
                 {
                     ApplicationArea = All;
-                    Caption = 'Value Map';
+                    Caption = 'Value Map Import';
                     Image = Translate;
                     RunObject = Page "WanaPort Field Value Map";
                     RunPageLink = "Object Type" = Field("Object Type"), "Object ID" = Field("Object ID");
                 }
-                action(ValueMapTo)
+                action(ValueMapExport)
                 {
                     ApplicationArea = All;
-                    Caption = 'Value Map-to';
+                    Caption = 'Value Map Export';
                     Image = Translate;
                     RunObject = Page "WanaPort Field Value Map-to";
                     RunPageLink = "Object Type" = Field("Object Type"), "Object ID" = Field("Object ID");
@@ -209,11 +209,7 @@ page 87090 "wanaPorts"
         }
         area(Promoted)
         {
-            actionref(ConstantsRef; Constants) { }
-            actionref(ValueMapRef; ValueMap) { }
-            actionref(ValueMapToRef; ValueMapTo) { }
             actionref(RunPageRef; RunPage) { }
-            actionref(PlanificationRef; Planification) { }
             actionref(ExportRef; Export) { }
             actionref(ImportRef; Import) { }
         }
