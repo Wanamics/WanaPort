@@ -7,39 +7,12 @@ pageextension 87094 "WanaPort Purchase Journal" extends "Purchase Journal"
             action(WanaPort)
             {
                 ApplicationArea = All;
-                Caption = 'Import WanaPort';
+                Caption = 'WanaPort';
                 Visible = WanaPortVisible;
                 Image = Import;
-                Promoted = true;
-                PromotedCategory = Process;
-
                 trigger OnAction()
-                var
-                    iStream: InStream;
-                    FileManagement: Codeunit "File Management";
-                    TempBlob: Codeunit "Temp Blob";
-                    FileFilterTxt: Label 'Text Files(*.txt;*.csv)|*.txt;*.csv';
-                    FileFilterExtensionTxt: Label 'txt, csv', Locked = true;
-                    JournalMustBeEmptyErr: Label 'Journal must be empty.';
                 begin
-                    if Page.RunModal(0, WanaPort) = Action::LookupOK then
-                        WanaPort.Find('=')
-                    else
-                        exit;
-
-                    Rec.SetRange(Amount, 0);
-                    Rec.DeleteAll(true);
-                    Rec.SetRange(Amount);
-                    if not Rec.IsEmpty then
-                        Error(JournalMustBeEmptyErr);
-
-                    if FileManagement.BLOBImportWithFilter(TempBlob, '', '', FileFilterTxt, FileFilterExtensionTxt) <> '' then begin
-                        TempBlob.CreateInStream(iStream);
-                        Rec.SetRange("Journal Template Name", Rec."Journal Template Name");
-                        Rec.SetRange("Journal Batch Name", Rec."Journal Batch Name");
-                        Xmlport.Import(WanaPort."Object ID", iStream, Rec);
-                        CurrPage.Update();
-                    end;
+                    Codeunit.Run(Codeunit::"WanaPort GenJournalLine", Rec);
                 end;
             }
         }
@@ -70,17 +43,19 @@ pageextension 87094 "WanaPort Purchase Journal" extends "Purchase Journal"
                 end;
             }
         }
+        addlast(Category_Process)
+        {
+            actionref(WanImport_Promoted; WanaPort) { }
+        }
     }
     var
-        WanaPort: Record WanaPort;
         WanaPortVisible: Boolean;
 
-    trigger OnOpenPage()
+    trigger OnAfterGetCurrRecord()
     var
-        PageID: Integer;
+        GenJournalBatch: Record "Gen. Journal Batch";
     begin
-        Evaluate(PageID, CurrPage.ObjectId(false).Substring(6));
-        WanaPort.SetRange("Page ID", PageID);
-        WanaPortVisible := not WanaPort.IsEmpty;
+        if GenJournalBatch.Get(Rec."Journal Template Name", Rec."Journal Batch Name") then
+            WanaPortVisible := GenJournalBatch."WanaPort Object ID" <> 0;
     end;
 }

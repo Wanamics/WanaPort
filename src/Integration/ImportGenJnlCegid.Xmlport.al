@@ -67,16 +67,30 @@ XmlPort 87090 "wanaPort Import Cegid"
                             else
                                 if _DocumentNo <> BalanceGenJnlLine."Document No." then
                                     Balance();
-                            Evaluate(GenJournalLine."Posting Date", _PostingDate);
+                            Evaluate(GenJournalLine."Posting Date", _PostingDate.PadLeft(8, '0'));
                             GenJournalLine.Validate("Posting Date");
                             GenJournalLine.Validate("Document No.", _DocumentNo);
                             if _CustVendNo <> '' then begin
-                                if _Sense = 'D' then
-                                    Default."Document Type" := GenJournalLine."Document type"::Invoice
-                                else
-                                    Default."Document Type" := GenJournalLine."Document type"::"Credit Memo";
-                                GenJournalLine.Validate("Account Type", GenJournalLine."Account type"::Customer);
-                                GenJournalLine.Validate("Account No.", _CustVendNo);
+                                case GenJournalTemplate.Type of
+                                    "Gen. Journal Template Type"::Sales:
+                                        begin
+                                            if _Sense = 'D' then
+                                                Default."Document Type" := GenJournalLine."Document type"::Invoice
+                                            else
+                                                Default."Document Type" := GenJournalLine."Document type"::"Credit Memo";
+                                            GenJournalLine.Validate("Account Type", GenJournalLine."Account type"::Customer);
+                                            GenJournalLine.Validate("Account No.", _CustVendNo);
+                                        end;
+                                    "Gen. Journal Template Type"::Purchases:
+                                        begin
+                                            if _Sense = 'C' then
+                                                Default."Document Type" := GenJournalLine."Document type"::Invoice
+                                            else
+                                                Default."Document Type" := GenJournalLine."Document type"::"Credit Memo";
+                                            GenJournalLine.Validate("Account Type", GenJournalLine."Account type"::Vendor);
+                                            GenJournalLine.Validate("Account No.", _CustVendNo);
+                                        end;
+                                end
                             end else
                                 if _Type = 'A1' then begin
                                     GenJournalLine.Validate("Account Type", GenJournalLine."Account type"::"G/L Account");
@@ -107,8 +121,6 @@ XmlPort 87090 "wanaPort Import Cegid"
     end;
 
     trigger OnPreXmlPort()
-    var
-        GenJournalTemplate: Record "Gen. Journal Template";
     begin
         Default."Journal Template Name" := GenJournalLine.GetFilter("Journal Template Name");
         Default."Journal Batch Name" := GenJournalLine.GetFilter("Journal Batch Name");
@@ -121,7 +133,7 @@ XmlPort 87090 "wanaPort Import Cegid"
         Default: Record "Gen. Journal Line";
         BalanceGenJnlLine: Record "Gen. Journal Line";
         BalanceAmount: Decimal;
-
+        GenJournalTemplate: Record "Gen. Journal Template";
 
     procedure Balance()
     begin

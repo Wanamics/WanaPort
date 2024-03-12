@@ -1,3 +1,4 @@
+#if FALSE
 pageextension 87096 "wanaPort Pmt Rec. Journals" extends "Pmt. Reconciliation Journals"
 {
     actions
@@ -41,3 +42,4 @@ pageextension 87096 "wanaPort Pmt Rec. Journals" extends "Pmt. Reconciliation Jo
         WanaPortVisible := not WanaPort.IsEmpty;
     end;
 }
+#endif

@@ -1,4 +1,4 @@
-pageextension 87090 "WanaPort General Journal" extends "General Journal"
+pageextension 87098 "WanaPort Payment Journal" extends "Payment Journal"
 {
     actions
     {

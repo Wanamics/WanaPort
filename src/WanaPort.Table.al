@@ -263,7 +263,7 @@ table 87090 WanaPort
         if WanaPortFieldValueMap.Get(Rec."Object Type", Rec."Object ID", pTableID, pFrom) then
             exit(WanaPortFieldValueMap."Target Code")
         else
-            exit(pFrom);
+            exit(CopyStr(pFrom, 1, MaxStrLen(WanaPortFieldValueMap."Target Code")));
     end;
 
     procedure MapTo(pTableID: Integer; pFrom: Text): Text

@@ -1,7 +1,7 @@
 page 87097 "WanaPort Field Value Map-to"
 {
     ApplicationArea = All;
-    Caption = 'Field Value Map';
+    Caption = 'Field Value Map-to';
     PageType = List;
     SourceTable = "WanaPort Field Value Map-to";
 

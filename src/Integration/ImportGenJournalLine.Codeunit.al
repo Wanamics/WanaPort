@@ -1,5 +1,27 @@
 codeunit 87095 "WanaPort GenJournalLine"
 {
+    TableNo = "Gen. Journal Line";
+    trigger OnRun()
+    var
+        GenJournalBatch: Record "Gen. Journal Batch";
+    begin
+        if Rec."Journal Batch Name" = '' then
+            Rec."Journal Batch Name" := Rec.GetFilter("Journal Batch Name");
+        GenJournalBatch.Get(Rec."Journal Template Name", Rec."Journal Batch Name");
+        case GenJournalBatch."WanaPort Object Type" of
+            GenJournalBatch."WanaPort Object Type"::Report:
+                Report.RunModal(GenJournalBatch."WanaPort Object ID", true, false, Rec);
+            GenJournalBatch."WanaPort Object Type"::Codeunit:
+                Codeunit.Run(GenJournalBatch."WanaPort Object ID", Rec);
+            GenJournalBatch."WanaPort Object Type"::XMLport:
+                begin
+                    Rec.SetRange("Journal Template Name", Rec."Journal Template Name");
+                    Rec.SetRange("Journal Batch Name", Rec."Journal Batch Name");
+                    Xmlport.Run(GenJournalBatch."WanaPort Object ID", false, true, Rec);
+                end;
+        end;
+    end;
+
     procedure Import(pWanaPort: Record WanaPort; var pGenJournalLine: Record "Gen. Journal Line")
     var
         iStream: InStream;

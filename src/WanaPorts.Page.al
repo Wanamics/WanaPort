@@ -116,66 +116,62 @@ page 87090 "wanaPorts"
     {
         area(navigation)
         {
-            group(WanaPort)
+            action(Constants)
             {
-                Caption = 'WanaPort';
-                action(Constants)
-                {
-                    ApplicationArea = All;
-                    Caption = 'Constants';
-                    Image = VariableList;
-                    RunObject = Page "WanaPort Field Constants";
-                    RunPageLink = "Object Type" = FIELD("Object Type"), "Object ID" = FIELD("Object ID");
-                }
-                action(ValueMapImport)
-                {
-                    ApplicationArea = All;
-                    Caption = 'Value Map Import';
-                    Image = Translate;
-                    RunObject = Page "WanaPort Field Value Map";
-                    RunPageLink = "Object Type" = Field("Object Type"), "Object ID" = Field("Object ID");
-                }
-                action(ValueMapExport)
-                {
-                    ApplicationArea = All;
-                    Caption = 'Value Map Export';
-                    Image = Translate;
-                    RunObject = Page "WanaPort Field Value Map-to";
-                    RunPageLink = "Object Type" = Field("Object Type"), "Object ID" = Field("Object ID");
-                }
-                action(RunPage)
-                {
-                    ApplicationArea = All;
-                    Caption = 'Run Page';
-                    Image = Start;
+                ApplicationArea = All;
+                Caption = 'Constants';
+                Image = VariableList;
+                RunObject = Page "WanaPort Field Constants";
+                RunPageLink = "Object Type" = FIELD("Object Type"), "Object ID" = FIELD("Object ID");
+            }
+            action(ValueMapImport)
+            {
+                ApplicationArea = All;
+                Caption = 'Value Map Import';
+                Image = Translate;
+                RunObject = Page "WanaPort Field Value Map";
+                RunPageLink = "Object Type" = Field("Object Type"), "Object ID" = Field("Object ID");
+            }
+            action(ValueMapExport)
+            {
+                ApplicationArea = All;
+                Caption = 'Value Map Export';
+                Image = Translate;
+                RunObject = Page "WanaPort Field Value Map-to";
+                RunPageLink = "Object Type" = Field("Object Type"), "Object ID" = Field("Object ID");
+            }
+            action(RunPage)
+            {
+                ApplicationArea = All;
+                Caption = 'Run Page';
+                Image = Start;
 
-                    trigger OnAction()
-                    begin
-                        Rec.TestField("Page ID");
-                        Page.Run(Rec."Page ID");
-                    end;
-                }
-                action(Planification)
-                {
-                    ApplicationArea = All;
-                    Caption = 'Scheduler';
-                    Image = MachineCenterLoad;
+                trigger OnAction()
+                begin
+                    Rec.TestField("Page ID");
+                    Page.Run(Rec."Page ID");
+                end;
+            }
+            action(Planification)
+            {
+                ApplicationArea = All;
+                Caption = 'Scheduler';
+                Image = MachineCenterLoad;
 
-                    trigger OnAction()
-                    begin
-                        WanaPortMgt.ShowJobQueue(Rec);
-                    end;
-                }
-                action(Journal)
-                {
-                    ApplicationArea = All;
-                    Caption = 'Log';
-                    Image = Log;
-                    RunObject = Page "WanaPort Log";
-                    RunPageLink = "Object Type" = FIELD("Object Type"),
-                                  "Object ID" = FIELD("Object ID");
-                    RunPageView = SORTING("Object Type", "Object ID");
-                }
+                trigger OnAction()
+                begin
+                    WanaPortMgt.ShowJobQueue(Rec);
+                end;
+            }
+            action(Journal)
+            {
+                ApplicationArea = All;
+                Caption = 'Log';
+                Image = Log;
+                RunObject = Page "WanaPort Log";
+                RunPageLink = "Object Type" = field("Object Type"),
+                                  "Object ID" = field("Object ID");
+                RunPageView = sorting("Object Type", "Object ID");
             }
         }
         area(processing)

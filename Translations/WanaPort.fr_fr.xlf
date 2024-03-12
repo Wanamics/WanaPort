@@ -451,6 +451,24 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort GenJournalLine - Method Import - NamedType JournalMustBeEmptyErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1908604074 - Method 742725649 - NamedType 1927907622" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Title is empty for column %1.</source>
+          <target>Le titre de la colonne %1 est vide.</target>
+          <note from="Developer" annotates="general" priority="2">%1:Column</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Helper - Method SelectNext - NamedType TitleIsEmptyErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1908604074 - Method 742725649 - NamedType 18599116" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Title "%2" expected for column %1 (current value is %3).</source>
+          <target>Le titre "%2" est attendu en colonne %1 (la valeur actuelle est %3).</target>
+          <note from="Developer" annotates="general" priority="2">%1:Column, %2 Expected, %3:current value</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Helper - Method SelectNext - NamedType UnexpectedTitleErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 131735963 - Method 1665861916 - NamedType 979679212" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Journal must be empty</source>
+          <target>La feuille doit être vide.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Loan Schedule - Method OnRun - NamedType MustBeEmptyErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1754574053 - Method 36190024 - NamedType 3764383116" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do-you want to process "%1"?</source>
           <target>Voulez-vous traiter "%1" ?</target>
@@ -486,6 +504,37 @@
           <target>-</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Management - Method Schedule - NamedType NoneLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2447943743 - Method 1178809860 - NamedType 4288424883" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 %2 in %3</source>
+          <target>%1 %2 en %3</target>
+          <note from="Developer" annotates="general" priority="2">%1:count, %2:Caption, %3:ElapsedTime</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Progress - Method Done - NamedType DoneMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2447943743 - Method 1178809860 - NamedType 817793199" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line(s) processed</source>
+          <target>lignes(s) traitée(s)</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Progress - Method Done - NamedType DefaultCaption</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2447943743 - Method 4259830144 - NamedType 19165060" size-unit="char" translate="yes" xml:space="preserve">
+          <source>#1###### out of #2#######</source>
+          <target>#1###### sur #2#######
+</target>
+          <note from="Developer" annotates="general" priority="2">#1######=current;#2#######=max</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Progress - Method Open - NamedType ProgressMaxMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2447943743 - Method 4259830144 - NamedType 2779639592" size-unit="char" translate="yes" xml:space="preserve">
+          <source>#1######</source>
+          <target>#1######</target>
+          <note from="Developer" annotates="general" priority="2">#1######=current</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Progress - Method Open - NamedType ProgressMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2447943743 - Method 620325036 - NamedType 388730920" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Processing</source>
+          <target>Traitement en cours</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Progress - Method Start - NamedType DefaultCaptionMsg</note>
         </trans-unit>
         <trans-unit id="Codeunit 1152630074 - Method 2410829382 - NamedType 2119388173" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lookup not available (table primary key field is not unique).</source>
@@ -554,12 +603,6 @@
           <target>Fichiers à importer</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Card - Control ToImport - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2322991096 - Action 2912593996 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>WanaPort</source>
-          <target>WanaPort</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Card - Action WanaPort - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2322991096 - Action 2758854159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Constants</source>
@@ -660,7 +703,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Field Value Map - Control Target Code - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1605421141 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Field Value Map</source>
+          <source>Field Value Map-to</source>
           <target>Mappage valeur champ</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Field Value Map-to - Property Caption</note>
@@ -833,12 +876,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Control WanaPortMgt.JobQueueSchedule(Rec) - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3464902093 - Action 2912593996 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>WanaPort</source>
-          <target>WanaPort</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Action WanaPort - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 3464902093 - Action 2758854159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Constants</source>
           <target>Constantes</target>
@@ -908,22 +945,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">XmlPort wanaPort Import Cegid - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1503210512 - Action 2912593996 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
-          <source>Import WanaPort</source>
+          <source>WanaPort</source>
           <target>Import WanaPort</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Cash R. Journal - Action WanaPort - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1503210512 - Action 2912593996 - Method 1377591017 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1503210512">
-          <source>Text Files(*.txt;*.csv)|*.txt;*.csv</source>
-          <target>Fichiers texte(*.txt;*.csv)|*.txt;*.csv</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Cash R. Journal - Action WanaPort - Method OnAction - NamedType FileFilterTxt</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1503210512 - Action 2912593996 - Method 1377591017 - NamedType 3661520395" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1503210512">
-          <source>Journal must be empty.</source>
-          <target>La feuille doit être vide.</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Cash R. Journal - Action WanaPort - Method OnAction - NamedType JournalMustBeEmptyErr</note>
         </trans-unit>
         <trans-unit id="PageExtension 1503210512 - Action 2526902157 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
           <source>Excel Export</source>
@@ -937,8 +962,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Cash R. Journal - Action wanaPortExcelImport - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2246818238 - Action 2912593996 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 714858205">
+          <source>WanaPort</source>
+          <target>WanaPort</target>
+          <target>[NAB: SUGGESTION]Import WanaPort</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort FA G/L Journal - Action WanaPort - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1766243033 - Action 2912593996 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2583272393">
-          <source>Import WanaPort</source>
+          <source>WanaPort</source>
           <target>Import WanaPort</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort General Journal - Action WanaPort - Property Caption</note>
@@ -991,29 +1023,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Job Journal - Action WanaImPort - Method OnAction - NamedType JournalMustBeEmptyErr</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2889141547 - Action 2912593996 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4226890118">
-          <source>Import WanaPort</source>
-          <target>Import WanaPort</target>
+        <trans-unit id="PageExtension 1151407869 - Action 2912593996 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>WanaPort</source>
+          <target>WanaPort</target>
+          <target>[NAB: SUGGESTION]Import WanaPort</target>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension wanaPort Pmt Rec. Journals - Action WanaPort - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Payment Journal - Action WanaPort - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1151407869 - Action 2526902157 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Excel Export</source>
+          <target>Exporter vers Excel</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Payment Journal - Action wanaPortExcelExport - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1151407869 - Action 3282648078 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3196174509">
+          <source>Excel Import</source>
+          <target>Importer d'Excel</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Payment Journal - Action wanaPortExcelImport - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3981686422 - Action 2912593996 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3580867622">
-          <source>Import WanaPort</source>
+          <source>WanaPort</source>
           <target>Import WanaPort</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Purchase Journal - Action WanaPort - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3981686422 - Action 2912593996 - Method 1377591017 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3981686422">
-          <source>Text Files(*.txt;*.csv)|*.txt;*.csv</source>
-          <target>Fichiers texte(*.txt;*.csv)|*.txt;*.csv</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Purchase Journal - Action WanaPort - Method OnAction - NamedType FileFilterTxt</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3981686422 - Action 2912593996 - Method 1377591017 - NamedType 3661520395" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3981686422">
-          <source>Journal must be empty.</source>
-          <target>La feuille doit être vide.</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Purchase Journal - Action WanaPort - Method OnAction - NamedType JournalMustBeEmptyErr</note>
         </trans-unit>
         <trans-unit id="PageExtension 3981686422 - Action 2526902157 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3580867622">
           <source>Excel Export</source>
@@ -1028,22 +1061,10 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Purchase Journal - Action wanaPortExcelImport - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1445449867 - Action 2912593996 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1727838235">
-          <source>Import WanaPort</source>
+          <source>WanaPort</source>
           <target>Import WanaPort</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Sales Journal - Action WanaPort - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1445449867 - Action 2912593996 - Method 1377591017 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1445449867">
-          <source>Text Files(*.txt;*.csv)|*.txt;*.csv</source>
-          <target>Fichiers texte(*.txt;*.csv)|*.txt;*.csv</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Sales Journal - Action WanaPort - Method OnAction - NamedType FileFilterTxt</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1445449867 - Action 2912593996 - Method 1377591017 - NamedType 3661520395" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1445449867">
-          <source>Journal must be empty.</source>
-          <target>La feuille doit être vide.</target>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Sales Journal - Action WanaPort - Method OnAction - NamedType JournalMustBeEmptyErr</note>
         </trans-unit>
         <trans-unit id="PageExtension 1445449867 - Action 2526902157 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1727838235">
           <source>Excel Export</source>
@@ -1056,6 +1077,24 @@
           <target>Importer d'Excel</target>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Sales Journal - Action wanaPortExcelImport - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3552105769 - Field 500745348 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3690479385">
+          <source>WanaPort Object ID</source>
+          <target>ID objet WanaPort</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension WanaPort Gen. Journal Batch - Field WanaPort Object ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3552105769 - Field 1253860175 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3690479385">
+          <source>WanaPort Object Type</source>
+          <target>Type objet WanaPort</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension WanaPort Gen. Journal Batch - Field WanaPort Object Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3552105769 - Field 1253860175 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3690479385">
+          <source> ,,,Report,,Codeunit,XMLport</source>
+          <target> ,,,Report,,Codeunit,XMLport</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension WanaPort Gen. Journal Batch - Field WanaPort Object Type - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="PermissionSet 3590162124 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>WanaPort</source>
