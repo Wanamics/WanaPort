@@ -1,3 +1,6 @@
+namespace Wanamics.Wanaport;
+
+using Microsoft.Finance.GeneralLedger.Journal;
 pageextension 87097 "WanaPort Gen. Journal Batches" extends "General Journal Batches"
 {
     layout

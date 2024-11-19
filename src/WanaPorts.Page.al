@@ -1,4 +1,7 @@
-page 87090 "wanaPorts"
+namespace Wanamics.Wanaport;
+
+using System.Reflection;
+page 87090 "WanaPorts"
 {
 
     ApplicationArea = All;
@@ -6,7 +9,7 @@ page 87090 "wanaPorts"
     CardPageID = "WanaPort Card";
     PageType = List;
     RefreshOnActivate = true;
-    SourceTable = "WanaPort";
+    SourceTable = WanaPort;
     UsageCategory = Administration;
 
     layout
@@ -20,13 +23,13 @@ page 87090 "wanaPorts"
                 field("Object Type"; Rec."Object Type")
                 {
                     ApplicationArea = All;
-                    Visible = false;
+                    // Visible = false;
                 }
                 field("Object ID"; Rec."Object ID")
                 {
                     ApplicationArea = All;
                     LookupPageID = Objects;
-                    Visible = false;
+                    // Visible = false;
                 }
                 field("Object Caption"; Rec."Object Caption")
                 {
@@ -36,6 +39,7 @@ page 87090 "wanaPorts"
                 field("Page Caption"; Rec."Page Caption")
                 {
                     ToolTip = 'Specifies the value of the Page Caption field.';
+                    Visible = false;
                 }
                 field("WanaPortMgt.JobQueueSchedule(Rec)"; WanaPortMgt.JobQueueSchedule(Rec))
                 {

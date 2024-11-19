@@ -1,3 +1,7 @@
+namespace Wanamics.Wanaport;
+
+using Microsoft.FixedAssets.Journal;
+using Microsoft.Finance.GeneralLedger.Journal;
 pageextension 87099 "WanaPort FA G/L Journal" extends "Fixed Asset G/L Journal"
 {
     actions

@@ -1,3 +1,4 @@
+namespace Wanamics.Wanaport;
 page 87093 "WanaPort File List"
 {
     Caption = 'Files';

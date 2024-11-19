@@ -1,3 +1,6 @@
+namespace Wanamics.Wanaport;
+
+using Microsoft.Finance.GeneralLedger.Journal;
 pageextension 87093 "WanaPort Cash R. Journal" extends "Cash Receipt Journal"
 {
     actions

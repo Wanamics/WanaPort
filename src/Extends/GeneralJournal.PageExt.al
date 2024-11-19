@@ -1,3 +1,6 @@
+namespace Wanamics.Wanaport;
+
+using Microsoft.Finance.GeneralLedger.Journal;
 pageextension 87090 "WanaPort General Journal" extends "General Journal"
 {
     actions

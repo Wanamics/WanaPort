@@ -1,3 +1,9 @@
+namespace Wanamics.Wanaport;
+
+using Microsoft.Finance.GeneralLedger.Journal;
+using System.IO;
+using Microsoft.Utilities;
+using Microsoft.Foundation.NoSeries;
 codeunit 87098 "WanaPort Loan Schedule"
 {
     TableNo = "Gen. Journal Line";
@@ -40,7 +46,8 @@ codeunit 87098 "WanaPort Loan Schedule"
 
     local procedure Process()
     var
-        Progress: Codeunit "WanaPort Progress";
+        // Progress: Codeunit "WanaPort Progress";
+        Progress: Codeunit "Progress Dialog";
         Next: Integer;
         GLAccounts: Dictionary of [Integer, Code[20]];
         Helper: Codeunit "WanaPort Helper";
@@ -49,12 +56,14 @@ codeunit 87098 "WanaPort Loan Schedule"
     begin
         Initialize();
         if ExcelBuffer.FindLast() then;
-        Progress.Open('', ExcelBuffer."Row No.");
+        // Progress.Open('', ExcelBuffer."Row No.");
+        Progress.OpenCopyCountMax('', ExcelBuffer."Row No.");
         ExcelBuffer.SetFilter("Column No.", Select(GLAccounts));
         ExcelBuffer.SetFilter("Row No.", '>1');
         if ExcelBuffer.FindSet then
             repeat
-                Progress.Update();
+                // Progress.Update();
+                Progress.UpdateCopyCount();
                 Default.Validate("Posting Date", Helper.ToDate(ExcelBuffer."Cell Value as Text"));
                 Default."Document No." := IncStr(Default."Document No.");
                 Balance."Posting Date" := Default."Posting Date";
@@ -73,7 +82,7 @@ codeunit 87098 "WanaPort Loan Schedule"
                 Balance.Validate(Amount);
                 InsertLine(Balance);
             until Next = 0;
-        Progress.Done('');
+        // Progress.Done('');
     end;
 
     local procedure Initialize()
@@ -87,7 +96,8 @@ codeunit 87098 "WanaPort Loan Schedule"
     local procedure SetDefault(var pRec: Record "Gen. Journal Line")
     var
         GenJournalTemplate: Record "Gen. Journal Template";
-        NoSeriesManagement: Codeunit NoSeriesManagement;
+        // NoSeriesManagement: Codeunit NoSeriesManagement;
+        NoSeries: Codeunit "No. Series";
     begin
         pRec."Journal Template Name" := GenJournalBatch."Journal Template Name";
         pRec."Journal Batch Name" := GenJournalBatch.Name;
@@ -96,7 +106,8 @@ codeunit 87098 "WanaPort Loan Schedule"
         pRec."Reason Code" := GenJournalBatch."Reason Code";
         pRec."Posting No. Series" := GenJournalBatch."Posting No. Series";
         // pRec."Copy VAT Setup to Jnl. Lines" := GenJournalBatch."Copy VAT Setup to Jnl. Lines";
-        pRec."Document No." := NoSeriesManagement.TryGetNextNo(GenJournalBatch."No. Series", 0D) + '.000';
+        // pRec."Document No." := NoSeriesManagement.TryGetNextNo(GenJournalBatch."No. Series", 0D) + '.000';
+        pRec."Document No." := NoSeries.PeekNextNo(GenJournalBatch."No. Series", 0D) + '.000';
         pRec.Description := GenJournalBatch.Description;
     end;
 

@@ -1,3 +1,8 @@
+namespace Wanamics.Wanaport;
+
+using Microsoft.Projects.Project.Journal;
+using System.IO;
+using System.Utilities;
 pageextension 87092 "WanaPort Job Journal" extends "Job Journal"
 {
     actions
@@ -10,8 +15,6 @@ pageextension 87092 "WanaPort Job Journal" extends "Job Journal"
                 Caption = 'Import WanaPort';
                 Visible = WanaPortVisible;
                 Image = Import;
-                Promoted = true;
-                PromotedCategory = Process;
 
                 trigger OnAction()
                 var
@@ -41,6 +44,12 @@ pageextension 87092 "WanaPort Job Journal" extends "Job Journal"
                         CurrPage.Update();
                     end;
                 end;
+            }
+        }
+        addlast(Category_Process)
+        {
+            actionref(WanaImPort_Promoted; WanaImPort)
+            {
             }
         }
     }

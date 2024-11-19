@@ -1,3 +1,6 @@
+namespace Wanamics.Wanaport;
+
+using System.Reflection;
 table 87091 "WanaPort Field Constant"
 {
 

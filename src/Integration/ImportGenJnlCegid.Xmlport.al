@@ -1,4 +1,7 @@
-XmlPort 87090 "wanaPort Import Cegid"
+namespace Wanamics.Wanaport;
+
+using Microsoft.Finance.GeneralLedger.Journal;
+xmlPort 87090 "WanaPort Import Cegid"
 {
     Caption = 'Import Cegid';
     Direction = Import;
@@ -16,7 +19,6 @@ XmlPort 87090 "wanaPort Import Cegid"
             tableelement(GenJournalLine; "Gen. Journal Line")
             {
                 AutoSave = false;
-                XmlName = 'GenJournalLine';
                 textelement(_Type)
                 {
                 }
@@ -104,6 +106,7 @@ XmlPort 87090 "wanaPort Import Cegid"
                                 GenJournalLine.Validate(Amount)
                             else
                                 GenJournalLine.Validate(Amount, -GenJournalLine.Amount);
+                            OnBeforeInsert(GenJournalLine);
                             GenJournalLine.Insert();
                             if _Type = 'A1' then
                                 if (BalanceGenJnlLine."Line No." = 0) or (Abs(GenJournalLine.Amount) > Abs(BalanceGenJnlLine.Amount)) then
@@ -114,28 +117,35 @@ XmlPort 87090 "wanaPort Import Cegid"
             }
         }
     }
-
-    trigger OnPostXmlPort()
-    begin
-        Balance();
-    end;
-
     trigger OnPreXmlPort()
+    // var
+    //     GenJournalBatch: Record "Gen. Journal Batch";
     begin
+        WanaPort.Get(ObjectType::XmlPort, Xmlport::"WanaPort Import Cegid");
+        // GenJournalBatch.Get(GenJournalLine."Journal Template Name", GenJournalLine."Journal Batch Name");
+        // WanaPort.Get(GenJournalBatch."WanaPort Object Type", GenJournalBatch."WanaPort Object ID");
         Default."Journal Template Name" := GenJournalLine.GetFilter("Journal Template Name");
         Default."Journal Batch Name" := GenJournalLine.GetFilter("Journal Batch Name");
         GenJournalTemplate.Get(Default."Journal Template Name");
         Default.Validate("Source Code", GenJournalTemplate."Source Code");
     end;
 
+    trigger OnPostXmlPort()
+    begin
+        Balance();
+    end;
+
+
     var
         FirstLineSkipped: Boolean;
+        WanaPort: Record WanaPort;
         Default: Record "Gen. Journal Line";
         BalanceGenJnlLine: Record "Gen. Journal Line";
         BalanceAmount: Decimal;
         GenJournalTemplate: Record "Gen. Journal Template";
 
-    procedure Balance()
+
+    local procedure Balance()
     begin
         if BalanceAmount <> 0 then begin
             BalanceGenJnlLine.Validate(Amount, BalanceGenJnlLine.Amount - BalanceAmount);
@@ -143,5 +153,10 @@ XmlPort 87090 "wanaPort Import Cegid"
             BalanceAmount := 0;
         end;
         Clear(BalanceGenJnlLine);
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeInsert(var pGenJournalLine: Record "Gen. Journal Line");
+    begin
     end;
 }

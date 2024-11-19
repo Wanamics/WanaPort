@@ -1,3 +1,7 @@
+namespace Wanamics.Wanaport;
+
+using System.IO;
+using System.Reflection;
 codeunit 87096 "WanaPort Helper"
 {
     SingleInstance = true;

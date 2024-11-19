@@ -1,3 +1,6 @@
+namespace Wanamics.Wanaport;
+
+using System.Reflection;
 table 87096 "WanaPort Field Value Map"
 {
     DataClassification = ToBeClassified;

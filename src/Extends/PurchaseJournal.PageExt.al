@@ -1,3 +1,6 @@
+namespace Wanamics.Wanaport;
+
+using Microsoft.Finance.GeneralLedger.Journal;
 pageextension 87094 "WanaPort Purchase Journal" extends "Purchase Journal"
 {
     actions

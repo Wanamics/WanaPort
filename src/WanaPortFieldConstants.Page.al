@@ -1,3 +1,6 @@
+namespace Wanamics.Wanaport;
+
+using System.Reflection;
 page 87094 "WanaPort Field Constants"
 {
     Caption = 'Field Constants';

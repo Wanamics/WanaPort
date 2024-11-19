@@ -1,3 +1,6 @@
+namespace Wanamics.Wanaport;
+
+using Microsoft.Finance.GeneralLedger.Journal;
 codeunit 87095 "WanaPort GenJournalLine"
 {
     TableNo = "Gen. Journal Line";
@@ -22,6 +25,7 @@ codeunit 87095 "WanaPort GenJournalLine"
         end;
     end;
 
+#if FALSE
     procedure Import(pWanaPort: Record WanaPort; var pGenJournalLine: Record "Gen. Journal Line")
     var
         iStream: InStream;
@@ -49,4 +53,5 @@ codeunit 87095 "WanaPort GenJournalLine"
             Xmlport.Import(pWanaPort."Object ID", iStream, pGenJournalLine);
         end;
     end;
+#endif
 }

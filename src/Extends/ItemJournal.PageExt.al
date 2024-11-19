@@ -1,3 +1,8 @@
+namespace Wanamics.Wanaport;
+
+using Microsoft.Inventory.Journal;
+using System.IO;
+using System.Utilities;
 pageextension 87091 "WanaPort Item Journal" extends "Item Journal"
 {
     actions
@@ -10,8 +15,6 @@ pageextension 87091 "WanaPort Item Journal" extends "Item Journal"
                 Caption = 'Import WanaPort';
                 Visible = WanaPortVisible;
                 Image = Import;
-                Promoted = true;
-                PromotedCategory = Process;
 
                 trigger OnAction()
                 var
@@ -41,6 +44,12 @@ pageextension 87091 "WanaPort Item Journal" extends "Item Journal"
                         CurrPage.Update();
                     end;
                 end;
+            }
+        }
+        addlast(Category_Process)
+        {
+            actionref(WanaImPort_Promoted; WanaImPort)
+            {
             }
         }
     }

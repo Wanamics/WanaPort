@@ -20,13 +20,17 @@ permissionset 87090 WANAPORT
         page "WanaPort File List" = X,
         page "WanaPort Job Queue" = X,
         page "WanaPort Log" = X,
-        page wanaPorts = X,
+        page "WanaPorts" = X,
         tabledata "WanaPort Field Value Map-to" = RIMD,
         table "WanaPort Field Value Map-to" = X,
         codeunit "WanaPort Events" = X,
         codeunit "wanaPort Gen. Journal Excel" = X,
         codeunit "WanaPort GenJournalLine" = X,
-        xmlport "wanaPort Import Cegid" = X,
         page "WanaPort Field Value Map-to" = X,
-        query "wan applyToCustLedgEntries" = X;
+        codeunit "WanaPort Helper" = X,
+        codeunit "WanaPort Incoming Document.Zip" = X,
+        codeunit "WanaPort Loan Schedule" = X,
+        xmlport "WanaPort Import Cegid" = X,
+        xmlport "WanaPort Import FEC" = X,
+        xmlport "WanaPort Import Sage" = X;
 }

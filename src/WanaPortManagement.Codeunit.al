@@ -1,3 +1,9 @@
+namespace Wanamics.Wanaport;
+
+using System.Utilities;
+using System.Reflection;
+using System.IO;
+using System.Threading;
 codeunit 87090 "WanaPort Management"
 {
 #if ONPREM
@@ -44,7 +50,7 @@ codeunit 87090 "WanaPort Management"
     end;
 #endif
 
-    procedure GetExportFileName(var pRec: Record "WanaPort"): Text
+    procedure GetExportFileName(var pRec: Record WanaPort): Text
     begin
         // %1 "Last File No. Used"
         // %2 Timestamp (yyyymmddhhmmss)
@@ -59,7 +65,7 @@ codeunit 87090 "WanaPort Management"
             Format(CurrentDateTime, 0, '<Year4><Month,2><Day,2><Hours24,2><Minutes,2><Seconds,2>')));
     end;
 
-    procedure GetArchiveFileName(var pRec: Record "WanaPort") ReturnValue: Text
+    procedure GetArchiveFileName(var pRec: Record WanaPort) ReturnValue: Text
     var
         FileManagement: Codeunit "File Management";
     begin
@@ -148,7 +154,7 @@ codeunit 87090 "WanaPort Management"
         pRec.Modify;
     end;
 #else
-    procedure Import(var pRec: Record "WanaPort")
+    procedure Import(var pRec: Record WanaPort)
     begin
         pRec.LogBegin;
         case pRec."Object Type" of
@@ -163,7 +169,7 @@ codeunit 87090 "WanaPort Management"
     end;
 #endif
 
-    procedure Export(var pRec: Record "WanaPort")
+    procedure Export(var pRec: Record WanaPort)
     var
         ConfirmLbl: Label 'Do-you want to process "%1"?';
     begin
@@ -200,7 +206,7 @@ codeunit 87090 "WanaPort Management"
         lExportFile.Close;
     end;
 #else
-    local procedure XmlExport(var pRec: Record "WanaPort")
+    local procedure XmlExport(var pRec: Record WanaPort)
     begin
         Xmlport.Run(pRec."Object ID");
     end;
@@ -232,7 +238,7 @@ codeunit 87090 "WanaPort Management"
         exit(true);
     end;
 #else
-    procedure ExportFrom(pRec: Record "WanaPort"; pTempBlob: Codeunit "Temp Blob"): Boolean
+    procedure ExportFrom(pRec: Record WanaPort; pTempBlob: Codeunit "Temp Blob"): Boolean
     begin
     end;
 #endif
@@ -286,7 +292,7 @@ codeunit 87090 "WanaPort Management"
             Return := Format(lInteger mod 60, 2) + HoursLbl + Return;
     end;
 
-    procedure ShowJobQueue(var pWanaPort: Record "WanaPort")
+    procedure ShowJobQueue(var pWanaPort: Record WanaPort)
     var
         JobQueueEntry: Record "Job Queue Entry";
     begin
@@ -312,7 +318,7 @@ codeunit 87090 "WanaPort Management"
             PAGE.RunModal(0, JobQueueEntry);
     end;
 
-    procedure JobQueueSchedule(var pWanaPort: Record "WanaPort"): Text
+    procedure JobQueueSchedule(var pWanaPort: Record WanaPort): Text
     var
         JobQueueEntry: Record "Job Queue Entry";
     begin
@@ -328,7 +334,7 @@ codeunit 87090 "WanaPort Management"
                 exit('(' + Format(JobQueueEntry.Count) + ')');
     end;
 
-    local procedure ParameterString(var pWanaPort: Record "WanaPort"): Text
+    local procedure ParameterString(var pWanaPort: Record WanaPort): Text
     var
         ParameterStringLbl: Label '%1::"%2"', Locked = true;
         Object: Record "AllObj";
@@ -350,7 +356,7 @@ codeunit 87090 "WanaPort Management"
     begin
     end;
 #endif
-    procedure ArchivedFileNameFilter(var pRec: Record "WanaPort") ReturnValue: Text
+    procedure ArchivedFileNameFilter(var pRec: Record WanaPort) ReturnValue: Text
     var
         FileManagement: Codeunit "File Management";
     begin

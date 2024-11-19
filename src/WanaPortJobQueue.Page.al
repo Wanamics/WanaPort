@@ -1,3 +1,6 @@
+namespace Wanamics.Wanaport;
+
+using System.Threading;
 page 87091 "WanaPort Job Queue"
 {
 
@@ -147,8 +150,6 @@ page 87091 "WanaPort Job Queue"
                     ApplicationArea = All;
                     Caption = 'Reset Status';
                     Image = ClearFilter;
-                    Promoted = true;
-                    PromotedCategory = Process;
 
                     trigger OnAction()
                     begin
@@ -178,6 +179,15 @@ page 87091 "WanaPort Job Queue"
                     RunObject = Page "Job Queue Log Entries";
                     RunPageLink = ID = FIELD(ID);
                     ShortCutKey = 'Shift+Ctrl+N';
+                }
+            }
+        }
+        area(Promoted)
+        {
+            group(Category_Process)
+            {
+                actionref("Réinitialiser statut_Promoted"; "Réinitialiser statut")
+                {
                 }
             }
         }

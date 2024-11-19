@@ -1,3 +1,8 @@
+namespace Wanamics.Wanaport;
+
+using System.Threading;
+using System.Reflection;
+using Microsoft.Utilities;
 codeunit 87092 "WanaPort Export"
 {
 
@@ -5,7 +10,7 @@ codeunit 87092 "WanaPort Export"
 
     trigger OnRun()
     var
-        WanaPort: Record "WanaPort";
+        WanaPort: Record WanaPort;
         Pos: Integer;
         Object: Record AllObj;
     begin
@@ -37,7 +42,7 @@ codeunit 87092 "WanaPort Export"
         LF: Char;
 
 
-    procedure IsEmpty(var pWanaPort: Record "WanaPort")
+    procedure IsEmpty(var pWanaPort: Record WanaPort)
     var
         NothingToExportMsg: Label 'There is nothing to export for "%1".';
     begin
@@ -74,7 +79,7 @@ codeunit 87092 "WanaPort Export"
     end;
 #endif
 
-    procedure Update(var pWanaPort: Record "WanaPort")
+    procedure Update(var pWanaPort: Record WanaPort)
     begin
         ProgressDialog.UpdateCopyCount();
     end;

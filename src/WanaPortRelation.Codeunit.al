@@ -1,4 +1,47 @@
-Codeunit 87099 "WanaPort Relation"
+namespace Wanamics.Wanaport;
+
+using Microsoft.Foundation.PaymentTerms;
+using System.Reflection;
+using Microsoft.Finance.Currency;
+using Microsoft.Sales.Pricing;
+using System.Globalization;
+using Microsoft.Foundation.Address;
+using Microsoft.Foundation.Shipping;
+using Microsoft.CRM.Team;
+using Microsoft.Inventory.Location;
+using Microsoft.Finance.GeneralLedger.Account;
+using Microsoft.Sales.Customer;
+using Microsoft.Purchases.Vendor;
+using Microsoft.Inventory.Item;
+using Microsoft.Finance.GeneralLedger.Journal;
+using Microsoft.Inventory.Journal;
+using Microsoft.Projects.Resources.Resource;
+using Microsoft.Projects.Project.Job;
+using Microsoft.Utilities;
+using Microsoft.Foundation.UOM;
+using Microsoft.Projects.Resources.Journal;
+using Microsoft.Projects.Project.Journal;
+using Microsoft.Foundation.AuditCodes;
+using Microsoft.Finance.GeneralLedger.Setup;
+using Microsoft.Inventory.Intrastat;
+using Microsoft.Bank.BankAccount;
+using Microsoft.Sales.Reminder;
+using Microsoft.Foundation.NoSeries;
+using Microsoft.Finance.VAT.Setup;
+using Microsoft.Finance.Dimension;
+using Microsoft.Intercompany.Partner;
+using Microsoft.Projects.Project.WIP;
+using Microsoft.CRM.Contact;
+using Microsoft.CRM.BusinessRelation;
+using Microsoft.CRM.Setup;
+using Microsoft.HumanResources.Employee;
+using Microsoft.HumanResources.Setup;
+using Microsoft.HumanResources.Absence;
+using Microsoft.FixedAssets.FixedAsset;
+using Microsoft.FixedAssets.Setup;
+using Microsoft.Inventory.Item.Catalog;
+using System.IO;
+codeunit 87099 "WanaPort Relation"
 {
     procedure Validate(pTableID: Integer; pFieldID: Integer; var pCode: Code[20]): Boolean
     var

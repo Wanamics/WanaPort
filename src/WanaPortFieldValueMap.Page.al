@@ -1,3 +1,6 @@
+namespace Wanamics.Wanaport;
+
+using System.Reflection;
 page 87096 "WanaPort Field Value Map"
 {
     ApplicationArea = All;

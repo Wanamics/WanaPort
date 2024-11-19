@@ -1,9 +1,12 @@
+namespace Wanamics.Wanaport;
+
+using System.Reflection;
 page 87092 "WanaPort Card"
 {
     Caption = 'WanaPort';
     DataCaptionFields = "Object Caption";
     PageType = Card;
-    SourceTable = "WanaPort";
+    SourceTable = WanaPort;
 
     layout
     {

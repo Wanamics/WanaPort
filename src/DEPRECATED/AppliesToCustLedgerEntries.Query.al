@@ -1,3 +1,4 @@
+#if FALSE
 query 87090 "wan applyToCustLedgEntries"
 {
     APIGroup = 'WanaPort';
@@ -68,3 +69,4 @@ query 87090 "wan applyToCustLedgEntries"
         }
     }
 }
+#endif

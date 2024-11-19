@@ -2,7 +2,7 @@
   "id": "83f58241-6e78-4fcc-affe-129005d75564",
   "name": "WanaPort",
   "publisher": "Wanamics",
-  "version": "22.0.0.33",
+  "version": "22.0.0.43",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -13,11 +13,11 @@
   "dependencies": [],
   "screenshots": [],
   "platform": "1.0.0.2",
-  "application": "21.0.0.0",
+  "application": "25.0.0.0",
   "contextSensitiveHelpUrl": "https://www.wanamics.fr/WanaPort/",
   "idRanges": [
     {
-      "from": 87090, "to": 87099
+      "from": 87080, "to": 87099
     }
   ],
   "resourceExposurePolicy": {
@@ -25,7 +25,7 @@
     "allowDownloadingSource": true,
     "includeSourceInSymbolFile": true
   },
-  "runtime": "10.1",
+  "runtime": "13.0",
   "features": [
     "TranslationFile", 
     "GenerateCaptions",

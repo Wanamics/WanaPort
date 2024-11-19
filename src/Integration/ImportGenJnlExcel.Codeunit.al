@@ -1,3 +1,9 @@
+namespace Wanamics.Wanaport;
+
+using System.IO;
+using Microsoft.Finance.GeneralLedger.Journal;
+using Microsoft.Finance.GeneralLedger.Setup;
+using Microsoft.Finance.GeneralLedger.Account;
 codeunit 87094 "wanaPort Gen. Journal Excel"
 {
     var

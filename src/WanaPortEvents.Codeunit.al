@@ -1,3 +1,8 @@
+namespace Wanamics.Wanaport;
+
+using Microsoft.Bank.DirectDebit;
+using System.Utilities;
+using Microsoft.Bank.Payment;
 codeunit 87093 "WanaPort Events"
 {
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"SEPA CT-Export File", 'OnBeforeBLOBExport', '', false, false)]

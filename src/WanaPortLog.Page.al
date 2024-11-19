@@ -1,3 +1,4 @@
+namespace Wanamics.Wanaport;
 page 87095 "WanaPort Log"
 {
 
@@ -66,14 +67,20 @@ page 87095 "WanaPort Log"
                 ApplicationArea = All;
                 Caption = 'Show';
                 Image = View;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
 
                 trigger OnAction()
                 begin
                     Rec.Show;
                 end;
+            }
+        }
+        area(Promoted)
+        {
+            group(Category_Process)
+            {
+                actionref(View_Promoted; View)
+                {
+                }
             }
         }
     }

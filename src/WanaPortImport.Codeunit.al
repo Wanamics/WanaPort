@@ -1,3 +1,8 @@
+namespace Wanamics.Wanaport;
+
+using System.Threading;
+using System.Reflection;
+using Microsoft.Finance.GeneralLedger.Setup;
 codeunit 87091 "WanaPort Import"
 {
 
@@ -36,7 +41,7 @@ codeunit 87091 "WanaPort Import"
         gDecimalPoint: Text[1];
 
 
-    procedure FieldValue(var pMoniport: Record "WanaPort"; pTableID: Integer; pFieldID: Integer): Text
+    procedure FieldValue(var pMoniport: Record WanaPort; pTableID: Integer; pFieldID: Integer): Text
     var
         MoniportFieldValue: Record "WanaPort Field Constant";
     begin
@@ -44,7 +49,7 @@ codeunit 87091 "WanaPort Import"
         exit(MoniportFieldValue.Constant);
     end;
 
-    procedure InitFieldValue(var pWanaPort: Record "WanaPort"; pTableID: Integer; var pRecordRef: RecordRef)
+    procedure InitFieldValue(var pWanaPort: Record WanaPort; pTableID: Integer; var pRecordRef: RecordRef)
     var
         WanaPortFieldValue: Record "WanaPort Field Constant";
         FldRef: FieldRef;

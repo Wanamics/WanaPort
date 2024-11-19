@@ -363,16 +363,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit wanaPort Gen. Journal Excel - Method Import - NamedType ExcelFileCaption</note>
         </trans-unit>
-        <trans-unit id="Codeunit 3781729877 - Method 3201496503 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Text Files(*.txt;*.csv)|*.txt;*.csv</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort GenJournalLine - Method Import - NamedType FileFilterTxt</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3781729877 - Method 3201496503 - NamedType 3661520395" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Journal must be empty.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort GenJournalLine - Method Import - NamedType JournalMustBeEmptyErr</note>
-        </trans-unit>
         <trans-unit id="Codeunit 1908604074 - Method 742725649 - NamedType 1927907622" size-unit="char" translate="yes" xml:space="preserve">
           <source>Title is empty for column %1.</source>
           <note from="Developer" annotates="general" priority="2">%1:Column</note>
@@ -382,6 +372,21 @@
           <source>Title "%2" expected for column %1 (current value is %3).</source>
           <note from="Developer" annotates="general" priority="2">%1:Column, %2 Expected, %3:current value</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Helper - Method SelectNext - NamedType UnexpectedTitleErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2233796456 - Method 2942378627 - NamedType 2126343653" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 %2 already exists (%3 %4).</source>
+          <note from="Developer" annotates="general" priority="2">%1:"Document Type", %2: "Document No.", %3:FieldCaption."Entry No.", %4:"Entry No."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Incoming Document.Zip - Method CheckDuplicate - NamedType AlreadyExistsErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2233796456 - Method 1665861916 - NamedType 2182284056" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select ZIP File</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Incoming Document.Zip - Method OnRun - NamedType SelectZIPFileMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2233796456 - Method 1665861916 - NamedType 3907048935" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 "%2" imported successfully.</source>
+          <note from="Developer" annotates="general" priority="2">%1:FileCount, %2:IncomingDocument.TableCaption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Incoming Document.Zip - Method OnRun - NamedType ImportedMsg</note>
         </trans-unit>
         <trans-unit id="Codeunit 131735963 - Method 1665861916 - NamedType 979679212" size-unit="char" translate="yes" xml:space="preserve">
           <source>Journal must be empty</source>
@@ -417,31 +422,6 @@
           <source>-</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Management - Method Schedule - NamedType NoneLbl</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2447943743 - Method 1178809860 - NamedType 4288424883" size-unit="char" translate="yes" xml:space="preserve">
-          <source>%1 %2 in %3</source>
-          <note from="Developer" annotates="general" priority="2">%1:count, %2:Caption, %3:ElapsedTime</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Progress - Method Done - NamedType DoneMsg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2447943743 - Method 1178809860 - NamedType 817793199" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Line(s) processed</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Progress - Method Done - NamedType DefaultCaption</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2447943743 - Method 4259830144 - NamedType 19165060" size-unit="char" translate="yes" xml:space="preserve">
-          <source>#1###### out of #2#######</source>
-          <note from="Developer" annotates="general" priority="2">#1######=current;#2#######=max</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Progress - Method Open - NamedType ProgressMaxMsg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2447943743 - Method 4259830144 - NamedType 2779639592" size-unit="char" translate="yes" xml:space="preserve">
-          <source>#1######</source>
-          <note from="Developer" annotates="general" priority="2">#1######=current</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Progress - Method Open - NamedType ProgressMsg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2447943743 - Method 620325036 - NamedType 388730920" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Processing</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Progress - Method Start - NamedType DefaultCaptionMsg</note>
         </trans-unit>
         <trans-unit id="Codeunit 1152630074 - Method 2410829382 - NamedType 2119388173" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lookup not available (table primary key field is not unique).</source>
@@ -678,6 +658,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Action Réinitialiser statut - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 136670738 - Action 3383493608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Category_Process</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Action Category_Process - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1331679680 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>WanaPort Log</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -693,90 +678,100 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Log - Action View - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3464902093 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1331679680 - Action 3383493608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Category_Process</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Log - Action Category_Process - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1830325613 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>WanaPorts</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPorts - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3464902093 - Control 57370450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1830325613 - Control 57370450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Archived Files</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Control Archived - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPorts - Control Archived - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3464902093 - Control 4004740007 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1830325613 - Control 4004740007 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Exported files</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Control Exported - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPorts - Control Exported - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3464902093 - Control 875965287 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1830325613 - Control 875965287 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Page Caption field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Control Page Caption - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPorts - Control Page Caption - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3464902093 - Control 330023722 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1830325613 - Control 330023722 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Files to Import</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Control ToImport - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPorts - Control ToImport - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3464902093 - Control 3872099442 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1830325613 - Control 3872099442 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Schedule</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Control WanaPortMgt.JobQueueSchedule(Rec) - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPorts - Control WanaPortMgt.JobQueueSchedule(Rec) - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3464902093 - Action 2758854159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1830325613 - Action 2758854159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Constants</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Action Constants - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPorts - Action Constants - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3464902093 - Action 1368504227 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1830325613 - Action 1368504227 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Log</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Action Journal - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPorts - Action Journal - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3464902093 - Action 749962605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1830325613 - Action 749962605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Scheduler</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Action Planification - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPorts - Action Planification - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3464902093 - Action 303870886 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1830325613 - Action 303870886 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Run Page</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Action RunPage - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPorts - Action RunPage - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3464902093 - Action 3356908741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1830325613 - Action 3356908741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Value Map Export</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Action ValueMapExport - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPorts - Action ValueMapExport - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3464902093 - Action 2671655286 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1830325613 - Action 2671655286 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Value Map Import</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Action ValueMapImport - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPorts - Action ValueMapImport - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3464902093 - Action 2322805527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1830325613 - Action 2322805527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>F&amp;unctions</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Action Fonction&amp;s - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPorts - Action Fonction&amp;s - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3464902093 - Action 36190024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1830325613 - Action 36190024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Export</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Action Export - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPorts - Action Export - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3464902093 - Action 3201496503 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1830325613 - Action 3201496503 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Import</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page wanaPorts - Action Import - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPorts - Action Import - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Query 3587315306 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>wan applyToCustLedgEntries</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Query wan applyToCustLedgEntries - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="XmlPort 2557707443 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="XmlPort 2942156627 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Import Cegid</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">XmlPort wanaPort Import Cegid - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">XmlPort WanaPort Import Cegid - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="XmlPort 4177567439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import FEC Formated Text</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">XmlPort WanaPort Import FEC - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="XmlPort 1049685095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import Sage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">XmlPort WanaPort Import Sage - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1503210512 - Action 2912593996 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1638686336">
           <source>WanaPort</source>
@@ -812,6 +807,26 @@
           <source>Excel Import</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort General Journal - Action wanaPortExcelImport - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1670848014 - Action 2335777316 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1755308350">
+          <source>Import from Zip</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Incoming Documents - Action WanaPortImportZipFile - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1670848014 - Action 2335777316 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1755308350">
+          <source>Import Zip File</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Incoming Documents - Action WanaPortImportZipFile - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1670848014 - Action 293400787 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1755308350">
+          <source>Delete Selection</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Incoming Documents - Action WanaPortDeleteSelection - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1670848014 - Action 293400787 - Method 1377591017 - NamedType 2294662597" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 1670848014">
+          <source>Do-you want to delete %1 "%2"?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension WanaPort Incoming Documents - Action WanaPortDeleteSelection - Method OnAction - NamedType ConfirmMsg</note>
         </trans-unit>
         <trans-unit id="PageExtension 2046103648 - Action 3102952144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3940806096">
           <source>Import WanaPort</source>
@@ -902,6 +917,31 @@
           <source> ,,,Report,,Codeunit,XMLport</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension WanaPort Gen. Journal Batch - Field WanaPort Object Type - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2447943743 - Method 1178809860 - NamedType 4288424883" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 %2 in %3</source>
+          <note from="Developer" annotates="general" priority="2">%1:count, %2:Caption, %3:ElapsedTime</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Progress - Method Done - NamedType DoneMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2447943743 - Method 1178809860 - NamedType 817793199" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line(s) processed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Progress - Method Done - NamedType DefaultCaption</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2447943743 - Method 4259830144 - NamedType 19165060" size-unit="char" translate="yes" xml:space="preserve">
+          <source>#1###### out of #2#######</source>
+          <note from="Developer" annotates="general" priority="2">#1######=current;#2#######=max</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Progress - Method Open - NamedType ProgressMaxMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2447943743 - Method 4259830144 - NamedType 2779639592" size-unit="char" translate="yes" xml:space="preserve">
+          <source>#1######</source>
+          <note from="Developer" annotates="general" priority="2">#1######=current</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Progress - Method Open - NamedType ProgressMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2447943743 - Method 620325036 - NamedType 388730920" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Processing</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Progress - Method Start - NamedType DefaultCaptionMsg</note>
         </trans-unit>
         <trans-unit id="PermissionSet 3590162124 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>WanaPort</source>

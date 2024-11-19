@@ -1,8 +1,12 @@
+namespace Wanamics.Wanaport;
+
+using System.Utilities;
+using System.Reflection;
 table 87090 WanaPort
 {
     Caption = 'WanaPort';
     DataCaptionFields = "Object Caption";
-    LookupPageID = "wanaPorts";
+    LookupPageID = "WanaPorts";
 
     fields
     {
@@ -117,12 +121,12 @@ table 87090 WanaPort
         }
         field(102; "Object Caption"; Text[250])
         {
-            CalcFormula =
-                lookup(AllObjWithCaption."Object Caption"
-                where("Object Type" = field("Object Type"), "Object ID" = field("Object ID")));
             Caption = 'Object Caption';
             Editable = false;
             FieldClass = FlowField;
+            CalcFormula =
+                lookup(AllObjWithCaption."Object Caption"
+                where("Object Type" = field("Object Type"), "Object ID" = field("Object ID")));
         }
         field(107; "Page Caption"; Text[250])
         {
@@ -143,15 +147,6 @@ table 87090 WanaPort
         }
     }
 
-    trigger OnDelete()
-    var
-        WanaPortFieldValue: Record "WanaPort Field Constant";
-    begin
-        WanaPortFieldValue.SetRange("Object Type", "Object Type");
-        WanaPortFieldValue.SetRange("Object ID", "Object ID");
-        WanaPortFieldValue.DeleteAll;
-    end;
-
     trigger OnInsert()
     begin
         "Last File No. Used" := '';
@@ -159,6 +154,23 @@ table 87090 WanaPort
         "Last Export Entry No." := 0;
         "Last Import DateTime" := 0DT;
         "Last Export DateTime" := 0DT;
+    end;
+
+    trigger OnDelete()
+    var
+        WanaPortFieldConstant: Record "WanaPort Field Constant";
+        WanaPortFieldValueMap: Record "WanaPort Field Value Map";
+        WanaPortFieldValueMapTo: Record "WanaPort Field Value Map-to";
+    begin
+        WanaPortFieldConstant.SetRange("Object Type", "Object Type");
+        WanaPortFieldConstant.SetRange("Object ID", "Object ID");
+        WanaPortFieldConstant.DeleteAll(true);
+        WanaPortFieldValueMap.SetRange("Object Type", "Object Type");
+        WanaPortFieldValueMap.SetRange("Object ID", "Object ID");
+        WanaPortFieldValueMap.DeleteAll(true);
+        WanaPortFieldValueMapTo.SetRange("Object Type", "Object Type");
+        WanaPortFieldValueMapTo.SetRange("Object ID", "Object ID");
+        WanaPortFieldValueMapTo.DeleteAll(true);
     end;
 
     var

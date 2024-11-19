@@ -1,3 +1,7 @@
+namespace Wanamics.Wanaport;
+
+using System.Reflection;
+using Microsoft.Purchases.Document;
 table 87092 "WanaPort Log"
 {
     Caption = 'WanaPort Log';
@@ -81,7 +85,7 @@ table 87092 "WanaPort Log"
 
     procedure Show()
     var
-        WanaPort: Record "WanaPort";
+        WanaPort: Record WanaPort;
         PurchaseHeader: Record "Purchase Header";
     begin
         TestField("Entry Type", "Entry Type"::Error);
