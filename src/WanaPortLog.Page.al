@@ -78,6 +78,7 @@ page 87095 "WanaPort Log"
         {
             group(Category_Process)
             {
+                Caption = 'Process';
                 actionref(View_Promoted; View)
                 {
                 }

@@ -31,6 +31,5 @@
     "GenerateCaptions",
     "NoImplicitWith"
   ],
-  "target": "Cloud",
-  "preprocessorSymbols": ["CLOUD"]
+  "target": "Cloud"
 }

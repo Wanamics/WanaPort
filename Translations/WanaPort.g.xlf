@@ -613,53 +613,53 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Control Earliest Start Date/Time - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 136670738 - Control 2119166842 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 136670738 - Control 1743100532 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last Job</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Control gJobQueueLogEntry."End Date/Time" - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Control JobQueueLogEntryEndDateTime - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 136670738 - Control 4225901535 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 136670738 - Control 2206087446 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last Status</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Control gJobQueueLogEntryStatus - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Control JobQueueLogEntryStatus - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 136670738 - Control 4225901535 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 136670738 - Control 2206087446 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
           <source>Success,In Process,Error</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Control gJobQueueLogEntryStatus - Property OptionCaption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Control JobQueueLogEntryStatus - Property OptionCaption</note>
         </trans-unit>
-        <trans-unit id="Page 136670738 - Control 3817349158 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 136670738 - Control 2019212495 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Schedule</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Control gSchedule - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Control Schedule - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 136670738 - Action 3280331631 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 136670738 - Action 2675496269 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Job &amp;Queue</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Action Traitement - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Action Process - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 136670738 - Action 2515648043 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 136670738 - Action 4125097576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Card</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Action Fiche - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Action Card - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 136670738 - Action 1368504227 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 136670738 - Action 1979318928 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Log</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Action Journal - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Action Log - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 136670738 - Action 3709709849 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 136670738 - Action 2383471420 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Set On Hold</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Action Mettre en attente - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Action SetStatusOnHold - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 136670738 - Action 2173808637 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Reset Status</source>
+        <trans-unit id="Page 136670738 - Action 936394871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Set Status Ready</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Action Réinitialiser statut - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Action SetStatusReady - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 136670738 - Action 3383493608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Category_Process</source>
+          <source>Process</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Job Queue - Action Category_Process - Property Caption</note>
         </trans-unit>
@@ -679,7 +679,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Log - Action View - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1331679680 - Action 3383493608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Category_Process</source>
+          <source>Process</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page WanaPort Log - Action Category_Process - Property Caption</note>
         </trans-unit>

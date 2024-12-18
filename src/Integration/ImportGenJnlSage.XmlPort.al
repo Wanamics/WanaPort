@@ -59,7 +59,8 @@ xmlport 87091 "WanaPort Import Sage"
                 textelement(_CurrencyCode)
                 {
                 }
-                textelement(_ShortcutDimension1Code) { }
+                textelement(_ShortcutDimension1Code) { MinOccurs = Zero; }
+                textelement(_ShortcutDimension2Code) { MinOccurs = Zero; }
                 trigger OnAfterInitRecord()
                 begin
                     GenJournalLine.Copy(Default);
@@ -74,8 +75,8 @@ xmlport 87091 "WanaPort Import Sage"
                         AdjustVAT();
                     Default."Source Code" := GenJournalLine."Source Code";
                     Default."Document No." := GenJournalLine."Document No.";
-                    GenJournalLine."Incoming Document Entry No." := GetIncomingDocumentEntry(GenJournalLine);
-                    Default."Incoming Document Entry No." := GenJournalLine."Incoming Document Entry No.";
+                    // GenJournalLine."Incoming Document Entry No." := GetIncomingDocumentEntry(GenJournalLine);
+                    // Default."Incoming Document Entry No." := GenJournalLine."Incoming Document Entry No.";
                     case true of
                         _CustVendNo <> '':
                             begin
@@ -121,15 +122,20 @@ xmlport 87091 "WanaPort Import Sage"
                             else
                                 GenJournalLine.Validate(Amount, -WanaPort.ToDecimal(_Amount) * (1 + GenJournalLine."VAT %" / 100));
                             SumVATAmount -= GenJournalLine."VAT Amount";
-                            if Abs(GenJournalLine."VAT Amount") > Abs(MaxVATRec."VAT Amount") then
-                                MaxVATRec := GenJournalLine;
                         end;
                     end;
                     GenJournalLine.Validate(Description, _Description);
                     OnBeforeInsert(GenJournalLine);
+                    Default."Incoming Document Entry No." := GenJournalLine."Incoming Document Entry No.";
                     GenJournalLine.Insert(true);
-                    GenJournalLine.Validate("Shortcut Dimension 1 Code", _ShortcutDimension1Code);
+                    if _ShortcutDimension1Code <> '' then
+                        GenJournalLine.Validate("Shortcut Dimension 1 Code", _ShortcutDimension1Code);
+                    if _ShortcutDimension2Code <> '' then
+                        GenJournalLine.Validate("Shortcut Dimension 2 Code", _ShortcutDimension2Code);
                     GenJournalLine.Modify(true);
+                    if (GenJournalLine."Gen. Posting Type" <> GenJournalLine."Gen. Posting Type"::" ") and
+                       (Abs(GenJournalLine."VAT Amount") > Abs(MaxVATRec."VAT Amount")) then
+                        MaxVATRec := GenJournalLine;
                 end;
             }
         }
@@ -175,18 +181,18 @@ xmlport 87091 "WanaPort Import Sage"
         Clear(MaxVATRec);
     end;
 
-    local procedure GetIncomingDocumentEntry(pRec: Record "Gen. Journal Line"): Integer
-    var
-        IncomingDocument: Record "Incoming Document";
-    begin
-        pRec.TestField("Document No.");
-        IncomingDocument.SetCurrentKey("Document No.");
-        IncomingDocument.SetRange("Document No.", pRec."Document No.");
-        if IncomingDocument.FindFirst() then begin
-            IncomingDocument.TestField(Posted, false);
-            exit(IncomingDocument."Entry No.");
-        end;
-    end;
+    // local procedure GetIncomingDocumentEntry(pRec: Record "Gen. Journal Line"): Integer
+    // var
+    //     IncomingDocument: Record "Incoming Document";
+    // begin
+    //     pRec.TestField("Document No.");
+    //     IncomingDocument.SetCurrentKey("Document No.");
+    //     IncomingDocument.SetRange("Document No.", pRec."Document No.");
+    //     if IncomingDocument.FindFirst() then begin
+    //         IncomingDocument.TestField(Posted, false);
+    //         exit(IncomingDocument."Entry No.");
+    //     end;
+    // end;
 
     [IntegrationEvent(false, false)]
     local procedure OnBeforeInsert(var pRec: Record "Gen. Journal Line");
