@@ -74,6 +74,24 @@ page 87092 "WanaPort Card"
                         WanaPortMgt.ShowFileList(Rec."Import Path", Rec."File Name Filter");
                     end;
                 }
+                field("Processing Path"; Rec."Processing Path")
+                {
+                    ApplicationArea = All;
+                    Visible = IsOnPrem;
+                }
+                field(ToProcess; WanaPortMgt.FileCount(Rec."Processing Path", Rec."File Name Filter"))
+                {
+                    ApplicationArea = All;
+                    BlankZero = true;
+                    Caption = 'Files in Process';
+                    Editable = false;
+                    Visible = IsOnPrem;
+
+                    trigger OnDrillDown()
+                    begin
+                        WanaPortMgt.ShowFileList(Rec."Processing Path", Rec."File Name Filter");
+                    end;
+                }
                 field("Archive Path"; Rec."Archive Path")
                 {
                     ApplicationArea = All;

@@ -60,9 +60,9 @@ xmlport 87092 "WanaPort Import FEC"
                         end else
                             GenJournalLine.Validate(Description, _CompteNum + ':' + _CompteLib);
                         if _Debit <> '' then
-                            GenJournalLine.Validate("Debit Amount", WanaPort.ToDecimal(_Debit));
+                            GenJournalLine.Validate("Debit Amount", WanaPort.ToDecimal(_Debit, 'fr-FR'));
                         if _Credit <> '' then
-                            GenJournalLine.Validate("Credit Amount", WanaPort.ToDecimal(_Credit));
+                            GenJournalLine.Validate("Credit Amount", WanaPort.ToDecimal(_Credit, 'fr-FR'));
                         OnBeforeInsert(GenJournalLine);
                         GenJournalLine.Insert(true);
                     end;

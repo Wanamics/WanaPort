@@ -1,4 +1,6 @@
 namespace Wanamics.Wanaport;
+
+using System.IO;
 page 87093 "WanaPort File List"
 {
     Caption = 'Files';

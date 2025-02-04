@@ -3,6 +3,7 @@ namespace Wanamics.Wanaport;
 using System.Threading;
 using System.Reflection;
 using Microsoft.Utilities;
+using System.Environment.Configuration;
 codeunit 87092 "WanaPort Export"
 {
 

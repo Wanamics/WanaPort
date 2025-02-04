@@ -119,6 +119,15 @@ table 87090 WanaPort
                 CalcFields("Page Caption");
             end;
         }
+        field(21; "Processing Path"; Text[250])
+        {
+            Caption = 'Processing Path';
+
+            trigger OnValidate()
+            begin
+                CheckPath(FieldCaption("Processing Path"), "Processing Path");
+            end;
+        }
         field(102; "Object Caption"; Text[250])
         {
             Caption = 'Object Caption';
@@ -306,7 +315,6 @@ table 87090 WanaPort
     begin
         exit(ToDecimal(pText, 'en-US'));
     end;
-
 
     procedure ToDecimal(pText: Text; pCulture: Text) ReturnValue: Decimal
     var

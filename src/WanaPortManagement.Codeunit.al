@@ -92,18 +92,38 @@ codeunit 87090 "WanaPort Management"
     var
         lFile: Record File;
         lWindow: Dialog;
-        lImportFile: File;
-        lInStream: InStream;
-        lOutStream: OutStream;
-        ConfirmLbl: Label 'Do-you want to process "%1" for %2 files?';
-        NoFileLbl: Label 'No file to import for %1.';
-        ProgressLbl: Label 'Import "@1@@@@@@@@@@@@@@@@@@@@@@@@@@@@" in progress :\  @2@@@@@@@@@@@@@@@@@@@@@@@@@@@@@';
+        ConfirmLbl: Label 'Do-you want to process "%1" for %2 files(?)', Comment = '%1:"Object Caption", %2:Count';
+        ContinueLbl: Label 'Warning : you are going to process %1 pending file(s), do you want to continue?', Comment = '%1:Count';
+        NoFileLbl: Label 'No file to import for %1.', Comment = '%1:"Object Caption"';
+        ProgressLbl: Label 'Import "@1@@@@@@@@@@@@@@@@@@@@@@@@@@@@" in progress :\  @2@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', Comment = '%1:"Object Caption", %2:FileName';
     begin
         pRec.TestField("Object Type");
         pRec.TestField("Object ID");
         pRec.TestField("Import Path");
         pRec.TestField("Archive Path");
         pRec.CalcFields("Object Caption");
+        //#20241218
+        pRec.TestField("Processing Path");
+        lFile.SetRange(Path, pRec."Processing Path");
+        lFile.SetRange("Is a file", true);
+        lFile.SetFilter(Name, pRec."File Name Filter");
+        if lFile.FindSet then begin
+            if GuiAllowed then begin
+                if not Confirm(ContinueLbl, true, pRec."Object Caption", lFile.Count) then
+                    exit;
+                lWindow.Open(ProgressLbl, pRec."Object Caption");
+            end;
+
+            pRec.LogBegin;
+            repeat
+                if GuiAllowed then
+                    lWindow.Update(2, lFile.Name);
+                pRec."WanaPort File Name" := pRec."Processing Path" + '\' + lFile.Name;
+                Process(pRec);
+            until lFile.Next = 0;
+            pRec.LogEnd;
+        end;
+        //#20241218//
 
         lFile.SetRange(Path, pRec."Import Path");
         lFile.SetRange("Is a file", true);
@@ -124,25 +144,12 @@ codeunit 87090 "WanaPort Management"
             repeat
                 if GuiAllowed then
                     lWindow.Update(2, lFile.Name);
-                pRec."WanaPort File Name" := lFile.Path + '\' + lFile.Name;
-                pRec.Modify();
-                case pRec."Object Type" of
-                    pRec."Object Type"::Report:
-                        Report.RunModal(pRec."Object ID", false);
-                    pRec."Object Type"::Codeunit:
-                        Codeunit.Run(pRec."Object ID", pRec);
-                    pRec."Object Type"::XMLport:
-                        begin
-                            lImportFile.Open(pRec."WanaPort File Name");
-                            lImportFile.CreateInStream(lInStream);
-                            XMLport.Import(pRec."Object ID", lInStream);
-                            lImportFile.Close;
-                        end;
-                end;
-                File.Rename(pRec."WanaPort File Name", GetArchiveFileName(pRec));
-                Commit;
-                pRec.Find('='); // pRec can be modified (ex : "Last Export Entry No.")
-                pRec.LogProcess;
+                //#20241218
+                // pRec."WanaPort File Name" := lFile.Path + '\' + lFile.Name;
+                File.Rename(lFile.Path + '\' + lFile.Name, pRec."Processing Path" + '\' + lFile.Name);
+                pRec."WanaPort File Name" := pRec."Processing Path" + '\' + lFile.Name;
+                //#20241218//
+                Process(pRec);
             until lFile.Next = 0;
             pRec.LogEnd;
 
@@ -153,6 +160,32 @@ codeunit 87090 "WanaPort Management"
         pRec."Last Import DateTime" := CurrentDateTime;
         pRec.Modify;
     end;
+
+    local procedure Process(var pRec: Record WanaPort)
+    var
+        lImportFile: File;
+        lInStream: InStream;
+    begin
+        pRec.Modify();
+        case pRec."Object Type" of
+            pRec."Object Type"::Report:
+                Report.RunModal(pRec."Object ID", false);
+            pRec."Object Type"::Codeunit:
+                Codeunit.Run(pRec."Object ID", pRec);
+            pRec."Object Type"::XMLport:
+                begin
+                    lImportFile.Open(pRec."WanaPort File Name");
+                    lImportFile.CreateInStream(lInStream);
+                    XMLport.Import(pRec."Object ID", lInStream);
+                    lImportFile.Close;
+                end;
+        end;
+        File.Rename(pRec."WanaPort File Name", GetArchiveFileName(pRec));
+        Commit;
+        pRec.Find('='); // pRec can be modified (ex : "Last Export Entry No.")
+        pRec.LogProcess;
+    end;
+
 #else
     procedure Import(var pRec: Record WanaPort)
     begin

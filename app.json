@@ -25,11 +25,14 @@
     "allowDownloadingSource": true,
     "includeSourceInSymbolFile": true
   },
-  "runtime": "13.0",
+  "runtime": "14.0",
   "features": [
     "TranslationFile", 
     "GenerateCaptions",
     "NoImplicitWith"
   ],
-  "target": "Cloud"
+  "target": "OnPrem",
+  "preprocessorSymbols": [
+    "ONPREM"
+  ]
 }
