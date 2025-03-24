@@ -324,4 +324,12 @@ table 87090 WanaPort
         if TypeHelper.Evaluate(v, pText, 'G', pCulture) then
             exit(v);
     end;
+
+    procedure GetFieldConstant(pTableId: Integer; pFieldId: Integer): Text
+    var
+        FieldConstant: Record "WanaPort Field Constant";
+    begin
+        if FieldConstant.Get(Rec."Object Type", Rec."Object ID", pTableId, pFieldId) then
+            exit(FieldConstant.Constant);
+    end;
 }
