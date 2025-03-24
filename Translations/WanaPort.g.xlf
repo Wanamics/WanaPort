@@ -438,6 +438,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Relation - Method Validate - NamedType NotExistsErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1152630074 - Method 3657829122 - NamedType 3431447212" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit WanaPort Relation - Method Validate - NamedType ContinueMsg</note>
+        </trans-unit>
         <trans-unit id="Page 2322991096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>WanaPort</source>
           <note from="Developer" annotates="general" priority="2"></note>

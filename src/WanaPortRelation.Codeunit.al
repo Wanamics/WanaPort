@@ -49,6 +49,7 @@ codeunit 87099 "WanaPort Relation"
         FldRef: FieldRef;
         RelationRecordRef: RecordRef;
         NotExistsErr: Label 'This value doesn''t exists in "%1"';
+        ContinueMsg: Label 'Do you want to continue?';
     begin
         if pTableID = 0 then
             exit(false);
@@ -64,7 +65,9 @@ codeunit 87099 "WanaPort Relation"
             RelationRecordRef.Open(FldRef.Relation);
         if SetPrimaryKey(RelationRecordRef, pCode) then
             if not RelationRecordRef.Find() then
-                Error(StrSubstNo(NotExistsErr, RelationRecordRef.Caption));
+                // Error(StrSubstNo(NotExistsErr, RelationRecordRef.Caption));
+                if not Confirm(NotExistsErr + '\' + ContinueMsg, false, RelationRecordRef.Caption) then
+                    Error('');
     end;
 
     local procedure GetPrimaryKey(var pRecordRef: RecordRef): Code[20]
